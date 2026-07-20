@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>画像リサイズ ― 指定サイズに一括リサイズ｜サクッとツール</title>
+<meta name="description" content="画像を指定した幅・高さに一括リサイズ。縦横比の保持もでき、複数枚・ZIP一括DL対応。ブラウザ内処理で送信なし・登録不要・完全無料。">
+<link rel="canonical" href="https://kawatare.studio/tool-image-resize.html">
+<meta name="theme-color" content="#0891b2">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="サクッとツール">
+<meta property="og:title" content="画像リサイズ｜指定サイズに一括リサイズ">
+<meta property="og:description" content="画像を指定した幅・高さに一括リサイズ。縦横比の保持もでき、複数枚・ZIP一括DL対応。ブラウザ内処理で送信なし・登録不要・完全無料。">
+<meta property="og:url" content="https://kawatare.studio/tool-image-resize.html">
+<meta property="og:image" content="https://kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="画像リサイズ｜指定サイズに一括リサイズ">
+<meta name="twitter:description" content="画像を指定した幅・高さに一括リサイズ。縦横比の保持もでき、複数枚・ZIP一括DL対応。ブラウザ内処理で送信なし・登録不要・完全無料。">
+<meta name="twitter:image" content="https://kawatare.studio/ogp.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"画像リサイズ","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"画像を指定した幅・高さに一括リサイズ。縦横比の保持もでき、複数枚・ZIP一括DL対応。ブラウザ内処理で送信なし・登録不要・完全無料。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"画像リサイズの使い方","step":[{"@type":"HowToStep","name":"画像を追加","text":"ドラッグ＆ドロップ、または選択(複数可)。"},{"@type":"HowToStep","name":"サイズ指定","text":"幅・高さを入力(縦横比の保持も選べます)。"},{"@type":"HowToStep","name":"保存","text":"1枚ずつ、またはZIPで一括ダウンロード。"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"複数枚をまとめてリサイズできますか？","acceptedAnswer":{"@type":"Answer","text":"はい。まとめて追加し、ZIPで一括保存できます。枚数制限はありません。"}},{"@type":"Question","name":"画像は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像は送信されません。"}},{"@type":"Question","name":"縦横比は保てますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「縦横比を保持」を選ぶと、指定サイズに収まるよう比率を保ってリサイズします。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"画像リサイズ","item":"https://kawatare.studio/tool-image-resize.html"}]}</script>
+<style>
+  :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
+    --brand:#0891b2;--brand-d:#0e7490;--accent:#2563eb;--good:#0ca30c;--good-bg:#e7f6e7;
+    --shadow:0 1px 2px rgba(16,20,30,.04),0 6px 20px rgba(16,20,30,.06);}
+  @media (prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#191c22;--ink:#f2f4f8;--ink-2:#aeb6c4;--muted:#7b8494;
+    --line:#282c34;--brand:#22d3ee;--brand-d:#67e8f9;--accent:#4c93ea;--good:#3fbf3f;--good-bg:#14311a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);}}
+
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.7;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:8px;font-weight:800;text-decoration:none;color:var(--ink);}
+  .sb-logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:14px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:820px;margin:0 auto;padding:18px 16px 60px;}
+  header.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 0 12px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800;font-size:16px;box-shadow:var(--shadow);}
+  .brand h1{font-size:18px;margin:0;line-height:1.25;} .brand .tag{font-size:12px;color:var(--ink-2);}
+  .privacy{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 10px;border-radius:20px;font-weight:700;white-space:nowrap;}
+  .answer{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);border-radius:12px;padding:12px 16px;margin:6px 0 16px;font-size:14px;color:var(--ink);box-shadow:var(--shadow);}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px;margin-bottom:14px;}
+  textarea{width:100%;min-height:150px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:15px;resize:vertical;}
+  textarea[readonly]{background:rgba(0,0,0,.02);}
+  @media(prefers-color-scheme:dark){textarea[readonly]{background:rgba(255,255,255,.03);}}
+  .opts{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0;font-size:13.5px;color:var(--ink-2);}
+  .opts label{display:flex;align-items:center;gap:6px;cursor:pointer;} .opts input{accent-color:var(--brand);width:16px;height:16px;}
+  .seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px;flex-wrap:wrap;margin:10px 0;}
+  .seg button{flex:1;border:none;background:transparent;color:var(--ink-2);font-weight:700;font-size:12.5px;padding:8px 6px;border-radius:8px;cursor:pointer;font-family:inherit;min-width:80px;}
+  .seg button.on{background:var(--card);color:var(--brand);box-shadow:var(--shadow);}
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0;} @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr);}}
+  .stats .s{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;}
+  .stats .v{font-size:22px;font-weight:800;color:var(--brand);font-variant-numeric:tabular-nums;}
+  .stats .l{font-size:11px;color:var(--ink-2);margin-top:2px;}
+  .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+  .btn{border:none;border-radius:11px;padding:11px 18px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .status{font-size:12.5px;color:var(--good);min-height:16px;margin:6px 2px;font-weight:700;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:16px;text-align:center;color:var(--muted);font-size:12.5px;background:var(--card);margin:16px 0;}
+  .seo h2{font-size:18px;margin:28px 0 10px;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;}
+  .howto .st .n{width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:13px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;}
+  .faq summary{font-weight:700;cursor:pointer;font-size:14px;} .faq p{font-size:13px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;font-weight:700;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:400;margin-top:2px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:22px;line-height:1.9;}
+  .foot a{color:var(--ink-2);}
+
+
+  .drop{border:2px dashed var(--line);border-radius:16px;padding:30px 18px;text-align:center;cursor:pointer;background:var(--card);transition:.15s;}
+  .drop:hover,.drop.hot{border-color:var(--brand);background:rgba(0,0,0,.02);}
+  .drop .icon{font-size:28px;} .drop .big{font-size:15px;font-weight:800;margin-top:4px;} .drop .sm{font-size:12.5px;color:var(--ink-2);margin-top:4px;}
+  .summary{display:none;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 8px;} .summary.show{display:flex;}
+  .count{font-size:12.5px;color:var(--ink-2);}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
+  .pg{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);}
+  .pg .cw{aspect-ratio:1/1;display:grid;place-items:center;background:var(--bg);overflow:hidden;} .pg img{max-width:100%;max-height:100%;}
+  .pg .bar{display:flex;justify-content:space-between;align-items:center;padding:5px 7px;border-top:1px solid var(--line);}
+  .pg .no{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .dl{text-decoration:none;background:var(--bg);border:1px solid var(--line);color:var(--brand);font-weight:800;font-size:11.5px;padding:5px 9px;border-radius:8px;}
+  .imgnum{width:120px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:14px;}
+  .olabel{display:block;font-size:12.5px;font-weight:700;color:var(--ink-2);margin:0 0 8px;}
+  .pbtn{border:1px solid var(--line);background:var(--bg);color:var(--ink-2);border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;} .pbtn:hover{border-color:var(--brand);color:var(--brand);}
+
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">⚡</span>サクッとツール</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="tool-image-compressor.html">画像圧縮</a><a href="tool-pdf-organizer.html">PDF整理</a></div>
+</nav>
+<div class="wrap">
+  <header class="hd">
+    <div class="brand"><div class="logo">⬍</div><div><h1>画像リサイズ</h1><div class="tag">指定サイズに一括リサイズ</div></div></div>
+    <div class="privacy">🔒 情報漏えいの心配なし</div>
+  </header>
+
+  <div class="answer">画像を追加し、<b>幅・高さ(px)</b>を入力すると一括でリサイズします。縦横比の保持も可能。処理はブラウザ内で完結し、画像は送信されません。</div>
+
+  <div class="panel"><label class="olabel">用途プリセット（SNS推奨サイズ）</label><div id="preset" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"><button type="button" class="pbtn" data-w="1080" data-h="1080">正方形 1080²</button><button type="button" class="pbtn" data-w="1080" data-h="1350">縦長 1080×1350</button><button type="button" class="pbtn" data-w="1080" data-h="1920">ストーリー 1080×1920</button><button type="button" class="pbtn" data-w="1280" data-h="720">YouTube 1280×720</button><button type="button" class="pbtn" data-w="1500" data-h="500">Xヘッダー 1500×500</button><button type="button" class="pbtn" data-w="400" data-h="400">アイコン 400²</button></div><label class="olabel">サイズ(px・空欄可)</label><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><span style="font-size:13px;color:var(--ink-2)">幅</span><input class="imgnum" id="w" type="number" min="1" placeholder="例:1000"><span style="font-size:13px;color:var(--ink-2)">高さ</span><input class="imgnum" id="h" type="number" min="1" placeholder="例:1000"><label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);cursor:pointer"><input type="checkbox" id="keep" checked style="accent-color:var(--brand);width:16px;height:16px"> 縦横比を保持</label></div></div><div class="drop" id="drop"><div class="icon">🖼️</div><div class="big">ここに画像をドラッグ＆ドロップ</div><div class="sm">複数選択可・JPEG/PNG/WebP対応・登録不要</div><input type="file" id="file" accept="image/*" multiple hidden></div><div class="status" id="status"></div><div class="summary" id="summary"><span class="count" id="count">0 枚</span><button class="btn primary" id="zipbtn">ZIPで一括ダウンロード</button></div><div class="grid" id="grid"></div>
+
+  <div class="ad">広告スペース（ここに AdSense のタグを挿入）</div>
+
+  <section class="seo">
+    <h2>使い方（3ステップ）</h2>
+    <div class="howto"><div class="st"><div class="n">1</div><b>画像を追加</b><p>ドラッグ＆ドロップ、または選択(複数可)。</p></div><div class="st"><div class="n">2</div><b>サイズ指定</b><p>幅・高さを入力(縦横比の保持も選べます)。</p></div><div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。</p></div></div>
+    <h2>よくある質問</h2>
+    <div class="faq"><details open><summary>複数枚をまとめてリサイズできますか？</summary><p>はい。まとめて追加し、ZIPで一括保存できます。枚数制限はありません。</p></details><details><summary>画像は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像は送信されません。</p></details><details><summary>縦横比は保てますか？</summary><p>はい。「縦横比を保持」を選ぶと、指定サイズに収まるよう比率を保ってリサイズします。</p></details></div>
+    <h2>ほかの無料ツール</h2>
+    <div class="rel-grid"><a class="rel" href="tool-image-compressor.html">🖼️ きゅっと画像圧縮 <span>目標サイズ指定・AVIF・比較</span></a><a class="rel" href="tool-square-photo.html">📷 フリマ写真を正方形に <span>1:1・白背景に一括変換</span></a></div>
+  </section>
+
+  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">運営者情報</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>運営：かわたれ studio ・ 最終更新：2026-07-19 ・ すべての処理は端末内で完結します</div>
+</div>
+<script>(function(){var pr=document.getElementById('preset');if(pr)pr.addEventListener('click',function(e){var b=e.target&&e.target.closest?e.target.closest('button'):null;if(!b||!b.dataset.w)return;document.getElementById('w').value=b.dataset.w;document.getElementById('h').value=b.dataset.h;document.getElementById('keep').checked=true;});})();window.TOOL_PROCESS=async function(f){var url=URL.createObjectURL(f);var img=await window.__loadImg(url);URL.revokeObjectURL(url);var iw=img.naturalWidth,ih=img.naturalHeight;var w=parseInt(document.getElementById('w').value,10)||0,h=parseInt(document.getElementById('h').value,10)||0;var keep=document.getElementById('keep').checked;var tw=iw,th=ih;if(keep){if(w&&h){var s=Math.min(w/iw,h/ih);tw=Math.round(iw*s);th=Math.round(ih*s);}else if(w){tw=w;th=Math.round(ih*w/iw);}else if(h){th=h;tw=Math.round(iw*h/ih);}}else{if(w)tw=w;if(h)th=h;}var c=document.createElement('canvas');c.width=Math.max(1,tw);c.height=Math.max(1,th);c.getContext('2d').drawImage(img,0,0,c.width,c.height);var type=f.type==='image/png'?'image/png':(f.type==='image/webp'?'image/webp':'image/jpeg');var blob=await new Promise(function(r){c.toBlob(r,type,0.92);});var ext=type==='image/png'?'png':(type==='image/webp'?'webp':'jpg');return {name:window.__stripExt(f.name)+'_resized.'+ext,blob:blob};};
+
+(function(){
+  var results=[]; var grid=document.getElementById('grid'),drop=document.getElementById('drop'),file=document.getElementById('file'),summary=document.getElementById('summary'),status=document.getElementById('status');
+  function say(m){if(status)status.textContent=m||'';}
+  function human(b){if(b<1024)return b+' B';if(b<1048576)return (b/1024).toFixed(1)+' KB';return (b/1048576).toFixed(2)+' MB';}
+  window.__loadImg=function(src){return new Promise(function(res,rej){var i=new Image();i.onload=function(){res(i);};i.onerror=rej;i.src=src;});};
+  window.__stripExt=function(n){var i=n.lastIndexOf('.');return i>0?n.slice(0,i):n;};
+  document.querySelectorAll('.seg').forEach(function(seg){seg.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){seg.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');});});});
+  drop.addEventListener('click',function(){file.click();});
+  drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('hot');});
+  drop.addEventListener('dragleave',function(){drop.classList.remove('hot');});
+  drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('hot');handle(e.dataTransfer.files);});
+  file.addEventListener('change',function(){handle(file.files);file.value='';});
+  async function handle(list){if(!list||!list.length)return;summary.classList.add('show');
+    for(var i=0;i<list.length;i++){var f=list[i];if(f.type.indexOf('image/')!==0)continue;try{var r=await window.TOOL_PROCESS(f);if(r&&r.blob){var rec={name:r.name,blob:r.blob,size:r.blob.size,url:URL.createObjectURL(r.blob)};results.push(rec);render();}}catch(e){say('一部の画像を処理できませんでした。');}}}
+  function render(){grid.innerHTML='';results.forEach(function(r){var el=document.createElement('div');el.className='pg';
+    el.innerHTML='<div class="cw"><img src="'+r.url+'"></div><div class="bar"><span class="no">'+human(r.size)+'</span></div>';
+    var a=document.createElement('a');a.className='dl';a.textContent='保存';a.download=r.name;a.href=r.url;el.querySelector('.bar').appendChild(a);grid.appendChild(el);});
+    document.getElementById('count').textContent=results.length+' 枚';}
+  var crcT=(function(){var t=new Uint32Array(256);for(var n=0;n<256;n++){var c=n;for(var k=0;k<8;k++){c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);}t[n]=c>>>0;}return t;})();
+  function crc32(u8){var c=0xFFFFFFFF;for(var i=0;i<u8.length;i++){c=crcT[(c^u8[i])&0xFF]^(c>>>8);}return (c^0xFFFFFFFF)>>>0;}
+  function zipStore(files){var chunks=[],central=[],offset=0;function u16(n){return[n&255,(n>>8)&255];}function u32(n){return[n&255,(n>>8)&255,(n>>16)&255,(n>>24)&255];}
+    files.forEach(function(f){var name=new TextEncoder().encode(f.name),data=f.data,crc=crc32(data);
+      var lo=[].concat(u32(0x04034b50),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0));
+      var lh=new Uint8Array(lo.length+name.length);lh.set(lo,0);lh.set(name,lo.length);chunks.push(lh);chunks.push(data);
+      var ce=[].concat(u32(0x02014b50),u16(20),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset));
+      var ch=new Uint8Array(ce.length+name.length);ch.set(ce,0);ch.set(name,ce.length);central.push(ch);offset+=lh.length+data.length;});
+    var cs=central.reduce(function(a,b){return a+b.length;},0);
+    var end=[].concat(u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(cs),u32(offset),u16(0));
+    return new Blob(chunks.concat(central,[new Uint8Array(end)]),{type:'application/zip'});}
+  var zb=document.getElementById('zipbtn'); if(zb) zb.addEventListener('click',async function(){if(!results.length)return;say('ZIP作成中…');
+    var files=[];for(var i=0;i<results.length;i++){files.push({name:results[i].name,data:new Uint8Array(await results[i].blob.arrayBuffer())});}
+    var url=URL.createObjectURL(zipStore(files));var a=document.createElement('a');a.href=url;a.download='images.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},4000);say('ZIPをダウンロードしました。');});
+  window.__tool={results:function(){return results.map(function(r){return {name:r.name,size:r.size};});},
+    feed:async function(n,w,h){for(var k=0;k<(n||2);k++){var c=document.createElement('canvas');c.width=w||600;c.height=h||400;var x=c.getContext('2d');var g=x.createLinearGradient(0,0,c.width,c.height);g.addColorStop(0,'#e11');g.addColorStop(1,'#33e');x.fillStyle=g;x.fillRect(0,0,c.width,c.height);x.fillStyle='#fff';x.font='30px sans-serif';x.fillText('IMG'+(k+1),20,60);var blob=await new Promise(function(r){c.toBlob(r,'image/png');});var f=new File([blob],'img'+(k+1)+'.png',{type:'image/png'});await handle([f]);}return this.results();}};
+})();
+</script>
+</body>
+</html>

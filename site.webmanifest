@@ -1,0 +1,12 @@
+{
+  "name": "サクッとツール ― 無料ブラウザツール集",
+  "short_name": "サクッとツール",
+  "description": "登録不要・アップロードなし・完全無料。画像圧縮やPDF整理などをブラウザ内だけで実行できるツール集。",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f5f6f8",
+  "theme_color": "#2a78d6",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

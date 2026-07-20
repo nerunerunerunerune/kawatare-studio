@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>きゅっと画像圧縮 ― ブラウザ内で完結・サーバー送信なし・枚数無制限</title>
+<meta name="description" content="画像をブラウザ内だけで圧縮・変換(JPEG/PNG/WebP/AVIF)。目標サイズ指定・ビフォーアフター比較・ZIP一括DL。サーバー送信なし・枚数無制限・登録不要・完全無料。">
+<link rel="canonical" href="https://kawatare.studio/tool-image-compressor.html">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="サクッとツール">
+<meta property="og:title" content="きゅっと画像圧縮｜サーバー送信なし・枚数無制限の無料画像圧縮">
+<meta property="og:description" content="JPEG/PNG/WebP/AVIFをブラウザ内だけで圧縮・変換。目標サイズ指定・比較・ZIP一括DL。送信なし・無制限・登録不要。">
+<meta property="og:url" content="https://kawatare.studio/tool-image-compressor.html">
+<meta property="og:image" content="https://kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="きゅっと画像圧縮｜サーバー送信なし・枚数無制限">
+<meta name="twitter:description" content="ブラウザ内だけで画像を圧縮・変換。送信なし・無制限・登録不要・無料。">
+<meta name="twitter:image" content="https://kawatare.studio/ogp.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"きゅっと画像圧縮","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"ブラウザ内だけで画像を圧縮・変換できる無料ツール。JPEG/PNG/WebP/AVIF、目標サイズ指定、比較、ZIP一括DL対応。"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"画像を圧縮する手順","step":[{"@type":"HowToStep","name":"画像を追加","text":"画像をドラッグ＆ドロップするか、タップして選びます。"},{"@type":"HowToStep","name":"設定を選ぶ","text":"出力形式や画質、または目標サイズを指定します。"},{"@type":"HowToStep","name":"保存","text":"圧縮結果を1枚ずつ、またはZIPで一括ダウンロードします。"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"画像はアップロードされますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像はサーバーに送信されません。"}},{"@type":"Question","name":"何枚まで圧縮できますか？","acceptedAnswer":{"@type":"Answer","text":"サービス側の枚数・サイズ制限はありません。端末の性能の範囲で処理します。"}},{"@type":"Question","name":"AVIFやWebPに変換できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。WebPは広く対応、AVIFは対応ブラウザで書き出せます。"}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"きゅっと画像圧縮","item":"https://kawatare.studio/tool-image-compressor.html"}]}
+</script>
+<style>
+  :root{
+    --bg:#f5f6f8; --card:#ffffff; --ink:#12151b; --ink-2:#5b6371; --muted:#9aa2b1;
+    --line:#e6e8ee; --brand:#2a78d6; --brand-d:#1c5cab; --brand-l:#e8f1fd;
+    --good:#0ca30c; --good-bg:#e7f6e7; --accent:#7a3ff2;
+    --shadow:0 1px 2px rgba(16,20,30,.04),0 6px 20px rgba(16,20,30,.06);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0e1013; --card:#191c22; --ink:#f2f4f8; --ink-2:#aeb6c4; --muted:#7b8494;
+      --line:#282c34; --brand:#4c93ea; --brand-d:#8fbdf2; --brand-l:#152742;
+      --good:#3fbf3f; --good-bg:#14311a; --accent:#9b78f5;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);}
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:880px;margin:0 auto;padding:20px 16px 60px;}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 14px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--accent));
+    display:grid;place-items:center;color:#fff;font-weight:800;font-size:19px;box-shadow:var(--shadow);}
+  .brand h1{font-size:18px;margin:0;line-height:1.2;}
+  .brand .tag{font-size:12px;color:var(--ink-2);}
+  .privacy{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 10px;border-radius:20px;font-weight:700;white-space:nowrap;}
+  .why{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--ink-2);}
+  .why b{color:var(--ink);}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:18px;margin-bottom:16px;}
+  .controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:560px){.controls{grid-template-columns:1fr;}}
+  .ctl label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-2);margin-bottom:6px;}
+  .seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px;flex-wrap:wrap;}
+  .seg button{flex:1;border:none;background:transparent;color:var(--ink-2);font-weight:700;font-size:13px;
+    padding:7px 4px;border-radius:8px;cursor:pointer;font-family:inherit;min-width:52px;}
+  .seg button.on{background:var(--card);color:var(--brand);box-shadow:var(--shadow);}
+  .seg button:disabled{opacity:.4;cursor:default;}
+  input[type=range]{width:100%;accent-color:var(--brand);}
+  .rowb{display:flex;align-items:center;gap:10px;}
+  .rowb output{font-variant-numeric:tabular-nums;font-weight:800;color:var(--brand);min-width:44px;text-align:right;}
+  input[type=number]{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-family:inherit;font-size:14px;}
+  .hint{font-size:11.5px;color:var(--muted);margin-top:5px;}
+  .drop{border:2px dashed var(--line);border-radius:16px;padding:34px 18px;text-align:center;cursor:pointer;transition:.15s;background:var(--card);}
+  .drop:hover,.drop.hot{border-color:var(--brand);background:var(--brand-l);}
+  .drop .big{font-size:16px;font-weight:800;} .drop .sm{font-size:12.5px;color:var(--ink-2);margin-top:4px;} .drop .icon{font-size:30px;}
+  .summary{display:none;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:12px;}
+  .summary.show{display:flex;}
+  .stat{display:flex;gap:18px;flex-wrap:wrap;}
+  .stat .s .v{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;}
+  .stat .s .l{font-size:11.5px;color:var(--ink-2);}
+  .stat .s .v.save{color:var(--good);}
+  .btn{border:none;border-radius:11px;padding:11px 16px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .btn.ghost{background:var(--bg);color:var(--ink);border:1px solid var(--line);}
+  .btn:disabled{opacity:.5;cursor:default;}
+  .items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .item{display:flex;align-items:center;gap:12px;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--card);}
+  .thumb{width:52px;height:52px;border-radius:9px;object-fit:cover;background:var(--bg);flex:0 0 auto;border:1px solid var(--line);cursor:zoom-in;}
+  .meta{flex:1;min-width:0;} .meta .nm{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .meta .sz{font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums;} .meta .sz b{color:var(--good);}
+  .acts2{display:flex;gap:6px;flex:0 0 auto;}
+  .mini{display:inline-block;text-decoration:none;background:var(--bg);border:1px solid var(--line);color:var(--brand);
+    font-weight:800;font-size:12.5px;padding:8px 11px;border-radius:9px;cursor:pointer;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:18px;text-align:center;color:var(--muted);font-size:12.5px;background:var(--card);margin:16px 0;}
+  .pro{display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap;
+    background:linear-gradient(135deg,var(--brand-l),transparent);border:1px solid var(--line);border-radius:14px;padding:14px 16px;}
+  .pro .pt{font-weight:800;} .pro .pd{font-size:12.5px;color:var(--ink-2);} .pro .btn{background:var(--accent);color:#fff;}
+  .badge{display:inline-block;font-size:10.5px;font-weight:800;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:0 5px;margin-left:6px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:22px;line-height:1.8;}
+  .foot a{color:var(--ink-2);}
+  .presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+  .ppreset{border:1px solid var(--line);background:var(--bg);color:var(--ink-2);border-radius:20px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .ppreset:hover{border-color:var(--brand);color:var(--brand);}
+  .ppreset.on{background:var(--brand);color:#fff;border-color:var(--brand);}
+  .status{font-size:12.5px;color:var(--ink-2);margin:4px 2px 0;min-height:16px;}
+  /* compare modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center;z-index:50;padding:16px;}
+  .modal.show{display:grid;}
+  .mbox{background:var(--card);border-radius:16px;max-width:560px;width:100%;overflow:hidden;}
+  .mhd{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);}
+  .mhd b{font-size:14px;} .mhd .x{cursor:pointer;font-size:20px;color:var(--ink-2);border:none;background:none;}
+  .compare{position:relative;user-select:none;background:var(--bg);display:grid;place-items:center;}
+  .compare img{display:block;max-width:100%;max-height:52vh;}
+  .compare .after{position:absolute;top:0;left:0;height:100%;overflow:hidden;}
+  .compare .after img{max-height:52vh;}
+  .compare .lbl{position:absolute;top:8px;font-size:11px;font-weight:800;color:#fff;background:rgba(0,0,0,.55);padding:2px 7px;border-radius:5px;}
+  .compare .lbl.l{left:8px;} .compare .lbl.r{right:8px;}
+  .mft{padding:12px 16px;} .mft .lg{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2);margin-bottom:6px;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:8px;font-weight:800;text-decoration:none;color:var(--ink);}
+  .sb-logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:14px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .seo h2{font-size:18px;margin:28px 0 10px;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;}
+  .howto .st .n{width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:13px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;}
+  .faq summary{font-weight:700;cursor:pointer;font-size:14px;} .faq p{font-size:13px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;font-weight:700;}
+  .rel:hover{border-color:var(--brand);} .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:400;margin-top:2px;}
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">⚡</span>サクッとツール</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="tool-pdf-organizer.html">PDF整理</a></div>
+</nav>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="logo">画</div>
+      <div><h1>きゅっと画像圧縮</h1><div class="tag">JPEG / PNG / WebP / AVIF を軽く・変換</div></div>
+    </div>
+    <div class="privacy">🔒 情報漏えいの心配なし</div>
+  </header>
+
+  <div class="why">
+    <b>大量の画像も、待たされず一気に。</b>写真や資料をサーバーに送らないので<b>情報漏えいの心配がなく</b>、オンライン圧縮にありがちな枚数・容量の制限も気にせず使えます。<b>目標サイズ指定・AVIF・比較・ZIP一括DL</b>で、仕事の画像もサッと軽くできます。（<a href="compare-tinypng.html">TinyPNGとの違い・使い分け →</a>）
+  </div>
+
+  <div class="panel">
+    <div class="ctl" style="margin-bottom:16px">
+      <label>用途からえらぶ（ワンタップ設定）</label>
+      <div class="presets" id="presets">
+        <button type="button" class="ppreset" data-p="mail">メール添付（軽量）</button>
+        <button type="button" class="ppreset" data-p="web">ブログ・Web用</button>
+        <button type="button" class="ppreset" data-p="sns">SNS投稿（きれいめ）</button>
+        <button type="button" class="ppreset" data-p="chat">チャット共有（最小）</button>
+        <button type="button" class="ppreset" data-p="print">印刷・保存（高画質）</button>
+      </div>
+      <div class="hint">用途を選ぶと、形式・画質・長辺サイズを自動設定します。下で細かく調整もできます。</div>
+    </div>
+    <div class="ctl" style="margin-bottom:16px">
+      <label>圧縮モード</label>
+      <div class="seg" id="mode">
+        <button data-v="quality" class="on">画質で圧縮</button>
+        <button data-v="target">目標サイズで圧縮</button>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="ctl">
+        <label>出力形式</label>
+        <div class="seg" id="fmt">
+          <button data-v="keep" class="on">元のまま</button>
+          <button data-v="image/jpeg">JPEG</button>
+          <button data-v="image/webp">WebP</button>
+          <button data-v="image/avif">AVIF</button>
+          <button data-v="image/png">PNG</button>
+        </div>
+        <div class="hint" id="fmtHint">WebP/AVIFは同画質で最も軽くなりやすい形式です。</div>
+      </div>
+      <div class="ctl" id="qBox">
+        <label>画質 <span class="hint" style="font-weight:400">(JPEG / WebP / AVIF)</span></label>
+        <div class="rowb"><input type="range" id="q" min="30" max="100" value="80"><output id="qv">80</output></div>
+        <div class="hint">下げるほど軽くなります。80前後が実用的。</div>
+      </div>
+      <div class="ctl hidden" id="tBox">
+        <label>目標サイズ（KB以下）</label>
+        <input type="number" id="target" placeholder="例: 200" min="5" value="200">
+        <div class="hint">この容量に収まるよう画質を自動調整します。</div>
+      </div>
+      <div class="ctl">
+        <label>長辺の最大サイズ(px・任意)</label>
+        <input type="number" id="maxw" placeholder="例: 1920（空欄でリサイズなし）" min="1">
+        <div class="hint">大きすぎる写真を自動で縮小。比率は保持。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="drop" id="drop">
+    <div class="icon">🖼️</div>
+    <div class="big">ここに画像をドラッグ＆ドロップ</div>
+    <div class="sm">またはタップして選択・枚数無制限・登録不要・完全無料</div>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+  </div>
+  <div class="status" id="status"></div>
+
+  <div style="height:12px"></div>
+
+  <div class="panel" id="resultPanel" style="display:none">
+    <div class="summary" id="summary">
+      <div class="stat">
+        <div class="s"><div class="v" id="sCount">0</div><div class="l">枚</div></div>
+        <div class="s"><div class="v" id="sBefore">0</div><div class="l">圧縮前</div></div>
+        <div class="s"><div class="v" id="sAfter">0</div><div class="l">圧縮後</div></div>
+        <div class="s"><div class="v save" id="sSave">0%</div><div class="l">削減</div></div>
+      </div>
+      <button class="btn primary" id="dlZip">ZIPで一括ダウンロード</button>
+    </div>
+    <ul class="items" id="items"></ul>
+  </div>
+
+  <div class="ad">広告スペース（ここに AdSense / ネットワークのタグを挿入）</div>
+
+  <div class="pro">
+    <div>
+      <div class="pt">Pro にアップグレード <span class="badge">例</span></div>
+      <div class="pd">HEIC対応・一括プリセット保存・画像の一括リサイズ&透かし・API利用（月額）</div>
+    </div>
+    <button class="btn" id="proBtn">アップグレード</button>
+  </div>
+
+  <section class="seo">
+    <h2>使い方（3ステップ）</h2>
+    <div class="howto">
+      <div class="st"><div class="n">1</div><b>画像を追加</b><p>ドラッグ＆ドロップ、またはタップして画像を選びます（複数可）。</p></div>
+      <div class="st"><div class="n">2</div><b>設定を選ぶ</b><p>出力形式・画質、または「目標サイズ（○KB以下）」を指定します。</p></div>
+      <div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。ビフォーアフターも確認できます。</p></div>
+    </div>
+    <h2>よくある質問</h2>
+    <div class="faq">
+      <details open><summary>画像はアップロードされますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像はサーバーに送信されません。</p></details>
+      <details><summary>何枚まで圧縮できますか？</summary><p>サービス側の枚数・サイズ制限はありません。端末の性能の範囲で処理します。</p></details>
+      <details><summary>AVIF／WebPに変換できますか？</summary><p>はい。WebPは広く対応、AVIFは対応ブラウザで書き出せます。</p></details>
+    </div>
+    <h2>ほかの無料ツール</h2>
+    <div class="rel-grid">
+      <a class="rel" href="tool-pdf-organizer.html">📄 サクッとPDF整理 <span>ページ入替・削除・回転・結合・分割</span></a>
+      <a class="rel" href="index.html">＋ ツール一覧を見る <span>サーバー送信なしの無料ツール集</span></a>
+    </div>
+  </section>
+
+  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">運営者情報</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>すべての処理は端末内で完結します。© サクッとツール</div>
+</div>
+
+<!-- compare modal -->
+<div class="modal" id="modal">
+  <div class="mbox">
+    <div class="mhd"><b>ビフォーアフター比較</b><button class="x" id="mClose">×</button></div>
+    <div class="compare" id="compare">
+      <img id="cAfterFull" alt="">
+      <div class="after" id="cAfterClip"><img id="cBefore" alt=""></div>
+      <span class="lbl l">元</span><span class="lbl r">圧縮後</span>
+    </div>
+    <div class="mft">
+      <div class="lg"><span id="cLbefore">元: -</span><span id="cLafter">圧縮後: -</span></div>
+      <input type="range" id="cSlider" min="0" max="100" value="50">
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var status=document.getElementById('status');
+  function say(m){status.textContent=m||'';}
+  function human(b){ if(b<1024)return b+' B'; if(b<1048576)return (b/1024).toFixed(1)+' KB'; return (b/1048576).toFixed(2)+' MB';}
+
+  var mode='quality', fmt='keep';
+  document.querySelectorAll('#mode button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#mode button').forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); mode=b.dataset.v;
+    document.getElementById('qBox').classList.toggle('hidden',mode!=='quality');
+    document.getElementById('tBox').classList.toggle('hidden',mode!=='target');
+  });});
+  document.querySelectorAll('#fmt button').forEach(function(b){b.addEventListener('click',function(){
+    if(b.disabled)return;
+    document.querySelectorAll('#fmt button').forEach(function(x){x.classList.remove('on');}); b.classList.add('on'); fmt=b.dataset.v;
+  });});
+  var q=document.getElementById('q'), qv=document.getElementById('qv');
+  q.addEventListener('input',function(){qv.textContent=q.value;});
+
+  // 用途プリセット（ワンタップで形式・画質・サイズを設定）
+  var PRESETS={
+    mail:{mode:'target',fmt:'keep',target:300,maxw:1600},
+    web:{mode:'target',fmt:'image/webp',target:200,maxw:1200},
+    sns:{mode:'quality',fmt:'image/jpeg',q:82,maxw:1080},
+    chat:{mode:'target',fmt:'keep',target:150,maxw:1280},
+    print:{mode:'quality',fmt:'keep',q:92,maxw:''}
+  };
+  function clickSeg(sel,val){var btns=document.querySelectorAll(sel+' button');for(var i=0;i<btns.length;i++){if(btns[i].dataset.v===val){if(!btns[i].disabled)btns[i].click();return btns[i];}}return null;}
+  function applyPreset(key){
+    var c=PRESETS[key]; if(!c)return;
+    clickSeg('#mode',c.mode);
+    var fb=clickSeg('#fmt',c.fmt);
+    if(c.fmt!=='keep' && (!fb||fb.disabled)){clickSeg('#fmt','keep');}
+    if(c.q!=null){q.value=c.q;qv.textContent=c.q;}
+    if(c.target!=null){document.getElementById('target').value=c.target;}
+    document.getElementById('maxw').value=(c.maxw==null||c.maxw==='')?'':c.maxw;
+  }
+  document.querySelectorAll('#presets .ppreset').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#presets .ppreset').forEach(function(x){x.classList.remove('on');}); b.classList.add('on');
+    applyPreset(b.dataset.p);
+  });});
+  window.__presets={apply:applyPreset,state:function(){return {mode:mode,fmt:fmt,q:q.value,target:document.getElementById('target').value,maxw:document.getElementById('maxw').value};}};
+
+  // feature-detect encoders
+  function supports(type){return new Promise(function(res){try{var c=document.createElement('canvas');c.width=c.height=4;
+    c.toBlob(function(bl){res(!!bl&&bl.type===type);},type,.8);}catch(e){res(false);}});}
+  (async function(){
+    var okWebp=await supports('image/webp'), okAvif=await supports('image/avif');
+    if(!okWebp){var w=document.querySelector('#fmt button[data-v="image/webp"]');if(w)w.disabled=true;}
+    if(!okAvif){var a=document.querySelector('#fmt button[data-v="image/avif"]');if(a){a.disabled=true;a.title='このブラウザはAVIF書き出し非対応';}
+      document.getElementById('fmtHint').textContent='WebPは同画質で軽くなりやすい形式です。AVIFは対応ブラウザでのみ有効。';}
+    window.__enc={webp:okWebp,avif:okAvif};
+  })();
+
+  var drop=document.getElementById('drop'), file=document.getElementById('file');
+  drop.addEventListener('click',function(){file.click();});
+  drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('hot');});
+  drop.addEventListener('dragleave',function(){drop.classList.remove('hot');});
+  drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('hot');handle(e.dataTransfer.files);});
+  file.addEventListener('change',function(){handle(file.files);file.value='';});
+
+  var results=[]; // {name, before, after, url, origUrl, blob}
+  var itemsEl=document.getElementById('items'), panel=document.getElementById('resultPanel'), summary=document.getElementById('summary');
+
+  function outTypeFor(f){ if(fmt!=='keep')return fmt;
+    return f.type==='image/png'?'image/png':(f.type==='image/webp'?'image/webp':(f.type==='image/avif'?'image/avif':'image/jpeg')); }
+  function extFor(type,orig){ if(type==='image/jpeg')return 'jpg'; if(type==='image/webp')return 'webp';
+    if(type==='image/avif')return 'avif'; if(type==='image/png')return 'png';
+    var m=(orig.split('.').pop()||'img').toLowerCase(); return m.length<=4?m:'img'; }
+
+  function handle(files){ if(!files||!files.length)return; panel.style.display='block'; summary.classList.add('show');
+    Array.prototype.forEach.call(files,function(f){ if(/^image\//.test(f.type)) compress(f); }); }
+
+  function encode(canvas,type,quality){return new Promise(function(res){canvas.toBlob(function(b){res(b);},type,quality);});}
+
+  async function compress(f){
+    var url0=URL.createObjectURL(f);
+    var img=await loadImg(url0);
+    var w=img.naturalWidth,h=img.naturalHeight;
+    var maxw=parseInt(document.getElementById('maxw').value,10);
+    if(maxw&&Math.max(w,h)>maxw){ if(w>=h){h=Math.round(h*maxw/w);w=maxw;}else{w=Math.round(w*maxw/h);h=maxw;} }
+    var c=document.createElement('canvas'); c.width=w; c.height=h;
+    c.getContext('2d').drawImage(img,0,0,w,h);
+    var outType=outTypeFor(f);
+    var blob;
+    if(mode==='target' && outType!=='image/png'){
+      var targetKB=parseInt(document.getElementById('target').value,10)||200;
+      blob=await toTarget(c,outType,targetKB*1024);
+    } else {
+      var quality=parseInt(q.value,10)/100;
+      blob=await encode(c,outType,quality);
+    }
+    if(!blob){ say('この形式で書き出せませんでした。'); return; }
+    var rec={ name:f.name.replace(/\.[^.]+$/,'')+'.'+extFor(outType,f.name), before:f.size, after:blob.size,
+              url:URL.createObjectURL(blob), origUrl:url0, blob:blob };
+    results.push(rec); render(rec); updateSummary();
+  }
+
+  // binary search quality to hit target size
+  async function toTarget(canvas,type,targetBytes){
+    var lo=0.30, hi=0.96, best=null, bestSize=Infinity, bestUnder=null;
+    for(var i=0;i<8;i++){
+      var mid=(lo+hi)/2;
+      var b=await encode(canvas,type,mid);
+      if(!b){return null;}
+      if(b.size<=targetBytes){ bestUnder=b; lo=mid; } else { hi=mid; }
+      if(Math.abs(b.size-targetBytes)<Math.abs(bestSize-targetBytes)){best=b;bestSize=b.size;}
+    }
+    return bestUnder||best;
+  }
+
+  function loadImg(src){return new Promise(function(res,rej){var i=new Image();i.onload=function(){res(i);};i.onerror=rej;i.src=src;});}
+
+  function render(rec){
+    var li=document.createElement('li'); li.className='item';
+    var pct=rec.before>0?Math.max(0,Math.round((1-rec.after/rec.before)*100)):0;
+    var thumb=document.createElement('img'); thumb.className='thumb'; thumb.src=rec.url; thumb.alt='';
+    thumb.addEventListener('click',function(){openCompare(rec);});
+    var meta=document.createElement('div'); meta.className='meta';
+    meta.innerHTML='<div class="nm">'+rec.name+'</div><div class="sz">'+human(rec.before)+' → '+human(rec.after)+' ・ <b>-'+pct+'%</b></div>';
+    var acts=document.createElement('div'); acts.className='acts2';
+    var cmp=document.createElement('button'); cmp.className='mini'; cmp.textContent='比較'; cmp.addEventListener('click',function(){openCompare(rec);});
+    var a=document.createElement('a'); a.className='mini'; a.textContent='保存'; a.download=rec.name; a.href=rec.url;
+    acts.appendChild(cmp); acts.appendChild(a);
+    li.appendChild(thumb); li.appendChild(meta); li.appendChild(acts);
+    itemsEl.appendChild(li);
+  }
+  function updateSummary(){
+    var before=0,after=0; results.forEach(function(r){before+=r.before;after+=r.after;});
+    document.getElementById('sCount').textContent=results.length;
+    document.getElementById('sBefore').textContent=human(before);
+    document.getElementById('sAfter').textContent=human(after);
+    var save=before>0?Math.max(0,Math.round((1-after/before)*100)):0;
+    document.getElementById('sSave').textContent=save+'%';
+  }
+
+  // compare modal
+  var modal=document.getElementById('modal');
+  function openCompare(rec){
+    document.getElementById('cAfterFull').src=rec.url;
+    document.getElementById('cBefore').src=rec.origUrl;
+    document.getElementById('cLbefore').textContent='元: '+human(rec.before);
+    document.getElementById('cLafter').textContent='圧縮後: '+human(rec.after);
+    setClip(50); modal.classList.add('show');
+  }
+  function setClip(v){document.getElementById('cAfterClip').style.width=v+'%';}
+  document.getElementById('cSlider').addEventListener('input',function(){setClip(this.value);});
+  document.getElementById('mClose').addEventListener('click',function(){modal.classList.remove('show');});
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.remove('show');});
+
+  // ---- dependency-free ZIP (store method) ----
+  var crcTable=(function(){var t=new Uint32Array(256);for(var n=0;n<256;n++){var c=n;for(var k=0;k<8;k++){c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);}t[n]=c>>>0;}return t;})();
+  function crc32(u8){var c=0xFFFFFFFF;for(var i=0;i<u8.length;i++){c=crcTable[(c^u8[i])&0xFF]^(c>>>8);}return (c^0xFFFFFFFF)>>>0;}
+  function strBytes(s){return new TextEncoder().encode(s);}
+  function zipStore(files){
+    var chunks=[], central=[], offset=0;
+    function u16(n){return [n&255,(n>>8)&255];} function u32(n){return [n&255,(n>>8)&255,(n>>16)&255,(n>>24)&255];}
+    files.forEach(function(f){
+      var name=strBytes(f.name), data=f.data, crc=crc32(data);
+      var local=[].concat(u32(0x04034b50),u16(20),u16(0x0800),u16(0),u16(0),u16(0),
+        u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0));
+      var lh=new Uint8Array(local.length+name.length); lh.set(local,0); lh.set(name,local.length);
+      chunks.push(lh); chunks.push(data);
+      var cen=[].concat(u32(0x02014b50),u16(20),u16(20),u16(0x0800),u16(0),u16(0),u16(0),
+        u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset));
+      var ch=new Uint8Array(cen.length+name.length); ch.set(cen,0); ch.set(name,cen.length);
+      central.push(ch);
+      offset+=lh.length+data.length;
+    });
+    var cenSize=central.reduce(function(a,b){return a+b.length;},0);
+    var end=[].concat(u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(cenSize),u32(offset),u16(0));
+    var parts=chunks.concat(central,[new Uint8Array(end)]);
+    return new Blob(parts,{type:'application/zip'});
+  }
+  document.getElementById('dlZip').addEventListener('click',async function(){
+    if(!results.length)return; say('ZIPを作成中…');
+    var files=[];
+    for(var i=0;i<results.length;i++){ var ab=await results[i].blob.arrayBuffer(); files.push({name:uniqueName(files,results[i].name),data:new Uint8Array(ab)}); }
+    var zip=zipStore(files); var url=URL.createObjectURL(zip);
+    var a=document.createElement('a'); a.href=url; a.download='compressed_images.zip'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){URL.revokeObjectURL(url);},4000); say('ZIPをダウンロードしました（'+files.length+'枚）。');
+  });
+  function uniqueName(files,name){var n=name,i=2;var names=files.map(function(f){return f.name;});
+    while(names.indexOf(n)>=0){var dot=name.lastIndexOf('.');n=(dot>0?name.slice(0,dot)+'_'+i+name.slice(dot):name+'_'+i);i++;}return n;}
+
+  document.getElementById('proBtn').addEventListener('click',function(){alert('ここに決済(Stripe等)を接続します。\\n例: HEIC対応・一括プリセット・透かし・APIを月額で解放。');});
+
+  // testing hook
+  window.__img={ setMode:function(m){mode=m;}, setFmt:function(f){fmt=f;}, results:function(){return results.map(function(r){return {before:r.before,after:r.after,name:r.name};});},
+    zipStore:zipStore, feedCanvasAsFile:async function(name,type){var c=document.createElement('canvas');c.width=c.height=1200;var x=c.getContext('2d');
+      var g=x.createLinearGradient(0,0,1200,1200);g.addColorStop(0,'#e11');g.addColorStop(.5,'#1a8');g.addColorStop(1,'#33e');x.fillStyle=g;x.fillRect(0,0,1200,1200);
+      for(var i=0;i<15000;i++){x.fillStyle='rgba('+(i%255)+','+((i*7)%255)+','+((i*13)%255)+',.5)';x.fillRect((i*97)%1200,(i*57)%1200,3,3);}
+      var blob=await new Promise(function(r){c.toBlob(r,type||'image/png');}); var f=new File([blob],name,{type:type||'image/png'});
+      var dt=new DataTransfer();dt.items.add(f);file.files=dt.files;file.dispatchEvent(new Event('change',{bubbles:true})); return f.size;} };
+})();
+</script>
+</body>
+</html>

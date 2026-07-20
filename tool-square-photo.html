@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>フリマ写真を正方形＆白背景に一括変換 ― メルカリ等の出品用（サーバー送信なし）｜サクッとツール</title>
+<meta name="description" content="スマホ写真をメルカリ・ラクマ等の出品にぴったりな正方形(1:1)・白背景に一括変換＆軽量化。ブラウザ内処理で送信なし・枚数制限なし・登録不要・完全無料。">
+<link rel="canonical" href="https://kawatare.studio/tool-square-photo.html">
+<meta name="theme-color" content="#e11d48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="サクッとツール">
+<meta property="og:title" content="フリマ写真を正方形＆白背景に一括変換｜出品用・無料">
+<meta property="og:description" content="スマホ写真を1:1・白背景に一括変換＆軽量化。送信なし・制限なし・登録不要。">
+<meta property="og:url" content="https://kawatare.studio/tool-square-photo.html">
+<meta property="og:image" content="https://kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="フリマ写真を正方形＆白背景に一括変換｜無料">
+<meta name="twitter:description" content="スマホ写真を1:1・白背景に。出品用に一括変換。登録不要・無料。">
+<meta name="twitter:image" content="https://kawatare.studio/ogp.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"フリマ写真を正方形＆白背景に一括変換","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"スマホ写真をフリマ出品向けの正方形・白背景に一括変換できる無料ツール。サーバー送信なし・完全クライアント処理。"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo","name":"出品写真を正方形・白背景にする手順","step":[{"@type":"HowToStep","name":"写真を追加","text":"スマホ写真をドラッグ＆ドロップします。複数選べます。"},{"@type":"HowToStep","name":"設定","text":"背景色・仕上がりサイズ・はみ出し方を選びます。"},{"@type":"HowToStep","name":"保存","text":"1枚ずつ、またはZIPで一括ダウンロードします。"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"写真はアップロードされますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、写真はサーバーに送信されません。"}},{"@type":"Question","name":"メルカリ以外でも使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。ラクマやYahoo!フリマなど、正方形の写真が好まれる出品全般に使えます。"}},{"@type":"Question","name":"何枚まで変換できますか？","acceptedAnswer":{"@type":"Answer","text":"サービス側の枚数制限はありません。ZIPで一括保存もできます。"}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"フリマ写真を正方形＆白背景に一括変換","item":"https://kawatare.studio/tool-square-photo.html"}]}
+</script>
+<style>
+  :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
+    --brand:#e11d48;--brand-d:#be123c;--accent:#e11d48;--good:#0ca30c;--good-bg:#e7f6e7;
+    --shadow:0 1px 2px rgba(16,20,30,.04),0 6px 20px rgba(16,20,30,.06);}
+  @media (prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#191c22;--ink:#f2f4f8;--ink-2:#aeb6c4;--muted:#7b8494;
+    --line:#282c34;--brand:#fb7185;--brand-d:#fda4af;--accent:#fb7185;--good:#3fbf3f;--good-bg:#14311a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.4);}}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+  .sb-brand{display:flex;align-items:center;gap:8px;font-weight:800;text-decoration:none;color:var(--ink);}
+  .sb-logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#f97316);display:grid;place-items:center;color:#fff;font-size:14px;}
+  .sb-links{display:flex;gap:12px;font-size:13.5px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);} .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:880px;margin:0 auto;padding:18px 16px 60px;}
+  header.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 0 14px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--brand),#f97316);display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;box-shadow:var(--shadow);}
+  .brand h1{font-size:17px;margin:0;line-height:1.25;} .brand .tag{font-size:12px;color:var(--ink-2);}
+  .privacy{font-size:12px;color:var(--good);background:var(--good-bg);padding:5px 10px;border-radius:20px;font-weight:700;}
+  .why{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:12px 16px;margin-bottom:14px;font-size:13px;color:var(--ink-2);} .why b{color:var(--ink);}
+  .opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px;margin-bottom:14px;}
+  @media(max-width:560px){.opts{grid-template-columns:1fr;}}
+  .opts label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-2);margin-bottom:6px;}
+  .seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px;}
+  .seg button{flex:1;border:none;background:transparent;color:var(--ink-2);font-weight:700;font-size:12px;padding:7px 3px;border-radius:8px;cursor:pointer;font-family:inherit;}
+  .seg button.on{background:var(--card);color:var(--brand);box-shadow:var(--shadow);}
+  .crow{display:flex;align-items:center;gap:8px;} .crow input[type=color]{width:44px;height:38px;border:1px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer;}
+  .crow .seg{flex:1;}
+  .drop{border:2px dashed var(--line);border-radius:16px;padding:30px 18px;text-align:center;cursor:pointer;background:var(--card);transition:.15s;}
+  .drop:hover,.drop.hot{border-color:var(--brand);background:rgba(225,29,72,.05);}
+  .drop .icon{font-size:28px;} .drop .big{font-size:15px;font-weight:800;margin-top:4px;} .drop .sm{font-size:12.5px;color:var(--ink-2);margin-top:4px;}
+  .summary{display:none;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0 8px;} .summary.show{display:flex;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
+  .pg{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);}
+  .pg .cw{aspect-ratio:1/1;display:grid;place-items:center;background:#f0f0f0;overflow:hidden;} .pg img{max-width:100%;max-height:100%;}
+  .pg .bar{display:flex;justify-content:space-between;align-items:center;padding:5px 7px;border-top:1px solid var(--line);}
+  .pg .no{font-size:11px;color:var(--muted);}
+  .dl{text-decoration:none;background:var(--bg);border:1px solid var(--line);color:var(--brand);font-weight:800;font-size:11.5px;padding:5px 9px;border-radius:8px;}
+  .btn{border:none;border-radius:11px;padding:11px 18px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit;}
+  .btn.primary{background:var(--brand);color:#fff;} .btn.primary:hover{background:var(--brand-d);}
+  .status{font-size:12.5px;color:var(--ink-2);margin:8px 2px;min-height:16px;}
+  .ad{border:1px dashed var(--line);border-radius:14px;padding:16px;text-align:center;color:var(--muted);font-size:12.5px;background:var(--card);margin:16px 0;}
+  .seo h2{font-size:18px;margin:28px 0 10px;}
+  .howto{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;} @media(max-width:600px){.howto{grid-template-columns:1fr;}}
+  .howto .st{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;}
+  .howto .st .n{width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:13px;}
+  .howto .st b{display:block;margin:8px 0 2px;} .howto .st p{margin:0;font-size:13px;color:var(--ink-2);}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;}
+  .faq summary{font-weight:700;cursor:pointer;font-size:14px;} .faq p{font-size:13px;color:var(--ink-2);margin:8px 0 0;}
+  .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
+  .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;font-weight:700;} .rel:hover{border-color:var(--brand);}
+  .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:400;margin-top:2px;}
+  .foot{font-size:12px;color:var(--muted);text-align:center;margin-top:22px;line-height:1.8;}
+  .foot a{color:var(--ink-2);}
+</style>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">⚡</span>サクッとツール</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="tool-image-compressor.html">画像圧縮</a><a href="tool-pdf-organizer.html">PDF整理</a></div>
+</nav>
+<div class="wrap">
+  <header class="hd">
+    <div class="brand"><div class="logo">□</div><div><h1>フリマ写真を正方形＆白背景に</h1><div class="tag">メルカリ・ラクマ等の出品用に一括変換</div></div></div>
+    <div class="privacy">🔒 情報漏えいの心配なし</div>
+  </header>
+
+  <div class="why"><b>出品写真が、プロっぽくそろう。</b>バラバラな写真を、フリマ映えする<b>正方形(1:1)・白背景</b>に一括変換＆軽量化。写真は端末の外に出さないので<b>安心</b>、枚数制限もなく登録も不要です。</div>
+
+  <div class="opts">
+    <div><label>背景</label><div class="crow">
+      <div class="seg" id="bgmode"><button data-v="white" class="on">白</button><button data-v="custom">色指定</button></div>
+      <input type="color" id="bgcolor" value="#ffffff"></div></div>
+    <div><label>仕上がりサイズ</label><div class="seg" id="size">
+      <button data-v="1080" class="on">1080</button><button data-v="1280">1280</button><button data-v="1500">1500</button></div></div>
+    <div><label>写真の収め方</label><div class="seg" id="fitmode">
+      <button data-v="contain" class="on">全体(余白)</button><button data-v="cover">いっぱい(切抜)</button></div></div>
+  </div>
+
+  <div class="drop" id="drop">
+    <div class="icon">📷→□</div>
+    <div class="big">ここに写真をドラッグ＆ドロップ</div>
+    <div class="sm">複数選択可・スマホ写真OK・登録不要</div>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+  </div>
+  <div class="status" id="status"></div>
+
+  <div class="summary" id="summary">
+    <span class="count" id="count">0 枚</span>
+    <button class="btn primary" id="zip">ZIPで一括ダウンロード</button>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <div class="ad">広告スペース（ここに AdSense のタグを挿入）</div>
+
+  <section class="seo">
+    <h2>使い方（3ステップ）</h2>
+    <div class="howto">
+      <div class="st"><div class="n">1</div><b>写真を追加</b><p>スマホ写真をまとめてドラッグ＆ドロップ。</p></div>
+      <div class="st"><div class="n">2</div><b>設定</b><p>背景色・仕上がりサイズ・収め方を選びます。</p></div>
+      <div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。</p></div>
+    </div>
+    <h2>よくある質問</h2>
+    <div class="faq">
+      <details open><summary>写真はアップロードされますか？</summary><p>いいえ。すべてブラウザ内で処理し、写真はサーバーに送信されません。</p></details>
+      <details><summary>メルカリ以外でも使えますか？</summary><p>はい。ラクマ・Yahoo!フリマなど、正方形の写真が好まれる出品全般に使えます。</p></details>
+      <details><summary>何枚まで変換できますか？</summary><p>サービス側の枚数制限はありません。ZIPで一括保存もできます。</p></details>
+    </div>
+    <h2>ほかの無料ツール</h2>
+    <div class="rel-grid">
+      <a class="rel" href="tool-image-compressor.html">🖼️ きゅっと画像圧縮 <span>JPEG/PNG/WebP/AVIF・目標サイズ指定</span></a>
+      <a class="rel" href="tool-image-to-pdf.html">🖼️→📄 画像をPDFにまとめる <span>複数画像を1つのPDFに</span></a>
+    </div>
+  </section>
+
+  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">運営者情報</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>すべての処理は端末内で完結します。© サクッとツール</div>
+</div>
+
+<script>
+(function(){
+  var status=document.getElementById('status'); function say(m){status.textContent=m||'';}
+  function human(b){ if(b<1024)return b+' B'; if(b<1048576)return (b/1024).toFixed(1)+' KB'; return (b/1048576).toFixed(2)+' MB';}
+  var bgmode='white', size=1080, fitmode='contain';
+  document.querySelectorAll('#bgmode button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#bgmode button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');bgmode=b.dataset.v;});});
+  document.querySelectorAll('#size button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#size button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');size=parseInt(b.dataset.v,10);});});
+  document.querySelectorAll('#fitmode button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('#fitmode button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');fitmode=b.dataset.v;});});
+  var bgcolor=document.getElementById('bgcolor');
+
+  var results=[]; var grid=document.getElementById('grid'), drop=document.getElementById('drop'), file=document.getElementById('file'), summary=document.getElementById('summary');
+  drop.addEventListener('click',function(){file.click();});
+  drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('hot');});
+  drop.addEventListener('dragleave',function(){drop.classList.remove('hot');});
+  drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('hot');handle(e.dataTransfer.files);});
+  file.addEventListener('change',function(){handle(file.files);file.value='';});
+
+  function loadImg(src){return new Promise(function(res,rej){var i=new Image();i.onload=function(){res(i);};i.onerror=rej;i.src=src;});}
+  async function handle(list){ if(!list||!list.length)return; summary.classList.add('show');
+    for(var i=0;i<list.length;i++){ var f=list[i]; if(!/^image\//.test(f.type))continue; await one(f); } }
+  async function one(f){
+    var url=URL.createObjectURL(f); var img=await loadImg(url); URL.revokeObjectURL(url);
+    var c=document.createElement('canvas'); c.width=size; c.height=size; var x=c.getContext('2d');
+    x.fillStyle = bgmode==='white' ? '#ffffff' : bgcolor.value; x.fillRect(0,0,size,size);
+    var iw=img.naturalWidth, ih=img.naturalHeight;
+    var s = fitmode==='contain' ? Math.min(size/iw,size/ih) : Math.max(size/iw,size/ih);
+    var w=iw*s, h=ih*s, dx=(size-w)/2, dy=(size-h)/2;
+    x.drawImage(img,dx,dy,w,h);
+    var blob=await new Promise(function(r){c.toBlob(r,'image/jpeg',0.9);});
+    var rec={ name:(f.name.replace(/\.[^.]+$/,''))+'_square.jpg', size:blob.size, url:URL.createObjectURL(blob), blob:blob };
+    results.push(rec); render();
+  }
+  function render(){
+    grid.innerHTML='';
+    results.forEach(function(r){ var el=document.createElement('div'); el.className='pg';
+      el.innerHTML='<div class="cw"><img src="'+r.url+'"></div><div class="bar"><span class="no">'+human(r.size)+'</span></div>';
+      var a=document.createElement('a'); a.className='dl'; a.textContent='保存'; a.download=r.name; a.href=r.url;
+      el.querySelector('.bar').appendChild(a); grid.appendChild(el); });
+    document.getElementById('count').textContent=results.length+' 枚';
+  }
+
+  var crcT=(function(){var t=new Uint32Array(256);for(var n=0;n<256;n++){var c=n;for(var k=0;k<8;k++){c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);}t[n]=c>>>0;}return t;})();
+  function crc32(u8){var c=0xFFFFFFFF;for(var i=0;i<u8.length;i++){c=crcT[(c^u8[i])&0xFF]^(c>>>8);}return (c^0xFFFFFFFF)>>>0;}
+  function zipStore(files){var chunks=[],central=[],offset=0;
+    function u16(n){return[n&255,(n>>8)&255];}function u32(n){return[n&255,(n>>8)&255,(n>>16)&255,(n>>24)&255];}
+    files.forEach(function(f){var name=new TextEncoder().encode(f.name),data=f.data,crc=crc32(data);
+      var lo=[].concat(u32(0x04034b50),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0));
+      var lh=new Uint8Array(lo.length+name.length);lh.set(lo,0);lh.set(name,lo.length);chunks.push(lh);chunks.push(data);
+      var ce=[].concat(u32(0x02014b50),u16(20),u16(20),u16(0x0800),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(name.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset));
+      var ch=new Uint8Array(ce.length+name.length);ch.set(ce,0);ch.set(name,ce.length);central.push(ch);offset+=lh.length+data.length;});
+    var cs=central.reduce(function(a,b){return a+b.length;},0);
+    var end=[].concat(u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(cs),u32(offset),u16(0));
+    return new Blob(chunks.concat(central,[new Uint8Array(end)]),{type:'application/zip'});}
+  document.getElementById('zip').addEventListener('click',async function(){ if(!results.length)return; say('ZIPを作成中…');
+    var files=[]; for(var i=0;i<results.length;i++){ files.push({name:results[i].name,data:new Uint8Array(await results[i].blob.arrayBuffer())}); }
+    var url=URL.createObjectURL(zipStore(files)); var a=document.createElement('a'); a.href=url; a.download='square_photos.zip'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(url);},4000); say('ZIPをダウンロードしました。'); });
+
+  window.__sq={ zipStore:zipStore, results:function(){return results.map(function(r){return {size:r.size,name:r.name};});},
+    feed:async function(n){ for(var k=0;k<n;k++){ var c=document.createElement('canvas'); c.width=800; c.height=k%2?500:1200;
+      var x=c.getContext('2d'); x.fillStyle=k%2?'#3366cc':'#cc6633'; x.fillRect(0,0,c.width,c.height);
+      var blob=await new Promise(function(r){c.toBlob(r,'image/jpeg',0.9);}); var f=new File([blob],'photo'+k+'.jpg',{type:'image/jpeg'}); await one(f); } return this.results(); } };
+})();
+</script>
+</body>
+</html>
