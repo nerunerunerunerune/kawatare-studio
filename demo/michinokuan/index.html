@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>四季の宿 みちのく庵 ｜ デザイン提案サンプル（かわたれ studio）</title>
+<style>
+:root{
+  --ink:#241f1a; --sub:#6b6158; --paper:#f7f3ec; --card:#ffffff;
+  --moss:#3f5646; --moss-d:#2d3f33; --clay:#a8763f; --gold:#bfa25c; --line:#e4dccd;
+  --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","MS PMincho","Noto Serif JP",serif;
+  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--gothic);color:var(--ink);background:var(--paper);line-height:1.9;
+  -webkit-text-size-adjust:100%;font-size:16px}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* ===== デモ告知バー ===== */
+.demobar{background:#241f1a;color:#f3ece0;font-size:12.5px;line-height:1.75;
+  padding:10px 16px;text-align:center;font-family:var(--gothic)}
+.demobar strong{color:#f0d28a;display:inline-block;margin-right:6px}
+.demobar a{color:#f0d28a;text-decoration:underline}
+
+/* ===== ヘッダー ===== */
+.head{position:sticky;top:0;z-index:50;background:rgba(247,243,236,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.head .in{display:flex;align-items:center;justify-content:space-between;
+  height:64px;max-width:1080px;margin:0 auto;padding:0 20px}
+.logo{font-family:var(--mincho);font-size:19px;letter-spacing:.16em;line-height:1.3}
+.logo small{display:block;font-family:var(--gothic);font-size:10px;
+  letter-spacing:.3em;color:var(--sub);margin-top:2px}
+.nav{display:none;gap:26px;font-size:13.5px;letter-spacing:.08em}
+.nav a{text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+.nav a:hover{border-bottom-color:var(--clay)}
+.headbtn{display:none;background:var(--moss);color:#fff;text-decoration:none;
+  font-size:13px;letter-spacing:.08em;padding:10px 20px;border-radius:2px}
+@media(min-width:900px){.nav{display:flex}.headbtn{display:inline-block}}
+
+/* ===== ヒーロー ===== */
+.hero{position:relative;background:var(--moss-d);color:#f5efe4;overflow:hidden}
+.hero .bg{position:absolute;inset:0;opacity:.16}
+.hero .in{position:relative;max-width:1080px;margin:0 auto;padding:78px 20px 84px;text-align:center}
+.hero .eyebrow{font-size:11.5px;letter-spacing:.42em;color:var(--gold);margin-bottom:22px}
+.hero h1{font-family:var(--mincho);font-weight:400;line-height:1.55;
+  font-size:29px;letter-spacing:.1em;margin-bottom:20px}
+.hero p{font-size:14.5px;line-height:2.1;color:#ddd3c2;max-width:600px;margin:0 auto}
+.hero .price{margin-top:30px;font-family:var(--mincho);font-size:15px;letter-spacing:.06em;color:#f0e6d4}
+.hero .price b{font-size:26px;color:var(--gold);letter-spacing:.02em}
+.hero .btns{margin-top:32px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.hero .btns a{display:block;width:100%;max-width:300px;text-decoration:none;
+  text-align:center;padding:16px;font-size:15px;letter-spacing:.1em;border-radius:2px}
+.b1{background:var(--gold);color:#241f1a;font-weight:700}
+.b2{border:1px solid rgba(240,226,200,.5);color:#f0e2c8}
+@media(min-width:760px){
+  .hero h1{font-size:40px}
+  .hero .in{padding:112px 20px 118px}
+  .hero .btns{flex-direction:row;justify-content:center}
+  .hero .btns a{width:auto;padding:16px 40px}
+}
+
+/* ===== 汎用セクション ===== */
+.sec{padding:66px 0}
+.sec.alt{background:var(--card)}
+.shead{text-align:center;margin-bottom:44px}
+.shead .en{font-size:10.5px;letter-spacing:.4em;color:var(--clay);margin-bottom:12px}
+.shead h2{font-family:var(--mincho);font-weight:400;font-size:25px;letter-spacing:.14em}
+.shead p{font-size:13.5px;color:var(--sub);margin-top:14px;line-height:2}
+@media(min-width:760px){.sec{padding:88px 0}.shead h2{font-size:31px}}
+
+/* ===== 写真プレースホルダ ===== */
+.ph{position:relative;background:linear-gradient(150deg,#efe8db,#e2dac9);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  aspect-ratio:4/3;overflow:hidden}
+.ph .kanji{font-family:var(--mincho);font-size:52px;color:rgba(63,86,70,.17);
+  letter-spacing:.14em;line-height:1.2;text-align:center;padding:0 10px}
+.ph .note{font-size:10.5px;color:#9a9083;letter-spacing:.06em;margin-top:10px}
+.ph.wide{aspect-ratio:16/9}
+.ph.tall{aspect-ratio:3/4}
+
+/* ===== 客室 ===== */
+.rooms{display:grid;gap:26px}
+@media(min-width:760px){.rooms{grid-template-columns:repeat(2,1fr);gap:32px}}
+.room{background:var(--card);border:1px solid var(--line);overflow:hidden}
+.sec.alt .room{background:var(--paper)}
+.room .body{padding:22px}
+.room .tag{display:inline-block;font-size:10.5px;letter-spacing:.14em;
+  border:1px solid var(--clay);color:var(--clay);padding:3px 10px;margin-bottom:12px}
+.room h3{font-family:var(--mincho);font-size:20px;letter-spacing:.1em;font-weight:400;margin-bottom:4px}
+.room .yomi{font-size:11px;letter-spacing:.2em;color:var(--sub);margin-bottom:14px}
+.room .spec{font-size:13px;color:var(--sub);line-height:1.95}
+.room .feat{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.room .feat span{font-size:11px;background:rgba(63,86,70,.08);color:var(--moss);
+  padding:4px 10px;border-radius:2px}
+
+/* ===== 温泉 ===== */
+.onsen{display:grid;gap:34px;align-items:center}
+@media(min-width:860px){.onsen{grid-template-columns:1.1fr 1fr;gap:52px}}
+.onsen h3{font-family:var(--mincho);font-size:23px;letter-spacing:.1em;
+  font-weight:400;line-height:1.7;margin-bottom:18px}
+.onsen p{font-size:14px;line-height:2.15;color:var(--sub);margin-bottom:18px}
+.izumi{background:var(--paper);border-left:3px solid var(--moss);padding:18px 20px;font-size:13px;line-height:2}
+.sec.alt .izumi{background:#f2ede3}
+.izumi dt{font-size:10.5px;letter-spacing:.2em;color:var(--clay);margin-bottom:4px}
+.izumi dd{margin-bottom:14px;color:var(--ink)}
+.izumi dd:last-child{margin-bottom:0}
+.caution{margin-top:18px;font-size:12.5px;color:#8a4b4b;background:#fbf1ef;
+  border:1px solid #ecd7d3;padding:12px 14px;line-height:1.9}
+
+/* ===== 料理 ===== */
+.cui{display:grid;gap:22px}
+@media(min-width:760px){.cui{grid-template-columns:repeat(3,1fr)}}
+.cui .c{background:var(--card);border:1px solid var(--line)}
+.sec.alt .cui .c{background:var(--paper)}
+.cui .c .body{padding:20px}
+.cui h4{font-family:var(--mincho);font-size:17px;letter-spacing:.08em;font-weight:400;margin-bottom:10px}
+.cui p{font-size:13px;color:var(--sub);line-height:2}
+
+/* ===== 情報テーブル ===== */
+.info{border-top:1px solid var(--line);font-size:13.5px}
+.info div{display:flex;flex-direction:column;gap:2px;padding:15px 4px;border-bottom:1px solid var(--line)}
+.info dt{font-size:11.5px;letter-spacing:.16em;color:var(--clay)}
+.info dd{color:var(--ink);line-height:1.95}
+@media(min-width:700px){
+  .info div{flex-direction:row;gap:0;align-items:baseline}
+  .info dt{width:170px;flex:none;padding-top:2px}
+}
+
+/* ===== CTA ===== */
+.cta{background:var(--moss-d);color:#f4eee2;text-align:center;padding:70px 20px}
+.cta h2{font-family:var(--mincho);font-weight:400;font-size:25px;letter-spacing:.12em;line-height:1.7;margin-bottom:16px}
+.cta p{font-size:14px;color:#cfc5b4;line-height:2.1;margin-bottom:30px}
+.cta .row{display:flex;flex-direction:column;gap:12px;align-items:center}
+.cta .row a{display:block;width:100%;max-width:320px;padding:17px;
+  text-decoration:none;font-size:15px;letter-spacing:.1em;border-radius:2px}
+@media(min-width:700px){.cta .row{flex-direction:row;justify-content:center}
+  .cta .row a{width:auto;padding:17px 44px}.cta h2{font-size:31px}}
+
+/* ===== フッター ===== */
+.foot{background:#1d1915;color:#a89c8c;padding:52px 20px 96px;font-size:12.5px;line-height:2}
+.foot .in{max-width:1080px;margin:0 auto}
+.foot .fl{font-family:var(--mincho);font-size:19px;letter-spacing:.16em;color:#e8ddc9;margin-bottom:16px}
+.foot .cols{display:grid;gap:26px;margin-bottom:30px}
+@media(min-width:760px){.foot .cols{grid-template-columns:1.4fr 1fr}}
+.disc{border-top:1px solid #322c25;padding-top:20px;font-size:11.5px;color:#7d7264;line-height:1.95}
+.disc b{color:#a89c8c}
+
+/* ===== モバイル固定バー ===== */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;
+  background:var(--moss-d);border-top:1px solid rgba(191,162,92,.3)}
+.mbar a{flex:1;text-align:center;padding:13px 4px;text-decoration:none;
+  color:#f0e6d4;font-size:12px;letter-spacing:.06em;line-height:1.5}
+.mbar a+a{border-left:1px solid rgba(255,255,255,.12)}
+.mbar a.pri{background:var(--gold);color:#241f1a;font-weight:700}
+.mbar span{display:block;font-size:9.5px;letter-spacing:.12em;opacity:.7}
+@media(min-width:900px){.mbar{display:none}.foot{padding-bottom:52px}}
+</style>
+</head>
+<body>
+
+<div class="demobar">
+  <strong>デザイン提案サンプル</strong>
+  これは かわたれ studio が制作したデザイン案です。四季の宿 みちのく庵様の公式サイトではありません。
+  公式サイトは <a href="https://www.michinoku-an.com/">michinoku-an.com</a> です。ご予約はできません。
+</div>
+
+<header class="head">
+  <div class="in">
+    <div class="logo">四季の宿 みちのく庵<small>KAMASAKI ONSEN</small></div>
+    <nav class="nav">
+      <a href="#rooms">客室</a>
+      <a href="#onsen">温泉</a>
+      <a href="#cuisine">お料理</a>
+      <a href="#access">アクセス</a>
+    </nav>
+    <a class="headbtn" href="#cta">空室・ご予約</a>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#bfa25c" stroke-width=".7">
+      <path d="M0 150 Q50 108 100 140 T200 132 T300 146 T400 128"/>
+      <path d="M0 168 Q60 130 120 160 T240 150 T360 164 T400 152"/>
+      <path d="M0 186 Q70 152 140 178 T280 170 T400 180"/>
+    </g>
+    <g fill="#bfa25c" opacity=".5">
+      <circle cx="60" cy="42" r="1.4"/><circle cx="140" cy="28" r="1"/>
+      <circle cx="232" cy="50" r="1.4"/><circle cx="318" cy="34" r="1"/>
+      <circle cx="372" cy="60" r="1.2"/><circle cx="96" cy="66" r="1"/>
+    </g>
+  </svg>
+  <div class="in">
+    <p class="eyebrow">MIYAGI · SHIROISHI · KAMASAKI ONSEN</p>
+    <h1>蔵王の森に抱かれて、<br>九室だけの、静かな時間。</h1>
+    <p>宮城・鎌先温泉。客室はわずか九室。<br>
+       自家源泉のにごり湯と、季節を映す懐石で、<br>
+       慌ただしい日々からすこし離れた一夜を。</p>
+    <p class="price">1泊2食付 <b>25,300</b>円〜（税込・お一人様）</p>
+    <div class="btns">
+      <a class="b1" href="#cta">空室を見る</a>
+      <a class="b2" href="#rooms">客室を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="rooms">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">GUEST ROOMS</p>
+      <h2>客 室</h2>
+      <p>全九室。すべて造りが異なります。<br>お連れ様とご予定に合わせてお選びください。</p>
+    </div>
+    <div class="rooms">
+
+      <article class="room">
+        <div class="ph"><span class="kanji">曙庵</span><span class="note">お手持ちの客室写真が入ります</span></div>
+        <div class="body">
+          <span class="tag">2024年3月 改装</span>
+          <h3>和すいーと「曙庵」</h3>
+          <p class="yomi">あけぼのあん</p>
+          <p class="spec">約110㎡ ／ セミダブルベッド2台 ／ 温泉石風呂・ミストサウナ付</p>
+          <div class="feat">
+            <span>バリアフリー</span><span>客室温泉</span><span>ミストサウナ</span><span>最上級</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <div class="ph"><span class="kanji">東雲</span><span class="note">お手持ちの客室写真が入ります</span></div>
+        <div class="body">
+          <span class="tag">洋室</span>
+          <h3>結すいーと「東雲」</h3>
+          <p class="yomi">しののめ</p>
+          <p class="spec">洋室 ／ 温泉石風呂付 ／ 大人のお二人向け</p>
+          <div class="feat">
+            <span>客室温泉</span><span>お子様のご利用不可</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <div class="ph"><span class="kanji">端麗</span><span class="note">お手持ちの客室写真が入ります</span></div>
+        <div class="body">
+          <span class="tag">半露天付</span>
+          <h3>悠すいーと「端麗」</h3>
+          <p class="yomi">たんれい</p>
+          <p class="spec">和室12畳＋ベッドルーム約25㎡ ／ 半露天風呂付</p>
+          <div class="feat">
+            <span>和洋室</span><span>半露天</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <div class="ph"><span class="kanji">朝霞</span><span class="note">お手持ちの客室写真が入ります</span></div>
+        <div class="body">
+          <span class="tag">角部屋</span>
+          <h3>「朝霞」</h3>
+          <p class="yomi">あさか</p>
+          <p class="spec">角部屋・洋室 約34㎡</p>
+          <div class="feat">
+            <span>角部屋</span><span>お子様のご利用不可</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <div class="ph"><span class="kanji">睦庵</span><span class="note">お手持ちの客室写真が入ります</span></div>
+        <div class="body">
+          <span class="tag">二間続き</span>
+          <h3>「睦庵」</h3>
+          <p class="yomi">むつみあん</p>
+          <p class="spec">和室8畳＋8畳の二間続き</p>
+          <div class="feat">
+            <span>二間</span><span>お子様のご利用不可</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room">
+        <div class="ph"><span class="kanji">小萩<br>稲船<br>横雲</span><span class="note">お手持ちの客室写真が入ります</span></div>
+        <div class="body">
+          <span class="tag">和室12畳</span>
+          <h3>「小萩」「稲船」「横雲」</h3>
+          <p class="yomi">こはぎ ／ いなふね ／ よこぐも</p>
+          <p class="spec">和室12畳 ／ 三室</p>
+          <div class="feat"><span>和室</span><span>ご家族向け</span></div>
+        </div>
+      </article>
+
+      <article class="room">
+        <div class="ph"><span class="kanji">玉垣</span><span class="note">お手持ちの客室写真が入ります</span></div>
+        <div class="body">
+          <span class="tag">和室10畳</span>
+          <h3>「玉垣」</h3>
+          <p class="yomi">たまがき</p>
+          <p class="spec">和室10畳</p>
+          <div class="feat"><span>和室</span></div>
+        </div>
+      </article>
+
+      <article class="room">
+        <div class="ph"><span class="kanji">九室</span><span class="note">館内・ロビーの写真が入ります</span></div>
+        <div class="body">
+          <span class="tag">ご案内</span>
+          <h3>全室のご案内</h3>
+          <p class="yomi">ALL ROOMS</p>
+          <p class="spec">客室は全部で九室です。ご人数・お子様のご同伴の有無によってご案内できるお部屋が変わりますので、お気軽にお問い合わせください。</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="onsen">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">HOT SPRING</p>
+      <h2>温 泉</h2>
+    </div>
+    <div class="onsen">
+      <div>
+        <div class="ph wide"><span class="kanji">自家源泉</span><span class="note">露天風呂の写真が入ります</span></div>
+      </div>
+      <div>
+        <h3>蔵王連峰を望む、<br>森のなかの露天風呂。</h3>
+        <p>自家源泉の湯に、静かに身をあずける時間。露天風呂からは蔵王連峰と森が広がります。朝と夜、光の入り方が変わるたびに、湯のなかの景色も変わります。</p>
+        <dl class="izumi">
+          <dt>泉質</dt>
+          <dd>ナトリウム 塩化物・硫酸水素塩泉<br>低張性中性冷鉱泉（自家源泉／循環ろ過・加温）</dd>
+          <dt>効能</dt>
+          <dd>病後回復期、疲労回復、慢性消化器病、婦人病、関節症、神経痛、冷え性、やけど、切り傷、くじき、慢性皮膚病</dd>
+        </dl>
+        <p class="caution">※ 日帰り入浴は行っておりません。ご宿泊のお客様専用の温泉です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="cuisine">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">CUISINE</p>
+      <h2>お料理</h2>
+      <p>懐石料理「一期一会に季節を映す彩の膳」</p>
+    </div>
+    <div class="cui">
+      <div class="c">
+        <div class="ph"><span class="kanji">海の幸</span><span class="note">お料理の写真が入ります</span></div>
+        <div class="body">
+          <h4>近海の海の幸</h4>
+          <p>季節の鮮魚の盛り合わせを中心に、その日いちばんのものをお出しします。</p>
+        </div>
+      </div>
+      <div class="c">
+        <div class="ph"><span class="kanji">蔵王</span><span class="note">お料理の写真が入ります</span></div>
+        <div class="body">
+          <h4>蔵王の山菜と仙台牛</h4>
+          <p>蔵王の山菜と、仙台牛のミニステーキ。土地のものを、土地の食べ方で。</p>
+        </div>
+      </div>
+      <div class="c">
+        <div class="ph"><span class="kanji">地酒</span><span class="note">お料理・お酒の写真が入ります</span></div>
+        <div class="body">
+          <h4>宮城の地酒と自家製の酒</h4>
+          <p>宮城の地酒に加え、手作りの果実酒・自家製梅酒をご用意しています。ご飯は契約農家のお米です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="access">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">INFORMATION</p>
+      <h2>ご案内・アクセス</h2>
+    </div>
+    <dl class="info">
+      <div><dt>宿名</dt><dd>四季の宿 みちのく庵</dd></div>
+      <div><dt>所在地</dt><dd>〒989-0231 宮城県白石市福岡蔵本字狐峯3-4-5</dd></div>
+      <div><dt>電話</dt><dd>0224-26-2111（FAX 0224-24-5888）</dd></div>
+      <div><dt>メール</dt><dd>michinokuan.info@gmail.com</dd></div>
+      <div><dt>客室数</dt><dd>全9室</dd></div>
+      <div><dt>チェックイン／アウト</dt><dd>15:00 ／ 11:00</dd></div>
+      <div><dt>ご宿泊料金</dt><dd>1泊2食付 25,300円〜67,400円（税込・お一人様）</dd></div>
+      <div><dt>駐車場</dt><dd>屋外無料22台</dd></div>
+      <div><dt>送迎</dt><dd>白石駅・白石蔵王駅より（前日までのご予約制）</dd></div>
+      <div><dt>日帰り入浴</dt><dd>行っておりません</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <h2>九室だけの宿で、<br>季節をひとつ、拾いに。</h2>
+  <p>お部屋の空き状況・お食事のご相談は、お電話でも承ります。<br>ご不明な点はお気軽にお問い合わせください。</p>
+  <div class="row">
+    <a class="b1" href="#cta">空室を確認する</a>
+    <a class="b2" href="#cta">0224-26-2111</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="in">
+    <div class="cols">
+      <div>
+        <p class="fl">四季の宿 みちのく庵</p>
+        〒989-0231 宮城県白石市福岡蔵本字狐峯3-4-5<br>
+        TEL 0224-26-2111 ／ FAX 0224-24-5888<br>
+        michinokuan.info@gmail.com
+      </div>
+      <div>
+        チェックイン 15:00 ／ チェックアウト 11:00<br>
+        駐車場 屋外無料22台<br>
+        白石駅・白石蔵王駅より送迎（前日までの予約制）<br>
+        日帰り入浴は行っておりません
+      </div>
+    </div>
+    <div class="disc">
+      <b>【このページについて】</b><br>
+      本ページは <b>かわたれ studio</b> が営業提案のために制作したデザインサンプルであり、四季の宿 みちのく庵様の公式サイトではありません。ご予約・お問い合わせはできません。
+      写真・ロゴは一切使用しておらず、掲載している文章・料金・施設情報は2026年7月時点で公式サイト等に公開されている情報をもとにしています。
+      内容の正確性について同宿様の確認を受けたものではありません。掲載の停止をご希望の場合は、下記までご連絡いただければ直ちに削除いたします。<br>
+      制作・お問い合わせ： かわたれ studio ／ kawatare.studio@gmail.com ／ <a href="https://kawatare.studio/">kawatare.studio</a>
+    </div>
+  </div>
+</footer>
+
+<nav class="mbar">
+  <a href="#rooms">客室<span>ROOMS</span></a>
+  <a href="#onsen">温泉<span>ONSEN</span></a>
+  <a class="pri" href="#cta">空室を見る<span>RESERVE</span></a>
+</nav>
+
+</body>
+</html>

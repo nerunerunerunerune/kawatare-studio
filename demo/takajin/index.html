@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>【デザイン提案サンプル】菓子匠たかじん／高甚製菓株式会社</title>
+<style>
+:root{
+  --ink:#2b2320; --sub:#6f645c; --paper:#fbf8f3; --card:#ffffff;
+  --accent:#9c2b35; --accent-d:#7d1f28; --gold:#b8985a; --line:#e6ded2;
+  --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
+  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--gothic);color:var(--ink);background:var(--paper);line-height:1.85;-webkit-text-size-adjust:100%}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+
+/* デモ告知バー */
+.demobar{background:#1d1a17;color:#f4e9d6;font-size:12px;line-height:1.6;padding:9px 16px;text-align:center;font-family:var(--gothic)}
+.demobar strong{color:#f0c96b;display:inline-block;margin-right:6px}
+.demobar a{color:#f0c96b}
+
+header{position:sticky;top:0;z-index:50;background:rgba(251,248,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hwrap{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:var(--mincho);font-size:19px;letter-spacing:.14em;text-decoration:none}
+.brand span{display:block;font-family:var(--gothic);font-size:10px;letter-spacing:.22em;color:var(--sub);margin-top:2px}
+nav ul{display:flex;gap:22px;list-style:none;font-size:13.5px}
+nav a{text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+nav a:hover{border-color:var(--accent)}
+.telbtn{display:none}
+@media(max-width:820px){
+  nav{display:none}
+  .telbtn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:13px;padding:9px 16px;border-radius:999px;white-space:nowrap;font-weight:700}
+}
+
+/* ヒーロー */
+.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#fdfbf7 0%,#f3e9dc 100%);padding:76px 20px 84px;text-align:center}
+.hero .sakura{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.hero-in{position:relative;max-width:760px;margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.4em;color:var(--gold);margin-bottom:22px}
+.hero h1{font-family:var(--mincho);font-size:clamp(30px,7.4vw,54px);line-height:1.5;letter-spacing:.08em;font-weight:500}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{margin-top:24px;font-size:15px;color:var(--sub);line-height:2.1}
+.hbtns{margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-size:14.5px;font-weight:700;padding:15px 32px;border-radius:4px;transition:.2s}
+.btn-p{background:var(--accent);color:#fff}
+.btn-p:hover{background:var(--accent-d)}
+.btn-s{border:1px solid var(--ink);color:var(--ink)}
+.btn-s:hover{background:var(--ink);color:#fff}
+
+section{padding:72px 20px}
+.wrap{max-width:1080px;margin:0 auto}
+.sechead{text-align:center;margin-bottom:48px}
+.sechead .en{font-size:11px;letter-spacing:.36em;color:var(--gold);display:block;margin-bottom:12px}
+.sechead h2{font-family:var(--mincho);font-size:clamp(22px,4.6vw,31px);letter-spacing:.12em;font-weight:500}
+.sechead p{margin-top:14px;font-size:14px;color:var(--sub)}
+
+/* 商品 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:26px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.item:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(60,40,20,.09)}
+.ph{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#f7f0e5,#eadfcd);display:grid;place-items:center;overflow:hidden}
+.ph .kanji{font-family:var(--mincho);font-size:62px;color:rgba(156,43,53,.13);letter-spacing:.1em;user-select:none}
+.ph .note{position:absolute;bottom:8px;right:10px;font-size:9.5px;color:#a8998a;letter-spacing:.06em}
+.item-b{padding:18px 18px 22px;flex:1;display:flex;flex-direction:column}
+.item h3{font-family:var(--mincho);font-size:17.5px;letter-spacing:.06em;font-weight:500}
+.item .desc{font-size:12.8px;color:var(--sub);margin-top:9px;line-height:1.85;flex:1}
+.price{margin-top:14px;padding-top:13px;border-top:1px dashed var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.price .p{font-family:var(--mincho);font-size:20px;color:var(--accent)}
+.price .p small{font-size:11px;color:var(--sub);margin-left:3px;font-family:var(--gothic)}
+.price .cart{background:var(--ink);color:#fff;font-size:11.5px;padding:8px 14px;border-radius:3px;text-decoration:none;white-space:nowrap}
+
+/* 帯 */
+.band{background:#211c18;color:#f3ece0;text-align:center}
+.band .sechead h2{color:#fff}
+.band .sechead .en{color:var(--gold)}
+.band .sechead p{color:#bcae9c}
+.setgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;text-align:left}
+.set{background:rgba(255,255,255,.05);border:1px solid rgba(240,201,107,.22);border-radius:3px;padding:24px 22px}
+.set h3{font-family:var(--mincho);font-size:17px;color:#fff;letter-spacing:.05em;font-weight:500}
+.set .inc{font-size:12.3px;color:#bcae9c;margin-top:10px;line-height:1.9}
+.set .p{font-family:var(--mincho);font-size:21px;color:var(--gold);margin-top:14px}
+.set .p small{font-size:11px;font-family:var(--gothic);color:#98897a}
+
+/* 店舗 */
+.shops{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.shop{background:var(--card);border:1px solid var(--line);padding:30px 26px;border-radius:3px}
+.shop h3{font-family:var(--mincho);font-size:20px;letter-spacing:.08em;font-weight:500;padding-bottom:14px;border-bottom:2px solid var(--accent);display:inline-block;margin-bottom:18px}
+.dl{display:grid;grid-template-columns:5.2em 1fr;gap:10px 14px;font-size:13.4px}
+.dl dt{color:var(--gold);font-weight:700}
+.dl dd{color:var(--sub);line-height:1.8}
+.dl dd a{color:var(--accent);font-weight:700;text-decoration:none}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,#9c2b35,#6d1a22);color:#fff;text-align:center}
+.cta h2{font-family:var(--mincho);font-size:clamp(21px,4.4vw,29px);letter-spacing:.1em;font-weight:500}
+.cta p{margin-top:18px;font-size:14px;color:rgba(255,255,255,.86);line-height:2}
+.cta .btn-w{display:inline-block;margin-top:30px;background:#fff;color:var(--accent);font-weight:700;padding:16px 40px;border-radius:4px;text-decoration:none;font-size:15px}
+
+footer{background:#1d1a17;color:#9d9186;padding:52px 20px 40px;font-size:12.6px;text-align:center;line-height:2}
+footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing:.16em;margin-bottom:16px}
+.disc{max-width:680px;margin:30px auto 0;padding-top:22px;border-top:1px solid #322b25;font-size:11.4px;color:#7d7369;line-height:1.95;text-align:left}
+
+/* スマホ固定バー */
+.mbar{position:fixed;bottom:0;left:0;right:0;z-index:60;display:none;background:rgba(29,26,23,.96);padding:9px 12px;gap:9px}
+.mbar a{flex:1;text-align:center;text-decoration:none;font-size:13px;font-weight:700;padding:13px 4px;border-radius:4px}
+.mbar .m1{background:var(--accent);color:#fff}
+.mbar .m2{background:#fff;color:var(--ink)}
+@media(max-width:820px){.mbar{display:flex}body{padding-bottom:66px}section{padding:56px 18px}.hero{padding:56px 18px 62px}}
+</style>
+</head>
+<body>
+
+<div class="demobar">
+  <strong>デザイン提案サンプル</strong>
+  これは かわたれ studio が制作したデザイン案です。高甚製菓株式会社様の公式サイトではありません。
+  公式サイトは <a href="https://www.e-takajin.co.jp/">e-takajin.co.jp</a> です。
+</div>
+
+<header>
+  <div class="hwrap">
+    <a class="brand" href="#">菓子匠たかじん<span>TAKAJIN SEIKA / SHIROISHI</span></a>
+    <nav>
+      <ul>
+        <li><a href="#items">お菓子</a></li>
+        <li><a href="#sets">詰め合わせ</a></li>
+        <li><a href="#season">季節限定</a></li>
+        <li><a href="#shops">店舗案内</a></li>
+        <li><a href="#contact">お取り寄せ</a></li>
+      </ul>
+    </nav>
+    <a class="telbtn" href="tel:0224250141">☎ お電話</a>
+  </div>
+</header>
+
+<div class="hero">
+  <svg class="sakura" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <g id="pet"><path d="M0,-14 C5,-9 6,-3 0,4 C-6,-3 -5,-9 0,-14Z" fill="#e8c3c7"/></g>
+      <g id="fl">
+        <use href="#pet"/><use href="#pet" transform="rotate(72)"/><use href="#pet" transform="rotate(144)"/>
+        <use href="#pet" transform="rotate(216)"/><use href="#pet" transform="rotate(288)"/>
+        <circle r="2.6" fill="#d9a7ad"/>
+      </g>
+    </defs>
+    <g opacity=".55">
+      <use href="#fl" transform="translate(90,88) scale(1.5) rotate(15)"/>
+      <use href="#fl" transform="translate(1090,140) scale(1.9) rotate(-25)"/>
+      <use href="#fl" transform="translate(240,470) scale(1.2) rotate(40)"/>
+      <use href="#fl" transform="translate(960,470) scale(1.4) rotate(-10)"/>
+      <use href="#fl" transform="translate(600,40) scale(.9) rotate(28)"/>
+      <use href="#fl" transform="translate(400,180) scale(.75) rotate(-40)"/>
+      <use href="#fl" transform="translate(820,260) scale(.85) rotate(60)"/>
+      <use href="#fl" transform="translate(140,300) scale(.7) rotate(5)"/>
+      <use href="#fl" transform="translate(1140,400) scale(1.1) rotate(35)"/>
+      <use href="#fl" transform="translate(700,540) scale(1.05) rotate(-18)"/>
+    </g>
+  </svg>
+  <div class="hero-in">
+    <div class="eyebrow">宮城県白石市・菓子匠たかじん</div>
+    <h1>白石の城下町から、<br><em>三代</em>つづく菓子を。</h1>
+    <p>銘菓 白石城、白石道中、白石川千本桜。<br>この土地の名を冠したお菓子を、ひとつずつ焼き上げています。</p>
+    <div class="hbtns">
+      <a class="btn btn-p" href="#items">お菓子を見る</a>
+      <a class="btn btn-s" href="#shops">店舗のご案内</a>
+    </div>
+  </div>
+</div>
+
+<section id="items">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="en">OUR SWEETS</span>
+      <h2>たかじんのお菓子</h2>
+      <p>白石にちなんだ四つの銘菓を、季節を問わずお届けしています。</p>
+    </div>
+    <div class="grid">
+
+      <article class="item">
+        <div class="ph"><span class="kanji">白石城</span><span class="note">お手持ちの商品写真が入ります</span></div>
+        <div class="item-b">
+          <h3>銘菓 白石城</h3>
+          <p class="desc">こし餡とつぶし餡を独自にブレンドした餡を、パイ生地で包んで焼き上げた和風パイ饅頭。北海道産の厳選小豆を使用しています。</p>
+          <div class="price"><span class="p">2,050<small>円（10個入・税込）</small></span><a class="cart" href="#contact">かごに入れる</a></div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="ph"><span class="kanji">道中</span><span class="note">お手持ちの商品写真が入ります</span></div>
+        <div class="item-b">
+          <h3>白石道中</h3>
+          <p class="desc">スライスアーモンドと卵を贅沢に使用した、洋風のおせんべい。みちのく白石の道中を、芭蕉と曽良の旅に想いをはせて。</p>
+          <div class="price"><span class="p">2,040<small>円（10枚入・税込）</small></span><a class="cart" href="#contact">かごに入れる</a></div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="ph"><span class="kanji">千本桜</span><span class="note">お手持ちの商品写真が入ります</span></div>
+        <div class="item-b">
+          <h3>白石川千本桜</h3>
+          <p class="desc">蔵王産の卵と北海道バターで焼き上げたマドレーヌ。トッピングのアーモンドは、川面に浮かぶ桜の花びらをイメージしました。</p>
+          <div class="price"><span class="p">2,000<small>円（10個入・税込）</small></span><a class="cart" href="#contact">かごに入れる</a></div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="ph"><span class="kanji">こけし</span><span class="note">お手持ちの商品写真が入ります</span></div>
+        <div class="item-b">
+          <h3>こけしサブレ</h3>
+          <p class="desc">サクサクとした食感と、バターの香り。こけしの絵柄をあしらった化粧箱に詰めてお渡しします。</p>
+          <div class="price"><span class="p">1,210<small>円（8枚入・税込）</small></span><a class="cart" href="#contact">かごに入れる</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="sets" class="band">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="en">GIFT SET</span>
+      <h2>詰め合わせ</h2>
+      <p>ご贈答、ごあいさつの品として承っております。</p>
+    </div>
+    <div class="setgrid">
+      <div class="set">
+        <h3>白石銘菓詰め合わせ</h3>
+        <p class="inc">白石道中 6枚／白石川千本桜 3個／白石城 3個</p>
+        <p class="p">2,600<small>円（税込）</small></p>
+      </div>
+      <div class="set">
+        <h3>白石銘菓詰め合わせ</h3>
+        <p class="inc">白石道中 6枚／白石川千本桜 5個／白石城 6個</p>
+        <p class="p">3,550<small>円（税込）</small></p>
+      </div>
+      <div class="set">
+        <h3>たかじん銘菓詰め合わせ</h3>
+        <p class="inc">白石道中 5枚／千本桜 3個／白石城 3個／葉っぱのフレンド 3枚／ぶな紀行 3枚</p>
+        <p class="p">3,400<small>円（税込）</small></p>
+      </div>
+      <div class="set">
+        <h3>たかじん銘菓詰め合わせ</h3>
+        <p class="inc">白石道中 5枚／千本桜 4個／白石城 4個／葉っぱのフレンド 4枚／ぶな紀行 4枚</p>
+        <p class="p">4,200<small>円（税込）</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="season">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="en">SEASONAL</span>
+      <h2>季節限定</h2>
+      <p>いまの季節だけのお菓子をご用意しています。</p>
+    </div>
+    <div class="grid">
+      <article class="item">
+        <div class="ph"><span class="kanji">夏</span><span class="note">お手持ちの商品写真が入ります</span></div>
+        <div class="item-b">
+          <h3>フルーツの詩　8入</h3>
+          <p class="desc">夏季限定のゼリー詰合せ。洋梨・すもも・ワインの三種を、涼やかに。</p>
+          <div class="price"><span class="p">2,520<small>円（税込）</small></span><a class="cart" href="#contact">かごに入れる</a></div>
+        </div>
+      </article>
+      <article class="item">
+        <div class="ph"><span class="kanji">涼</span><span class="note">お手持ちの商品写真が入ります</span></div>
+        <div class="item-b">
+          <h3>フルーツの詩と水ようかん詰め合わせ</h3>
+          <p class="desc">フルーツの詩 4個と、水ようかん 4個の詰め合わせ。夏のご贈答に。</p>
+          <div class="price"><span class="p">2,520<small>円（税込）</small></span><a class="cart" href="#contact">かごに入れる</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="shops" style="background:#f6f0e7">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="en">SHOP</span>
+      <h2>店舗のご案内</h2>
+      <p>白石市内に二店舗ございます。定休日は元日のみです。</p>
+    </div>
+    <div class="shops">
+      <div class="shop">
+        <h3>菓子匠たかじん　本店</h3>
+        <dl class="dl">
+          <dt>所在地</dt><dd>〒989-0243<br>宮城県白石市字沢目15番地</dd>
+          <dt>電話</dt><dd><a href="tel:0224250141">0224-25-0141</a></dd>
+          <dt>営業時間</dt><dd>平日 9:00〜18:00<br>土日祝 9:00〜17:30</dd>
+          <dt>定休日</dt><dd>元日のみ</dd>
+          <dt>アクセス</dt><dd>JR東北本線 白石駅下車<br>西口駅前通り 徒歩3分</dd>
+        </dl>
+      </div>
+      <div class="shop">
+        <h3>菓子匠たかじん　東庵店</h3>
+        <dl class="dl">
+          <dt>所在地</dt><dd>〒989-0225<br>宮城県白石市東町2丁目8番29号</dd>
+          <dt>電話</dt><dd><a href="tel:0224250141">0224-25-0141</a></dd>
+          <dt>営業時間</dt><dd>平日 9:00〜18:30<br>土日祝 9:00〜18:00</dd>
+          <dt>定休日</dt><dd>元日のみ</dd>
+          <dt>アクセス</dt><dd>東北新幹線 白石蔵王駅より<br>徒歩10分</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="wrap">
+    <h2>お取り寄せ・ご贈答のご相談</h2>
+    <p>のし・包装のご指定、贈り先へのお届けも承っております。<br>お電話でもインターネットでもご注文いただけます。</p>
+    <a class="btn-w" href="tel:0224250141">☎ 0224-25-0141</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">菓子匠たかじん</div>
+  高甚製菓株式会社<br>
+  〒989-0243 宮城県白石市字沢目15番地<br>
+  TEL 0224-25-0141
+
+  <div class="disc">
+    <strong style="color:#b8a894">【本ページについて】</strong><br>
+    本ページは、かわたれ studio が制作したデザイン提案用のサンプルです。高甚製菓株式会社様の公式サイトではなく、同社の許諾を得たものでもありません。掲載している社名・店舗情報・商品名・価格は、2026年7月時点で同社公式サイトおよび公的機関の公開情報から引用したものです。写真・ロゴは一切使用しておらず、実際の制作時にはお客様からご提供いただいたものを使用します。
+    <br><br>
+    制作：かわたれ studio ／ <a href="https://kawatare.studio/service.html" style="color:#b8985a">kawatare.studio</a>
+  </div>
+</footer>
+
+<div class="mbar">
+  <a class="m1" href="tel:0224250141">☎ 電話で注文</a>
+  <a class="m2" href="#items">お菓子を見る</a>
+</div>
+
+</body>
+</html>

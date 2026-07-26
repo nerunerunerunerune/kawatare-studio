@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>庭木の剪定・伐採 ｜ 有限会社 京苑（デザイン提案サンプル・かわたれ studio）</title>
+<style>
+:root{
+  --ink:#20261f; --sub:#5f6b5c; --paper:#f6f7f2; --card:#ffffff;
+  --green:#2f5233; --green-d:#1f3823; --leaf:#6b8f4e; --bark:#8a6a45; --line:#dfe3d6;
+  --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","MS PMincho","Noto Serif JP",serif;
+  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--gothic);color:var(--ink);background:var(--paper);
+  line-height:1.9;-webkit-text-size-adjust:100%;font-size:16px}
+a{color:inherit}
+.wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+
+.demobar{background:#20261f;color:#eef1e8;font-size:12.5px;line-height:1.75;
+  padding:10px 16px;text-align:center}
+.demobar strong{color:#cfe08f;display:inline-block;margin-right:6px}
+.demobar a{color:#cfe08f;text-decoration:underline}
+
+/* ヘッダー */
+.head{position:sticky;top:0;z-index:50;background:rgba(246,247,242,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.head .in{display:flex;align-items:center;justify-content:space-between;
+  height:62px;max-width:1020px;margin:0 auto;padding:0 20px}
+.logo{font-family:var(--mincho);font-size:19px;letter-spacing:.14em;line-height:1.25}
+.logo small{display:block;font-family:var(--gothic);font-size:10px;
+  letter-spacing:.22em;color:var(--sub);margin-top:3px}
+.tel{display:none;text-align:right;line-height:1.3}
+.tel .n{font-family:var(--mincho);font-size:22px;letter-spacing:.03em;color:var(--green)}
+.tel .s{font-size:10.5px;color:var(--sub);letter-spacing:.06em}
+@media(min-width:820px){.tel{display:block}}
+
+/* ヒーロー */
+.hero{position:relative;background:var(--green-d);color:#f0f4e9;overflow:hidden}
+.hero .bg{position:absolute;inset:0;opacity:.18}
+.hero .in{position:relative;max-width:1020px;margin:0 auto;padding:62px 20px 70px}
+.hero .eyebrow{font-size:12px;letter-spacing:.24em;color:#cfe08f;margin-bottom:18px}
+.hero h1{font-family:var(--mincho);font-weight:400;font-size:28px;
+  letter-spacing:.06em;line-height:1.6;margin-bottom:20px}
+.hero h1 b{color:#cfe08f;font-weight:400}
+.hero p.lead{font-size:14.5px;line-height:2.1;color:#d3dcc7;max-width:640px}
+.hero .badges{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.hero .badges span{font-size:11.5px;letter-spacing:.06em;border:1px solid rgba(207,224,143,.45);
+  color:#cfe08f;padding:5px 12px;border-radius:2px}
+.hero .btns{margin-top:32px;display:flex;flex-direction:column;gap:12px}
+.hero .btns a{display:block;text-decoration:none;text-align:center;
+  padding:17px;font-size:15.5px;letter-spacing:.06em;border-radius:3px}
+.b1{background:#cfe08f;color:#1f3823;font-weight:700}
+.b2{border:1px solid rgba(240,244,233,.45);color:#f0f4e9}
+@media(min-width:760px){
+  .hero h1{font-size:39px}.hero .in{padding:92px 20px 100px}
+  .hero .btns{flex-direction:row}.hero .btns a{padding:17px 42px}
+}
+
+.sec{padding:62px 0}
+.sec.alt{background:var(--card)}
+.sec.dark{background:var(--green-d);color:#eef2e6}
+.shead{text-align:center;margin-bottom:42px}
+.shead .en{font-size:10.5px;letter-spacing:.34em;color:var(--leaf);margin-bottom:11px}
+.sec.dark .shead .en{color:#cfe08f}
+.shead h2{font-family:var(--mincho);font-weight:400;font-size:24px;letter-spacing:.1em;line-height:1.6}
+.shead p{font-size:13.5px;color:var(--sub);margin-top:14px;line-height:2}
+.sec.dark .shead p{color:#c3cdb5}
+@media(min-width:760px){.sec{padding:84px 0}.shead h2{font-size:30px}}
+
+/* 悩み */
+.pain{display:grid;gap:16px}
+@media(min-width:760px){.pain{grid-template-columns:repeat(3,1fr)}}
+.pain .p{background:var(--card);border:1px solid var(--line);padding:24px 22px;border-radius:3px}
+.sec.alt .pain .p{background:var(--paper)}
+.pain .p .no{font-family:var(--mincho);font-size:12px;letter-spacing:.2em;color:var(--leaf);margin-bottom:10px}
+.pain .p h3{font-size:16px;font-weight:700;line-height:1.7;margin-bottom:10px}
+.pain .p p{font-size:13px;color:var(--sub);line-height:2}
+
+/* 写真プレースホルダ */
+.ph{position:relative;background:linear-gradient(150deg,#e9ede0,#dbe2cd);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  aspect-ratio:4/3;overflow:hidden;border-radius:3px}
+.ph .kanji{font-family:var(--mincho);font-size:44px;color:rgba(47,82,51,.16);
+  letter-spacing:.12em;text-align:center;line-height:1.25;padding:0 10px}
+.ph .note{font-size:10.5px;color:#8e968a;letter-spacing:.05em;margin-top:9px;text-align:center;padding:0 12px}
+.ph.wide{aspect-ratio:16/9}
+
+/* ビフォーアフター */
+.ba{display:grid;gap:14px;max-width:760px;margin:0 auto}
+@media(min-width:640px){.ba{grid-template-columns:1fr 1fr;gap:18px}}
+.ba .card{background:var(--card);border:1px solid var(--line);padding:12px;border-radius:3px}
+.sec.dark .ba .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+.ba .lbl{font-size:11.5px;letter-spacing:.18em;text-align:center;padding:8px 0 10px;color:var(--sub)}
+.sec.dark .ba .lbl{color:#c3cdb5}
+.ba .lbl b{color:var(--leaf)}
+.sec.dark .ba .lbl b{color:#cfe08f}
+
+/* サービス */
+.svc{display:grid;gap:20px}
+@media(min-width:760px){.svc{grid-template-columns:repeat(3,1fr)}}
+.svc .s{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.sec.alt .svc .s{background:var(--paper)}
+.svc .s .body{padding:20px}
+.svc .s .ic{width:40px;height:40px;margin-bottom:12px}
+.svc .s h3{font-family:var(--mincho);font-size:19px;letter-spacing:.08em;font-weight:400;margin-bottom:9px}
+.svc .s p{font-size:13px;color:var(--sub);line-height:2}
+
+/* 流れ */
+.flow{max-width:720px;margin:0 auto;counter-reset:st}
+.flow .f{display:flex;gap:18px;padding-bottom:28px;position:relative}
+.flow .f:not(:last-child)::before{content:"";position:absolute;left:19px;top:44px;
+  bottom:0;width:1px;background:var(--line)}
+.flow .n{flex:none;width:38px;height:38px;border-radius:50%;background:var(--green);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mincho);font-size:16px;position:relative;z-index:1}
+.flow h3{font-size:16px;font-weight:700;margin-bottom:6px;padding-top:6px}
+.flow p{font-size:13.5px;color:var(--sub);line-height:2}
+
+/* 料金の考え方 */
+.pricebox{max-width:720px;margin:0 auto;background:var(--card);
+  border:1px solid var(--line);border-radius:3px;padding:28px 24px}
+.sec.alt .pricebox{background:var(--paper)}
+.pricebox h3{font-family:var(--mincho);font-size:19px;letter-spacing:.08em;
+  font-weight:400;margin-bottom:14px}
+.pricebox p{font-size:13.5px;color:var(--sub);line-height:2.1;margin-bottom:14px}
+.pricebox ul{list-style:none;font-size:13.5px;line-height:2.2}
+.pricebox li{padding-left:20px;position:relative;color:var(--ink)}
+.pricebox li::before{content:"";position:absolute;left:4px;top:14px;
+  width:6px;height:6px;background:var(--leaf);border-radius:50%}
+.pricenote{margin-top:16px;font-size:12.5px;color:var(--sub);
+  background:rgba(107,143,78,.09);padding:12px 14px;line-height:1.95;border-radius:3px}
+
+/* 会社情報 */
+.info{border-top:1px solid var(--line);font-size:13.5px;max-width:760px;margin:0 auto}
+.info div{display:flex;flex-direction:column;gap:2px;padding:14px 4px;border-bottom:1px solid var(--line)}
+.info dt{font-size:11.5px;letter-spacing:.14em;color:var(--leaf)}
+.info dd{line-height:1.95}
+@media(min-width:640px){.info div{flex-direction:row;gap:0;align-items:baseline}
+  .info dt{width:180px;flex:none;padding-top:2px}}
+
+/* CTA */
+.cta{background:var(--green);color:#f1f5ea;text-align:center;padding:66px 20px}
+.cta h2{font-family:var(--mincho);font-weight:400;font-size:24px;
+  letter-spacing:.1em;line-height:1.7;margin-bottom:14px}
+.cta p{font-size:14px;color:#cddac0;line-height:2.05;margin-bottom:28px}
+.cta .tel2{font-family:var(--mincho);font-size:33px;letter-spacing:.03em;
+  color:#fff;display:block;text-decoration:none;margin-bottom:6px}
+.cta .h{font-size:12.5px;color:#cddac0;margin-bottom:26px}
+.cta .row{display:flex;flex-direction:column;gap:12px;align-items:center}
+.cta .row a{display:block;width:100%;max-width:320px;padding:17px;
+  text-decoration:none;font-size:15px;letter-spacing:.06em;border-radius:3px}
+@media(min-width:700px){.cta h2{font-size:30px}.cta .row{flex-direction:row;justify-content:center}
+  .cta .row a{width:auto;padding:17px 44px}}
+
+/* フッター */
+.foot{background:#191e18;color:#9aa393;padding:48px 20px 92px;font-size:12.5px;line-height:2}
+.foot .in{max-width:1020px;margin:0 auto}
+.foot .fl{font-family:var(--mincho);font-size:19px;letter-spacing:.14em;color:#dde5d3;margin-bottom:14px}
+.disc{border-top:1px solid #2c322b;margin-top:26px;padding-top:20px;
+  font-size:11.5px;color:#78806f;line-height:1.95}
+.disc b{color:#9aa393}
+
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;
+  background:var(--green-d);border-top:1px solid rgba(207,224,143,.3)}
+.mbar a{flex:1;text-align:center;padding:13px 4px;text-decoration:none;
+  color:#eef2e6;font-size:12.5px;letter-spacing:.04em;line-height:1.5}
+.mbar a+a{border-left:1px solid rgba(255,255,255,.12)}
+.mbar a.pri{background:#cfe08f;color:#1f3823;font-weight:700}
+.mbar span{display:block;font-size:9.5px;letter-spacing:.1em;opacity:.7}
+@media(min-width:820px){.mbar{display:none}.foot{padding-bottom:48px}}
+</style>
+</head>
+<body>
+
+<div class="demobar">
+  <strong>デザイン提案サンプル</strong>
+  これは かわたれ studio が制作したデザイン案です。有限会社 京苑様の公式サイトではありません。
+  公式サイトは <a href="https://kyouen.com/">kyouen.com</a> です。お申し込みはできません。
+</div>
+
+<header class="head">
+  <div class="in">
+    <div class="logo">京苑の剪定<small>有限会社 京苑（宮城県蔵王町）</small></div>
+    <div class="tel">
+      <div class="n">0224-32-2172</div>
+      <div class="s">受付 9:00〜17:00／土日祝休</div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="#cfe08f" fill="none" stroke-width=".8" stroke-linecap="round">
+      <path d="M40 200 L40 120 M40 150 L14 122 M40 138 L68 108 M40 168 L20 148 M40 160 L64 138"/>
+      <path d="M150 200 L150 96 M150 132 L118 100 M150 118 L184 86 M150 156 L126 132 M150 146 L178 120"/>
+      <path d="M268 200 L268 130 M268 158 L244 134 M268 146 L294 120 M268 176 L250 160"/>
+      <path d="M360 200 L360 108 M360 142 L332 114 M360 128 L390 100 M360 164 L340 144"/>
+    </g>
+    <g fill="#cfe08f" opacity=".38">
+      <ellipse cx="40" cy="106" rx="30" ry="17"/><ellipse cx="150" cy="80" rx="40" ry="22"/>
+      <ellipse cx="268" cy="116" rx="27" ry="15"/><ellipse cx="360" cy="92" rx="34" ry="19"/>
+    </g>
+  </svg>
+  <div class="in">
+    <p class="eyebrow">宮城県 蔵王町・白石市・仙南地域</p>
+    <h1>伸びすぎた庭木、<br>そのままにしていませんか。<br><b>創業50年の庭師が伺います。</b></h1>
+    <p class="lead">松の手入れ、生垣の刈り込み、大きくなりすぎた木の伐採。
+      1971年の創業から半世紀、仙南のお庭を手がけてきた造園会社が、一級造園技能士の手で整えます。
+      お見積りは無料です。まずは一度、庭を見せてください。</p>
+    <div class="badges">
+      <span>創業1971年</span><span>一級造園技能士</span>
+      <span>宮城県知事認可（般-33）第8043号</span><span>見積り無料</span>
+    </div>
+    <div class="btns">
+      <a class="b1" href="#cta">無料で見積りを頼む</a>
+      <a class="b2" href="#flow">まず流れを見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">YOUR GARDEN</p>
+      <h2>こんなお困りごと、<br>ありませんか。</h2>
+    </div>
+    <div class="pain">
+      <div class="p">
+        <p class="no">CASE 01</p>
+        <h3>木が高くなりすぎて、<br>自分では手が届かない</h3>
+        <p>脚立で届かない高さの木は、無理をすると危険です。松やケヤキなど、大きく育った木ほど専門の道具と経験が要ります。</p>
+      </div>
+      <div class="p">
+        <p class="no">CASE 02</p>
+        <h3>隣の家に枝が<br>かかってしまっている</h3>
+        <p>ご近所への越境は、放っておくほど言いづらくなります。落ち葉や日当たりのご相談も含めて対応します。</p>
+      </div>
+      <div class="p">
+        <p class="no">CASE 03</p>
+        <h3>親から引き継いだ庭を<br>どうしたらいいか分からない</h3>
+        <p>手入れをやめた庭をどう戻すか。全部切るのか、残すのか。現地を見たうえで、選択肢をご説明します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">BEFORE / AFTER</p>
+      <h2>手入れの前と、あと。</h2>
+      <p>実際に手がけたお庭の写真がここに入ります。<br>同じ庭の「前」と「後」が並ぶだけで、伝わり方が変わります。</p>
+    </div>
+    <div class="ba">
+      <div class="card">
+        <div class="ph"><span class="kanji">施工前</span><span class="note">お手持ちの施工前写真が入ります</span></div>
+        <p class="lbl"><b>BEFORE</b>　手入れ前</p>
+      </div>
+      <div class="card">
+        <div class="ph"><span class="kanji">施工後</span><span class="note">お手持ちの施工後写真が入ります</span></div>
+        <p class="lbl"><b>AFTER</b>　手入れ後</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">SERVICE</p>
+      <h2>お受けしていること</h2>
+    </div>
+    <div class="svc">
+
+      <div class="s">
+        <div class="body">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
+            <path d="M12 34 L20 20 M28 34 L20 20 M20 20 L20 6"/>
+            <circle cx="12" cy="34" r="3.4"/><circle cx="28" cy="34" r="3.4"/>
+            <path d="M20 12 L14 7 M20 15 L27 9"/>
+          </svg>
+          <h3>剪定</h3>
+          <p>松の手入れ、庭木の透かし、生垣の刈り込み。木の性質と樹形を見ながら、翌年のことまで考えて切ります。</p>
+        </div>
+      </div>
+
+      <div class="s">
+        <div class="body">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
+            <path d="M8 32 L32 32"/><path d="M20 32 L20 16"/>
+            <path d="M20 16 L11 9 M20 16 L29 9"/><path d="M6 22 L14 26"/>
+          </svg>
+          <h3>伐採・伐根</h3>
+          <p>大きくなりすぎた木、枯れてしまった木の伐採。抜根や処分までまとめてお受けします。</p>
+        </div>
+      </div>
+
+      <div class="s">
+        <div class="body">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
+            <path d="M20 34 L20 22"/><path d="M20 22 C12 22 9 16 9 11 C16 11 20 15 20 22"/>
+            <path d="M20 24 C28 24 31 18 31 13 C24 13 20 17 20 24"/>
+          </svg>
+          <h3>除草・消毒</h3>
+          <p>草刈り、防除の消毒、土壌改良。毛虫や病気が出てからでは遅いので、時期を見てのご相談も承ります。</p>
+        </div>
+      </div>
+
+      <div class="s">
+        <div class="body">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
+            <rect x="7" y="14" width="26" height="20"/><path d="M7 20 L33 20 M7 27 L33 27"/>
+            <path d="M13 14 L13 34 M20 14 L20 34 M27 14 L27 34"/><path d="M5 11 L35 11"/>
+          </svg>
+          <h3>竹垣・袖垣・庭門</h3>
+          <p>庭門、袖垣、竹垣、東屋。庭園添景物の製造販売まで自社で手がけています。</p>
+        </div>
+      </div>
+
+      <div class="s">
+        <div class="body">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
+            <path d="M6 30 L34 30"/><path d="M9 30 L9 18 L20 12 L31 18 L31 30"/>
+            <path d="M15 30 L15 23 L25 23 L25 30"/>
+          </svg>
+          <h3>外構・ガーデンリフォーム</h3>
+          <p>住宅庭園・店舗外構の設計施工、新築外構、ウッドデッキ・カーポートの増設まで。</p>
+        </div>
+      </div>
+
+      <div class="s">
+        <div class="body">
+          <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
+            <path d="M20 33 L20 9"/><path d="M14 13 L20 9 L26 13"/>
+            <path d="M11 20 L20 15 L29 20"/><path d="M9 27 L20 21 L31 27"/>
+          </svg>
+          <h3>門松の製造販売</h3>
+          <p>年末の門松も自社製造でご用意しています。数に限りがありますのでお早めにご相談ください。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="flow">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">FLOW</p>
+      <h2>ご依頼の流れ</h2>
+      <p>お見積りまでは無料です。金額を見てからお断りいただいて構いません。</p>
+    </div>
+    <div class="flow">
+      <div class="f">
+        <div class="n">1</div>
+        <div>
+          <h3>お電話・フォームでご連絡</h3>
+          <p>「松を1本」でも「庭全体を見てほしい」でも構いません。ご住所と、気になっている場所をお聞かせください。</p>
+        </div>
+      </div>
+      <div class="f">
+        <div class="n">2</div>
+        <div>
+          <h3>現地を拝見してお見積り</h3>
+          <p>木の本数・高さ・作業のしやすさで金額が変わるため、実際にお庭を見せていただいてからお出しします。無料です。</p>
+        </div>
+      </div>
+      <div class="f">
+        <div class="n">3</div>
+        <div>
+          <h3>日程を決めて作業</h3>
+          <p>ご都合のよい日をご相談のうえ決めます。作業当日のお立ち会いは、必須ではありません。</p>
+        </div>
+      </div>
+      <div class="f">
+        <div class="n">4</div>
+        <div>
+          <h3>片付け・お引き渡し</h3>
+          <p>切った枝葉の処分まで行います。仕上がりをご確認いただいてから、お支払いのご案内をいたします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">ABOUT PRICE</p>
+      <h2>料金の考え方</h2>
+    </div>
+    <div class="pricebox">
+      <h3>「一律いくら」とは言えない理由</h3>
+      <p>庭木の手入れは、木の種類・高さ・本数・前回の手入れからの年数・重機やトラックを寄せられるかで、必要な人手と時間が大きく変わります。見ないまま金額をお伝えすると、後から増える形になってしまうため、当社では現地を拝見してからお出ししています。</p>
+      <p>お見積りの際は、次の点をその場でご説明します。</p>
+      <ul>
+        <li>どの木を、どこまで切るのか</li>
+        <li>何人で、何日かかるのか</li>
+        <li>切った枝葉の処分費が含まれているか</li>
+        <li>今回やらなくてよいものは何か</li>
+      </ul>
+      <p class="pricenote">※ このページはデザイン提案サンプルです。実際の料金・お見積り方法は御社のご方針に合わせて書き換えます。金額を明記する形にも、この「考え方」を示す形にもできます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="shead">
+      <p class="en">COMPANY</p>
+      <h2>会社概要</h2>
+    </div>
+    <dl class="info">
+      <div><dt>会社名</dt><dd>有限会社 京苑</dd></div>
+      <div><dt>代表取締役</dt><dd>鈴木 北斗</dd></div>
+      <div><dt>創業</dt><dd>1971年（造園設計施工会社として創業）</dd></div>
+      <div><dt>所在地</dt><dd>〒989-0701 宮城県刈田郡蔵王町宮字古川107-1</dd></div>
+      <div><dt>電話／FAX</dt><dd>0224-32-2172 ／ 0224-32-2174</dd></div>
+      <div><dt>事業内容</dt><dd>造園設計施工管理／造園資材道具販売／造園添景物製造販売</dd></div>
+      <div><dt>許可・資格</dt><dd>宮城県知事認可（般-33）第8043号（造園）／一級造園技能士</dd></div>
+      <div><dt>営業時間</dt><dd>9:00〜17:00（土日祝休）</dd></div>
+      <div><dt>対応エリア</dt><dd>蔵王町・白石市を中心とした仙南地域</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <h2>まずは、庭を見せてください。</h2>
+  <p>お見積りは無料です。<br>金額をご覧になってからお断りいただいて構いません。</p>
+  <a class="tel2" href="#cta">0224-32-2172</a>
+  <p class="h">受付 9:00〜17:00／土日祝休</p>
+  <div class="row">
+    <a class="b1" href="#cta">フォームで見積りを頼む</a>
+    <a class="b2" href="#cta">写真を送って相談する</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="in">
+    <p class="fl">有限会社 京苑</p>
+    〒989-0701 宮城県刈田郡蔵王町宮字古川107-1<br>
+    TEL 0224-32-2172 ／ FAX 0224-32-2174<br>
+    営業時間 9:00〜17:00（土日祝休）<br>
+    宮城県知事認可（般-33）第8043号（造園）
+    <div class="disc">
+      <b>【このページについて】</b><br>
+      本ページは <b>かわたれ studio</b> が営業提案のために制作したデザインサンプルであり、有限会社 京苑様の公式サイトではありません。お申し込み・お問い合わせはできません。
+      写真・ロゴは一切使用しておらず、掲載している文章・会社情報は2026年7月時点で公開されている情報をもとにしています。
+      内容の正確性について同社様の確認を受けたものではありません。掲載の停止をご希望の場合は、下記までご連絡いただければ直ちに削除いたします。<br>
+      制作・お問い合わせ： かわたれ studio ／ kawatare.studio@gmail.com ／ <a href="https://kawatare.studio/">kawatare.studio</a>
+    </div>
+  </div>
+</footer>
+
+<nav class="mbar">
+  <a href="#flow">流れ<span>FLOW</span></a>
+  <a href="#cta">電話<span>0224-32-2172</span></a>
+  <a class="pri" href="#cta">無料見積り<span>FREE</span></a>
+</nav>
+
+</body>
+</html>
