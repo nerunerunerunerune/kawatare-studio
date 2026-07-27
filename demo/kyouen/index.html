@@ -2,178 +2,326 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow, noarchive">
-<title>庭木の剪定・伐採 ｜ 有限会社 京苑（デザイン提案サンプル・かわたれ studio）</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>京苑の剪定｜宮城県蔵王町の造園・庭木の手入れ（デザイン提案サンプル）</title>
+<meta name="description" content="かわたれ studio によるデザイン提案用サンプルページです。">
 <style>
 :root{
-  --ink:#20261f; --sub:#5f6b5c; --paper:#f6f7f2; --card:#ffffff;
-  --green:#2f5233; --green-d:#1f3823; --leaf:#6b8f4e; --bark:#8a6a45; --line:#dfe3d6;
+  --ink:#1f2a20; --sub:#5f6b5c; --paper:#f7f6f0; --paper2:#eef0e6; --card:#fff;
+  --green:#2f5233; --green-d:#1f3823; --green-x:#16261a; --leaf:#6b8f4e; --lime:#cfe08f;
+  --clay:#b5793a; --line:#dcdccd;
   --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","MS PMincho","Noto Serif JP",serif;
   --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--gothic);color:var(--ink);background:var(--paper);
-  line-height:1.9;-webkit-text-size-adjust:100%;font-size:16px}
-a{color:inherit}
-.wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--gothic);background:var(--paper);color:var(--ink);
+  line-height:1.95;font-size:15px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
 
-.demobar{background:#20261f;color:#eef1e8;font-size:12.5px;line-height:1.75;
-  padding:10px 16px;text-align:center}
-.demobar strong{color:#cfe08f;display:inline-block;margin-right:6px}
-.demobar a{color:#cfe08f;text-decoration:underline}
+/* ===== 出現アニメーション ===== */
+[data-rv]{opacity:0;transform:translateY(30px);
+  transition:opacity 1s var(--ease) var(--d,0ms),transform 1s var(--ease) var(--d,0ms)}
+[data-rv].in{opacity:1;transform:none}
+[data-rv="left"]{transform:translateX(-34px)}
+[data-rv="right"]{transform:translateX(34px)}
+[data-rv="scale"]{transform:scale(.94)}
+[data-rv="mask"]{opacity:1;clip-path:inset(0 0 100% 0);transform:none;
+  transition:clip-path 1.15s var(--ease) var(--d,0ms)}
+[data-rv="mask"].in{clip-path:inset(0 0 0 0)}
 
-/* ヘッダー */
-.head{position:sticky;top:0;z-index:50;background:rgba(246,247,242,.95);
-  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.head .in{display:flex;align-items:center;justify-content:space-between;
-  height:62px;max-width:1020px;margin:0 auto;padding:0 20px}
-.logo{font-family:var(--mincho);font-size:19px;letter-spacing:.14em;line-height:1.25}
-.logo small{display:block;font-family:var(--gothic);font-size:10px;
-  letter-spacing:.22em;color:var(--sub);margin-top:3px}
-.tel{display:none;text-align:right;line-height:1.3}
-.tel .n{font-family:var(--mincho);font-size:22px;letter-spacing:.03em;color:var(--green)}
-.tel .s{font-size:10.5px;color:var(--sub);letter-spacing:.06em}
-@media(min-width:820px){.tel{display:block}}
+/* ===== イントロ ===== */
+#intro{position:fixed;inset:0;z-index:999;pointer-events:none}
+#intro .pn{position:absolute;left:0;right:0;height:50.5%;background:var(--green-x);
+  transition:transform 1.05s var(--ease) .6s}
+#intro .pn.t{top:0}
+#intro .pn.b{bottom:0}
+#intro .mk{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+  text-align:center;transition:opacity .45s ease .3s}
+#intro .nm{font-family:var(--mincho);font-size:25px;letter-spacing:.4em;color:#e6ecd8;
+  padding-left:.4em;opacity:0;animation:mkIn 1s var(--ease) .15s forwards}
+#intro .ln{display:block;width:0;height:1px;background:var(--lime);margin:15px auto 0;
+  animation:mkLn .9s var(--ease) .55s forwards}
+@keyframes mkIn{to{opacity:1}}
+@keyframes mkLn{to{width:118px}}
+body.loaded #intro .pn.t{transform:translateY(-101%)}
+body.loaded #intro .pn.b{transform:translateY(101%)}
+body.loaded #intro .mk{opacity:0}
+body.done #intro{display:none}
 
-/* ヒーロー */
-.hero{position:relative;background:var(--green-d);color:#f0f4e9;overflow:hidden}
-.hero .bg{position:absolute;inset:0;opacity:.18}
-.hero .in{position:relative;max-width:1020px;margin:0 auto;padding:62px 20px 70px}
-.hero .eyebrow{font-size:12px;letter-spacing:.24em;color:#cfe08f;margin-bottom:18px}
-.hero h1{font-family:var(--mincho);font-weight:400;font-size:28px;
-  letter-spacing:.06em;line-height:1.6;margin-bottom:20px}
-.hero h1 b{color:#cfe08f;font-weight:400}
-.hero p.lead{font-size:14.5px;line-height:2.1;color:#d3dcc7;max-width:640px}
-.hero .badges{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
-.hero .badges span{font-size:11.5px;letter-spacing:.06em;border:1px solid rgba(207,224,143,.45);
-  color:#cfe08f;padding:5px 12px;border-radius:2px}
-.hero .btns{margin-top:32px;display:flex;flex-direction:column;gap:12px}
-.hero .btns a{display:block;text-decoration:none;text-align:center;
-  padding:17px;font-size:15.5px;letter-spacing:.06em;border-radius:3px}
-.b1{background:#cfe08f;color:#1f3823;font-weight:700}
-.b2{border:1px solid rgba(240,244,233,.45);color:#f0f4e9}
-@media(min-width:760px){
-  .hero h1{font-size:39px}.hero .in{padding:92px 20px 100px}
-  .hero .btns{flex-direction:row}.hero .btns a{padding:17px 42px}
-}
+/* ===== 進捗 ===== */
+.prog{position:fixed;top:0;left:0;height:2px;width:100%;z-index:130;
+  background:linear-gradient(90deg,var(--green),var(--lime));
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .1s linear}
 
-.sec{padding:62px 0}
-.sec.alt{background:var(--card)}
-.sec.dark{background:var(--green-d);color:#eef2e6}
-.shead{text-align:center;margin-bottom:42px}
-.shead .en{font-size:10.5px;letter-spacing:.34em;color:var(--leaf);margin-bottom:11px}
-.sec.dark .shead .en{color:#cfe08f}
-.shead h2{font-family:var(--mincho);font-weight:400;font-size:24px;letter-spacing:.1em;line-height:1.6}
-.shead p{font-size:13.5px;color:var(--sub);margin-top:14px;line-height:2}
-.sec.dark .shead p{color:#c3cdb5}
-@media(min-width:760px){.sec{padding:84px 0}.shead h2{font-size:30px}}
+/* ===== デモ帯 ===== */
+.demobar{background:var(--green-x);color:#d3dcc6;font-size:11px;line-height:1.75;
+  padding:9px 14px;text-align:center;position:relative;z-index:110}
+.demobar strong{color:var(--lime);margin-right:6px}
+.demobar a{color:var(--lime);border-bottom:1px solid rgba(207,224,143,.4)}
 
-/* 悩み */
-.pain{display:grid;gap:16px}
+/* ===== ヘッダー ===== */
+.head{position:sticky;top:0;z-index:100;background:rgba(247,246,240,.93);
+  backdrop-filter:blur(12px);border-bottom:1px solid transparent;
+  transition:border-color .4s ease,box-shadow .4s ease}
+.head.sm{border-bottom-color:var(--line);box-shadow:0 6px 26px rgba(31,42,32,.08)}
+.head .in{max-width:1080px;margin:0 auto;padding:0 18px;height:74px;display:flex;
+  align-items:center;justify-content:space-between;gap:14px;
+  transition:height .4s var(--ease)}
+.head.sm .in{height:60px}
+.logo{font-family:var(--mincho);font-size:19px;letter-spacing:.14em;color:var(--green);
+  transition:font-size .4s var(--ease)}
+.head.sm .logo{font-size:17px}
+.logo small{display:block;font-family:var(--gothic);font-size:9.5px;letter-spacing:.1em;
+  color:var(--sub);margin-top:3px;transition:opacity .3s ease}
+.head.sm .logo small{opacity:0}
+.tel{display:none;text-align:right;flex-shrink:0}
+.tel .n{font-family:var(--mincho);font-size:19px;color:var(--green);letter-spacing:.02em;
+  white-space:nowrap;transition:font-size .4s var(--ease)}
+.head.sm .tel .n{font-size:17px}
+.tel .s{font-size:9.5px;color:var(--sub);letter-spacing:.04em;white-space:nowrap}
+@media(min-width:560px){.tel{display:block}}
+
+/* ===== ヒーロー ===== */
+.hero{position:relative;overflow:hidden;background:var(--green-x);color:#eef2e4;
+  padding:88px 20px 96px;min-height:74vh;display:flex;align-items:center}
+.hero .bgw{position:absolute;inset:0;will-change:transform}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero .veil{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(22,38,26,.86) 0%,rgba(22,38,26,.62) 45%,rgba(22,38,26,.92) 100%)}
+.hero .in{position:relative;z-index:4;max-width:840px;margin:0 auto;width:100%}
+.eyebrow{font-size:10.5px;letter-spacing:.3em;color:var(--lime);margin-bottom:22px;
+  opacity:0;animation:fadeUp 1s var(--ease) 1.4s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero h1{font-family:var(--mincho);font-weight:400;font-size:clamp(26px,6.8vw,44px);
+  line-height:1.62;letter-spacing:.05em;margin-bottom:26px}
+.hero h1 b{font-weight:400;color:var(--lime)}
+.ln2{display:block;overflow:hidden}
+.ln2 i{display:block;font-style:normal;transform:translateY(105%);
+  animation:lnUp 1.2s var(--ease) forwards}
+.ln2:nth-child(1) i{animation-delay:1.55s}
+.ln2:nth-child(2) i{animation-delay:1.68s}
+.ln2:nth-child(3) i{animation-delay:1.81s}
+@keyframes lnUp{to{transform:none}}
+.lead{font-size:13.5px;line-height:2.15;color:#c8d2bd;max-width:620px;
+  opacity:0;animation:fadeUp 1s var(--ease) 2.2s forwards}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;
+  opacity:0;animation:fadeUp 1s var(--ease) 2.4s forwards}
+.badges span{font-size:11px;letter-spacing:.05em;border:1px solid rgba(207,224,143,.42);
+  color:var(--lime);padding:5px 12px;border-radius:20px;
+  transition:background .35s ease}
+.badges span:hover{background:rgba(207,224,143,.12)}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;
+  opacity:0;animation:fadeUp 1s var(--ease) 2.6s forwards}
+.btns a,.row a{display:inline-block;padding:15px 30px;font-size:13.5px;letter-spacing:.08em;
+  border-radius:2px;position:relative;overflow:hidden;z-index:1;transition:color .4s ease}
+.btns a::before,.row a::before{content:"";position:absolute;inset:0;z-index:-1;
+  transform:scaleY(0);transform-origin:50% 100%;transition:transform .45s var(--ease)}
+.btns a:hover::before,.row a:hover::before{transform:scaleY(1)}
+.b1{background:var(--clay);color:#fff}
+.b1::before{background:#9c6530}
+.b2{border:1px solid rgba(238,242,228,.5);color:#eef2e4}
+.b2::before{background:rgba(238,242,228,.16)}
+
+/* ===== セクション ===== */
+.sec{padding:82px 20px}
+.sec.alt{background:var(--paper2)}
+.sec.dark{background:var(--green-d);color:#e6ecd8}
+.wrap{max-width:1080px;margin:0 auto}
+.shead{text-align:center;margin-bottom:48px;opacity:0;transform:translateY(26px);
+  transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.shead.in{opacity:1;transform:none}
+.shead .en{font-size:10px;letter-spacing:.34em;color:var(--leaf);margin-bottom:13px}
+.sec.dark .shead .en{color:var(--lime)}
+.shead h2{font-family:var(--mincho);font-weight:400;font-size:clamp(22px,5.4vw,32px);
+  line-height:1.6;letter-spacing:.09em;display:inline-block;position:relative}
+.shead h2::after{content:"";position:absolute;left:50%;bottom:-12px;width:0;height:1px;
+  background:var(--leaf);transform:translateX(-50%);transition:width .95s var(--ease) .3s}
+.sec.dark .shead h2::after{background:var(--lime)}
+.shead.in h2::after{width:48px}
+.shead p{font-size:13.5px;color:var(--sub);margin-top:24px;line-height:2.05}
+.sec.dark .shead p{color:#aebba0}
+
+/* ===== お困りごと ===== */
+.pain{display:grid;gap:20px;grid-template-columns:1fr}
 @media(min-width:760px){.pain{grid-template-columns:repeat(3,1fr)}}
-.pain .p{background:var(--card);border:1px solid var(--line);padding:24px 22px;border-radius:3px}
-.sec.alt .pain .p{background:var(--paper)}
-.pain .p .no{font-family:var(--mincho);font-size:12px;letter-spacing:.2em;color:var(--leaf);margin-bottom:10px}
-.pain .p h3{font-size:16px;font-weight:700;line-height:1.7;margin-bottom:10px}
-.pain .p p{font-size:13px;color:var(--sub);line-height:2}
+.p{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:28px 24px 30px;position:relative;overflow:hidden;
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+.p::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;
+  background:var(--leaf);transform:scaleY(0);transform-origin:50% 0;
+  transition:transform .6s var(--ease)}
+.p:hover{transform:translateY(-7px);box-shadow:0 18px 42px rgba(31,42,32,.11)}
+.p:hover::before{transform:scaleY(1)}
+.p .no{font-size:10px;letter-spacing:.24em;color:var(--leaf);margin-bottom:14px}
+.p h3{font-family:var(--mincho);font-weight:400;font-size:18px;line-height:1.65;
+  letter-spacing:.04em;margin-bottom:14px}
+.p p{font-size:12.5px;color:var(--sub);line-height:2}
 
-/* 写真プレースホルダ */
-.ph{position:relative;background:linear-gradient(150deg,#e9ede0,#dbe2cd);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  aspect-ratio:4/3;overflow:hidden;border-radius:3px}
-.ph .kanji{font-family:var(--mincho);font-size:44px;color:rgba(47,82,51,.16);
-  letter-spacing:.12em;text-align:center;line-height:1.25;padding:0 10px}
-.ph .note{font-size:10.5px;color:#8e968a;letter-spacing:.05em;margin-top:9px;text-align:center;padding:0 12px}
-.ph.wide{aspect-ratio:16/9}
+/* ===== BEFORE / AFTER 比較スライダー ===== */
+.cmp{position:relative;max-width:820px;margin:0 auto;border-radius:3px;overflow:hidden;
+  border:1px solid rgba(207,224,143,.28);aspect-ratio:4/3;
+  cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+@media(min-width:700px){.cmp{aspect-ratio:16/10}}
+.cmp .lay{position:absolute;inset:0}
+.cmp .lay svg{width:100%;height:100%;display:block}
+.cmp .bfr{clip-path:inset(0 calc(100% - var(--x,50%)) 0 0)}
+.cmp .hd{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;
+  background:var(--lime);z-index:5;transform:translateX(-1px);pointer-events:none}
+.cmp .hd::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;
+  margin:-22px 0 0 -22px;border-radius:50%;background:var(--lime);
+  box-shadow:0 4px 18px rgba(0,0,0,.35)}
+.cmp .hd .ar{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  z-index:2;font-size:13px;color:var(--green-d);letter-spacing:-1px}
+.cmp .tag{position:absolute;bottom:12px;z-index:6;font-size:9.5px;letter-spacing:.12em;
+  padding:4px 10px;border-radius:2px;background:rgba(22,38,26,.74);color:#e6ecd8}
+.cmp .tag.l{left:10px}
+.cmp .tag.r{right:10px}
+.cmp .note{position:absolute;left:0;right:0;top:12px;z-index:6;text-align:center;
+  font-size:10.5px;color:#e6ecd8;text-shadow:0 1px 5px rgba(0,0,0,.75)}
+.cmpcap{max-width:820px;margin:20px auto 0;font-size:11.5px;line-height:1.9;
+  color:#a3b096;text-align:center}
 
-/* ビフォーアフター */
-.ba{display:grid;gap:14px;max-width:760px;margin:0 auto}
-@media(min-width:640px){.ba{grid-template-columns:1fr 1fr;gap:18px}}
-.ba .card{background:var(--card);border:1px solid var(--line);padding:12px;border-radius:3px}
-.sec.dark .ba .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
-.ba .lbl{font-size:11.5px;letter-spacing:.18em;text-align:center;padding:8px 0 10px;color:var(--sub)}
-.sec.dark .ba .lbl{color:#c3cdb5}
-.ba .lbl b{color:var(--leaf)}
-.sec.dark .ba .lbl b{color:#cfe08f}
+/* ===== サービス ===== */
+.svc{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:620px){.svc{grid-template-columns:1fr 1fr}}
+@media(min-width:940px){.svc{grid-template-columns:repeat(3,1fr)}}
+.s{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .5s ease}
+.s:hover{transform:translateY(-7px);box-shadow:0 18px 42px rgba(31,42,32,.11);
+  border-color:#c9d3b8}
+.s .body{padding:28px 24px 30px}
+.ic{width:44px;height:44px;margin-bottom:16px}
+.ic path,.ic circle,.ic rect,.ic ellipse{
+  stroke-dasharray:var(--L,180);stroke-dashoffset:var(--L,180);
+  transition:stroke-dashoffset 1.25s var(--ease) var(--sd,0ms)}
+.s.in .ic path,.s.in .ic circle,.s.in .ic rect,.s.in .ic ellipse{stroke-dashoffset:0}
+.s h3{font-family:var(--mincho);font-weight:400;font-size:18px;letter-spacing:.06em;
+  margin-bottom:12px}
+.s p{font-size:12.5px;color:var(--sub);line-height:2}
 
-/* サービス */
-.svc{display:grid;gap:20px}
-@media(min-width:760px){.svc{grid-template-columns:repeat(3,1fr)}}
-.svc .s{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden}
-.sec.alt .svc .s{background:var(--paper)}
-.svc .s .body{padding:20px}
-.svc .s .ic{width:40px;height:40px;margin-bottom:12px}
-.svc .s h3{font-family:var(--mincho);font-size:19px;letter-spacing:.08em;font-weight:400;margin-bottom:9px}
-.svc .s p{font-size:13px;color:var(--sub);line-height:2}
+/* ===== 流れ ===== */
+.flow{max-width:800px;margin:0 auto;position:relative}
+.flow::before{content:"";position:absolute;left:22px;top:16px;bottom:16px;width:1px;
+  background:var(--line)}
+.flow .fill{position:absolute;left:22px;top:16px;width:1px;background:var(--leaf);
+  height:0;transition:height .2s linear;z-index:1}
+.f{display:grid;grid-template-columns:46px 1fr;gap:18px;padding:16px 0 26px;
+  position:relative;z-index:2}
+.f .n{width:46px;height:46px;border-radius:50%;background:var(--green);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:var(--mincho);
+  font-size:19px;flex-shrink:0;
+  transition:transform .55s var(--ease),background .4s ease}
+.f.in .n{animation:pop .7s var(--ease)}
+@keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+.f h3{font-family:var(--mincho);font-weight:400;font-size:17px;letter-spacing:.05em;
+  margin-bottom:9px;padding-top:9px}
+.f p{font-size:12.5px;color:var(--sub);line-height:2}
 
-/* 流れ */
-.flow{max-width:720px;margin:0 auto;counter-reset:st}
-.flow .f{display:flex;gap:18px;padding-bottom:28px;position:relative}
-.flow .f:not(:last-child)::before{content:"";position:absolute;left:19px;top:44px;
-  bottom:0;width:1px;background:var(--line)}
-.flow .n{flex:none;width:38px;height:38px;border-radius:50%;background:var(--green);
-  color:#fff;display:flex;align-items:center;justify-content:center;
-  font-family:var(--mincho);font-size:16px;position:relative;z-index:1}
-.flow h3{font-size:16px;font-weight:700;margin-bottom:6px;padding-top:6px}
-.flow p{font-size:13.5px;color:var(--sub);line-height:2}
+/* ===== 料金 ===== */
+.pricebox{max-width:800px;margin:0 auto;background:#fff;border:1px solid var(--line);
+  border-radius:3px;padding:32px 26px 34px}
+.pricebox h3{font-family:var(--mincho);font-weight:400;font-size:19px;letter-spacing:.05em;
+  margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.pricebox p{font-size:13px;color:var(--sub);line-height:2.15;margin-bottom:16px}
+.pricebox ul{list-style:none;margin:0 0 18px;font-size:13px;color:var(--ink)}
+.pricebox li{padding-left:22px;position:relative;margin-bottom:9px;line-height:1.9}
+.pricebox li::before{content:"✓";position:absolute;left:0;color:var(--leaf)}
+.pricenote{font-size:11px!important;color:#93a086!important;background:var(--paper2);
+  border-left:2px solid var(--leaf);padding:12px 14px;margin-bottom:0!important;
+  line-height:1.85!important}
 
-/* 料金の考え方 */
-.pricebox{max-width:720px;margin:0 auto;background:var(--card);
-  border:1px solid var(--line);border-radius:3px;padding:28px 24px}
-.sec.alt .pricebox{background:var(--paper)}
-.pricebox h3{font-family:var(--mincho);font-size:19px;letter-spacing:.08em;
-  font-weight:400;margin-bottom:14px}
-.pricebox p{font-size:13.5px;color:var(--sub);line-height:2.1;margin-bottom:14px}
-.pricebox ul{list-style:none;font-size:13.5px;line-height:2.2}
-.pricebox li{padding-left:20px;position:relative;color:var(--ink)}
-.pricebox li::before{content:"";position:absolute;left:4px;top:14px;
-  width:6px;height:6px;background:var(--leaf);border-radius:50%}
-.pricenote{margin-top:16px;font-size:12.5px;color:var(--sub);
-  background:rgba(107,143,78,.09);padding:12px 14px;line-height:1.95;border-radius:3px}
-
-/* 会社情報 */
-.info{border-top:1px solid var(--line);font-size:13.5px;max-width:760px;margin:0 auto}
-.info div{display:flex;flex-direction:column;gap:2px;padding:14px 4px;border-bottom:1px solid var(--line)}
-.info dt{font-size:11.5px;letter-spacing:.14em;color:var(--leaf)}
+/* ===== 会社概要 ===== */
+.info{max-width:760px;margin:0 auto;border-top:1px solid var(--line)}
+.info>div{display:grid;grid-template-columns:1fr;gap:2px;padding:15px 4px;
+  border-bottom:1px solid var(--line);font-size:13.5px}
+@media(min-width:620px){.info>div{grid-template-columns:150px 1fr;gap:16px;align-items:baseline}}
+.info dt{color:var(--leaf);font-size:11.5px;letter-spacing:.1em}
 .info dd{line-height:1.95}
-@media(min-width:640px){.info div{flex-direction:row;gap:0;align-items:baseline}
-  .info dt{width:180px;flex:none;padding-top:2px}}
 
-/* CTA */
-.cta{background:var(--green);color:#f1f5ea;text-align:center;padding:66px 20px}
-.cta h2{font-family:var(--mincho);font-weight:400;font-size:24px;
-  letter-spacing:.1em;line-height:1.7;margin-bottom:14px}
-.cta p{font-size:14px;color:#cddac0;line-height:2.05;margin-bottom:28px}
-.cta .tel2{font-family:var(--mincho);font-size:33px;letter-spacing:.03em;
-  color:#fff;display:block;text-decoration:none;margin-bottom:6px}
-.cta .h{font-size:12.5px;color:#cddac0;margin-bottom:26px}
-.cta .row{display:flex;flex-direction:column;gap:12px;align-items:center}
-.cta .row a{display:block;width:100%;max-width:320px;padding:17px;
-  text-decoration:none;font-size:15px;letter-spacing:.06em;border-radius:3px}
-@media(min-width:700px){.cta h2{font-size:30px}.cta .row{flex-direction:row;justify-content:center}
-  .cta .row a{width:auto;padding:17px 44px}}
+/* ===== CTA ===== */
+.cta{background:var(--green);color:#eef2e4;text-align:center;padding:86px 20px;
+  position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;left:50%;top:50%;width:940px;height:940px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(207,224,143,.16) 0%,transparent 62%);
+  animation:breathe 12s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.8}
+  50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}}
+.cta>*{position:relative;z-index:2}
+.cta h2{font-family:var(--mincho);font-weight:400;font-size:clamp(22px,5.4vw,32px);
+  letter-spacing:.09em;margin-bottom:20px}
+.cta p{font-size:13.5px;color:#c8d2bd;line-height:2.1;margin-bottom:26px}
+.tel2{display:inline-block;font-family:var(--mincho);font-size:clamp(28px,8vw,42px);
+  color:var(--lime);letter-spacing:.03em;
+  transition:transform .4s var(--ease)}
+.tel2:hover{transform:scale(1.04)}
+.cta .h{font-size:11.5px;color:#a9b79b;margin:10px 0 30px}
+.row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
-/* フッター */
-.foot{background:#191e18;color:#9aa393;padding:48px 20px 92px;font-size:12.5px;line-height:2}
-.foot .in{max-width:1020px;margin:0 auto}
-.foot .fl{font-family:var(--mincho);font-size:19px;letter-spacing:.14em;color:#dde5d3;margin-bottom:14px}
-.disc{border-top:1px solid #2c322b;margin-top:26px;padding-top:20px;
-  font-size:11.5px;color:#78806f;line-height:1.95}
-.disc b{color:#9aa393}
+/* ===== 追補 ===== */
+.annex{background:var(--paper2);padding:62px 20px}
+.annex .cols2{display:grid;gap:16px;grid-template-columns:1fr;max-width:900px;margin:0 auto}
+@media(min-width:720px){.annex .cols2{grid-template-columns:1fr 1fr}}
+.col{background:#fff;border:1px solid var(--line);border-radius:3px;padding:26px 22px}
+.col h3{font-family:var(--mincho);font-weight:400;font-size:16px;margin-bottom:15px;
+  padding-bottom:12px;border-bottom:1px solid var(--line)}
+.col ul{list-style:none;font-size:12.5px;line-height:1.95;color:var(--sub)}
+.col li{padding-left:17px;position:relative;margin-bottom:9px}
+.col li::before{content:"—";position:absolute;left:0;color:var(--leaf)}
 
-.mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;
-  background:var(--green-d);border-top:1px solid rgba(207,224,143,.3)}
-.mbar a{flex:1;text-align:center;padding:13px 4px;text-decoration:none;
-  color:#eef2e6;font-size:12.5px;letter-spacing:.04em;line-height:1.5}
-.mbar a+a{border-left:1px solid rgba(255,255,255,.12)}
-.mbar a.pri{background:#cfe08f;color:#1f3823;font-weight:700}
-.mbar span{display:block;font-size:9.5px;letter-spacing:.1em;opacity:.7}
-@media(min-width:820px){.mbar{display:none}.foot{padding-bottom:48px}}
+/* ===== フッター ===== */
+.foot{background:var(--green-x);color:#a3b096;padding:54px 20px 94px;font-size:12.5px;
+  line-height:2}
+.foot .in{max-width:1080px;margin:0 auto}
+.fl{font-family:var(--mincho);font-size:19px;letter-spacing:.2em;color:#e6ecd8;
+  margin-bottom:13px}
+.disc{margin-top:32px;padding-top:24px;border-top:1px solid #2c3d2f;font-size:11px;
+  line-height:1.95;color:#7b8a72}
+.disc a{color:var(--lime)}
+.disc b{color:#bcc7ae}
+
+/* ===== 固定バー ===== */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:98;display:flex;
+  background:rgba(22,38,26,.96);backdrop-filter:blur(8px);
+  box-shadow:0 -4px 20px rgba(0,0,0,.22);
+  transform:translateY(105%);transition:transform .55s var(--ease)}
+.mbar.on{transform:none}
+.mbar a{flex:1;text-align:center;padding:12px 4px;color:#dfe6d3;font-size:12.5px;
+  line-height:1.5}
+.mbar a span{display:block;font-size:8.5px;letter-spacing:.14em;color:#8a9880;margin-top:2px}
+.mbar .pri{background:var(--clay);color:#fff}
+.mbar .pri span{color:rgba(255,255,255,.62)}
+@media(min-width:900px){.mbar{display:none}.foot{padding-bottom:54px}}
+.totop{position:fixed;right:16px;bottom:78px;z-index:97;width:42px;height:42px;
+  border-radius:50%;background:rgba(22,38,26,.82);color:#e6ecd8;display:flex;
+  align-items:center;justify-content:center;font-size:15px;
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .45s ease,transform .45s var(--ease),background .3s ease}
+.totop.on{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{background:var(--green)}
+@media(min-width:900px){.totop{bottom:24px}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  [data-rv]{opacity:1!important;transform:none!important;clip-path:none!important}
+  .ic path,.ic circle,.ic rect,.ic ellipse{stroke-dashoffset:0!important}
+}
 </style>
 </head>
 <body>
+
+<div id="intro">
+  <div class="pn t"></div>
+  <div class="pn b"></div>
+  <div class="mk"><span class="nm">京苑</span><span class="ln"></span></div>
+</div>
+
+<div class="prog" id="prog"></div>
 
 <div class="demobar">
   <strong>デザイン提案サンプル</strong>
@@ -181,7 +329,7 @@ a{color:inherit}
   公式サイトは <a href="https://kyouen.com/">kyouen.com</a> です。お申し込みはできません。
 </div>
 
-<header class="head">
+<header class="head" id="head">
   <div class="in">
     <div class="logo">京苑の剪定<small>有限会社 京苑（宮城県蔵王町）</small></div>
     <div class="tel">
@@ -192,6 +340,7 @@ a{color:inherit}
 </header>
 
 <section class="hero">
+  <div class="bgw" data-px="-52">
   <svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <g stroke="#cfe08f" fill="none" stroke-width=".8" stroke-linecap="round">
       <path d="M40 200 L40 120 M40 150 L14 122 M40 138 L68 108 M40 168 L20 148 M40 160 L64 138"/>
@@ -204,9 +353,15 @@ a{color:inherit}
       <ellipse cx="268" cy="116" rx="27" ry="15"/><ellipse cx="360" cy="92" rx="34" ry="19"/>
     </g>
   </svg>
+  </div>
+  <div class="veil"></div>
   <div class="in">
     <p class="eyebrow">宮城県 蔵王町・白石市・仙南地域</p>
-    <h1>伸びすぎた庭木、<br>そのままにしていませんか。<br><b>創業50年の庭師が伺います。</b></h1>
+    <h1>
+      <span class="ln2"><i>伸びすぎた庭木、</i></span>
+      <span class="ln2"><i>そのままにしていませんか。</i></span>
+      <span class="ln2"><i><b>創業50年の庭師が伺います。</b></i></span>
+    </h1>
     <p class="lead">松の手入れ、生垣の刈り込み、大きくなりすぎた木の伐採。
       1971年の創業から半世紀、仙南のお庭を手がけてきた造園会社が、一級造園技能士の手で整えます。
       お見積りは無料です。まずは一度、庭を見せてください。</p>
@@ -227,18 +382,18 @@ a{color:inherit}
       <p class="en">YOUR GARDEN</p>
       <h2>こんなお困りごと、<br>ありませんか。</h2>
     </div>
-    <div class="pain">
-      <div class="p">
+    <div class="pain" data-stagger>
+      <div class="p" data-rv>
         <p class="no">CASE 01</p>
         <h3>木が高くなりすぎて、<br>自分では手が届かない</h3>
         <p>脚立で届かない高さの木は、無理をすると危険です。松やケヤキなど、大きく育った木ほど専門の道具と経験が要ります。</p>
       </div>
-      <div class="p">
+      <div class="p" data-rv>
         <p class="no">CASE 02</p>
         <h3>隣の家に枝が<br>かかってしまっている</h3>
         <p>ご近所への越境は、放っておくほど言いづらくなります。落ち葉や日当たりのご相談も含めて対応します。</p>
       </div>
-      <div class="p">
+      <div class="p" data-rv>
         <p class="no">CASE 03</p>
         <h3>親から引き継いだ庭を<br>どうしたらいいか分からない</h3>
         <p>手入れをやめた庭をどう戻すか。全部切るのか、残すのか。現地を見たうえで、選択肢をご説明します。</p>
@@ -252,18 +407,78 @@ a{color:inherit}
     <div class="shead">
       <p class="en">BEFORE / AFTER</p>
       <h2>手入れの前と、あと。</h2>
-      <p>実際に手がけたお庭の写真がここに入ります。<br>同じ庭の「前」と「後」が並ぶだけで、伝わり方が変わります。</p>
+      <p>中央のつまみを左右に動かすと、同じ庭の「前」と「後」が入れ替わります。</p>
     </div>
-    <div class="ba">
-      <div class="card">
-        <div class="ph"><span class="kanji">施工前</span><span class="note">お手持ちの施工前写真が入ります</span></div>
-        <p class="lbl"><b>BEFORE</b>　手入れ前</p>
+
+    <div class="cmp" id="cmp" data-rv="scale">
+      <div class="lay aft">
+        <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="800" height="500" fill="#6f8a5c"/>
+          <rect y="330" width="800" height="170" fill="#7d9765"/>
+          <g stroke="#3d4f34" stroke-width="7" stroke-linecap="round" fill="none">
+            <path d="M160 380 L160 250"/><path d="M400 380 L400 205"/><path d="M640 380 L640 265"/>
+            <path d="M160 300 L120 262 M160 288 L204 252"/>
+            <path d="M400 262 L352 222 M400 248 L450 210"/>
+            <path d="M640 320 L604 288 M640 306 L678 276"/>
+          </g>
+          <g fill="#9dbb78">
+            <ellipse cx="160" cy="232" rx="74" ry="42"/>
+            <ellipse cx="400" cy="188" rx="96" ry="54"/>
+            <ellipse cx="640" cy="246" rx="66" ry="38"/>
+          </g>
+          <g fill="#8aa869">
+            <ellipse cx="160" cy="222" rx="50" ry="26"/>
+            <ellipse cx="400" cy="176" rx="64" ry="34"/>
+            <ellipse cx="640" cy="238" rx="44" ry="24"/>
+          </g>
+          <rect y="376" width="800" height="9" fill="#5f7a4c"/>
+          <g fill="#8fa97a" opacity=".55">
+            <rect x="60" y="400" width="680" height="4" rx="2"/>
+            <rect x="60" y="424" width="680" height="4" rx="2"/>
+            <rect x="60" y="448" width="680" height="4" rx="2"/>
+          </g>
+        </svg>
       </div>
-      <div class="card">
-        <div class="ph"><span class="kanji">施工後</span><span class="note">お手持ちの施工後写真が入ります</span></div>
-        <p class="lbl"><b>AFTER</b>　手入れ後</p>
+      <div class="lay bfr" id="bfr">
+        <svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="800" height="500" fill="#4e6242"/>
+          <rect y="330" width="800" height="170" fill="#56693f"/>
+          <g stroke="#2c3a25" stroke-width="7" stroke-linecap="round" fill="none">
+            <path d="M160 380 L160 210"/><path d="M400 380 L400 150"/><path d="M640 380 L640 225"/>
+            <path d="M160 286 L86 226 M160 268 L246 200 M160 320 L104 282 M160 244 L214 190"/>
+            <path d="M400 236 L306 160 M400 216 L500 142 M400 276 L330 226 M400 190 L470 128"/>
+            <path d="M640 300 L560 244 M640 280 L724 216 M640 330 L586 296 M640 258 L700 200"/>
+          </g>
+          <g fill="#6f8a4e" opacity=".95">
+            <ellipse cx="120" cy="196" rx="88" ry="66" transform="rotate(-12 120 196)"/>
+            <ellipse cx="210" cy="176" rx="72" ry="52" transform="rotate(9 210 176)"/>
+            <ellipse cx="368" cy="132" rx="104" ry="74" transform="rotate(-8 368 132)"/>
+            <ellipse cx="470" cy="150" rx="82" ry="60" transform="rotate(14 470 150)"/>
+            <ellipse cx="596" cy="214" rx="80" ry="58" transform="rotate(-10 596 214)"/>
+            <ellipse cx="694" cy="196" rx="70" ry="50" transform="rotate(11 694 196)"/>
+          </g>
+          <g fill="#5d7742" opacity=".9">
+            <ellipse cx="160" cy="150" rx="60" ry="40"/>
+            <ellipse cx="420" cy="98" rx="70" ry="46"/>
+            <ellipse cx="650" cy="168" rx="56" ry="38"/>
+          </g>
+          <g fill="#7d9455" opacity=".85">
+            <ellipse cx="90" cy="418" rx="46" ry="22"/><ellipse cx="230" cy="440" rx="58" ry="26"/>
+            <ellipse cx="392" cy="414" rx="50" ry="24"/><ellipse cx="540" cy="444" rx="62" ry="28"/>
+            <ellipse cx="700" cy="418" rx="52" ry="24"/>
+          </g>
+        </svg>
       </div>
+      <span class="tag l">BEFORE ／ 手入れ前</span>
+      <span class="tag r">AFTER ／ 手入れ後</span>
+      <span class="note">← つまみを動かしてください →</span>
+      <div class="hd" id="hd"><span class="ar">◀▶</span></div>
     </div>
+
+    <p class="cmpcap">
+      ※ ここに入っているのはイメージ図です。実際の制作では、御社が手がけたお庭の施工前・施工後の写真をそのまま差し替えて使えます。
+      同じ庭の前後が一枚の中で動くと、言葉で説明するより早く伝わります。
+    </p>
   </div>
 </section>
 
@@ -273,9 +488,9 @@ a{color:inherit}
       <p class="en">SERVICE</p>
       <h2>お受けしていること</h2>
     </div>
-    <div class="svc">
+    <div class="svc" data-stagger>
 
-      <div class="s">
+      <div class="s" data-rv>
         <div class="body">
           <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
             <path d="M12 34 L20 20 M28 34 L20 20 M20 20 L20 6"/>
@@ -287,7 +502,7 @@ a{color:inherit}
         </div>
       </div>
 
-      <div class="s">
+      <div class="s" data-rv>
         <div class="body">
           <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
             <path d="M8 32 L32 32"/><path d="M20 32 L20 16"/>
@@ -298,7 +513,7 @@ a{color:inherit}
         </div>
       </div>
 
-      <div class="s">
+      <div class="s" data-rv>
         <div class="body">
           <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
             <path d="M20 34 L20 22"/><path d="M20 22 C12 22 9 16 9 11 C16 11 20 15 20 22"/>
@@ -309,7 +524,7 @@ a{color:inherit}
         </div>
       </div>
 
-      <div class="s">
+      <div class="s" data-rv>
         <div class="body">
           <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
             <rect x="7" y="14" width="26" height="20"/><path d="M7 20 L33 20 M7 27 L33 27"/>
@@ -320,7 +535,7 @@ a{color:inherit}
         </div>
       </div>
 
-      <div class="s">
+      <div class="s" data-rv>
         <div class="body">
           <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
             <path d="M6 30 L34 30"/><path d="M9 30 L9 18 L20 12 L31 18 L31 30"/>
@@ -331,7 +546,7 @@ a{color:inherit}
         </div>
       </div>
 
-      <div class="s">
+      <div class="s" data-rv>
         <div class="body">
           <svg class="ic" viewBox="0 0 40 40" fill="none" stroke="#6b8f4e" stroke-width="1.6" stroke-linecap="round">
             <path d="M20 33 L20 9"/><path d="M14 13 L20 9 L26 13"/>
@@ -353,29 +568,30 @@ a{color:inherit}
       <h2>ご依頼の流れ</h2>
       <p>お見積りまでは無料です。金額を見てからお断りいただいて構いません。</p>
     </div>
-    <div class="flow">
-      <div class="f">
+    <div class="flow" id="flow-w">
+      <div class="fill" id="ffill"></div>
+      <div class="f" data-rv="left">
         <div class="n">1</div>
         <div>
           <h3>お電話・フォームでご連絡</h3>
           <p>「松を1本」でも「庭全体を見てほしい」でも構いません。ご住所と、気になっている場所をお聞かせください。</p>
         </div>
       </div>
-      <div class="f">
+      <div class="f" data-rv="left">
         <div class="n">2</div>
         <div>
           <h3>現地を拝見してお見積り</h3>
           <p>木の本数・高さ・作業のしやすさで金額が変わるため、実際にお庭を見せていただいてからお出しします。無料です。</p>
         </div>
       </div>
-      <div class="f">
+      <div class="f" data-rv="left">
         <div class="n">3</div>
         <div>
           <h3>日程を決めて作業</h3>
           <p>ご都合のよい日をご相談のうえ決めます。作業当日のお立ち会いは、必須ではありません。</p>
         </div>
       </div>
-      <div class="f">
+      <div class="f" data-rv="left">
         <div class="n">4</div>
         <div>
           <h3>片付け・お引き渡し</h3>
@@ -392,7 +608,7 @@ a{color:inherit}
       <p class="en">ABOUT PRICE</p>
       <h2>料金の考え方</h2>
     </div>
-    <div class="pricebox">
+    <div class="pricebox" data-rv="mask">
       <h3>「一律いくら」とは言えない理由</h3>
       <p>庭木の手入れは、木の種類・高さ・本数・前回の手入れからの年数・重機やトラックを寄せられるかで、必要な人手と時間が大きく変わります。見ないまま金額をお伝えすると、後から増える形になってしまうため、当社では現地を拝見してからお出ししています。</p>
       <p>お見積りの際は、次の点をその場でご説明します。</p>
@@ -413,30 +629,53 @@ a{color:inherit}
       <p class="en">COMPANY</p>
       <h2>会社概要</h2>
     </div>
-    <dl class="info">
-      <div><dt>会社名</dt><dd>有限会社 京苑</dd></div>
-      <div><dt>代表取締役</dt><dd>鈴木 北斗</dd></div>
-      <div><dt>創業</dt><dd>1971年（造園設計施工会社として創業）</dd></div>
-      <div><dt>所在地</dt><dd>〒989-0701 宮城県刈田郡蔵王町宮字古川107-1</dd></div>
-      <div><dt>電話／FAX</dt><dd>0224-32-2172 ／ 0224-32-2174</dd></div>
-      <div><dt>事業内容</dt><dd>造園設計施工管理／造園資材道具販売／造園添景物製造販売</dd></div>
-      <div><dt>許可・資格</dt><dd>宮城県知事認可（般-33）第8043号（造園）／一級造園技能士</dd></div>
-      <div><dt>営業時間</dt><dd>9:00〜17:00（土日祝休）</dd></div>
-      <div><dt>対応エリア</dt><dd>蔵王町・白石市を中心とした仙南地域</dd></div>
+    <dl class="info" data-stagger>
+      <div data-rv><dt>会社名</dt><dd>有限会社 京苑</dd></div>
+      <div data-rv><dt>代表取締役</dt><dd>鈴木 北斗</dd></div>
+      <div data-rv><dt>創業</dt><dd>1971年（造園設計施工会社として創業）</dd></div>
+      <div data-rv><dt>所在地</dt><dd>〒989-0701 宮城県刈田郡蔵王町宮字古川107-1</dd></div>
+      <div data-rv><dt>電話／FAX</dt><dd>0224-32-2172 ／ 0224-32-2174</dd></div>
+      <div data-rv><dt>事業内容</dt><dd>造園設計施工管理／造園資材道具販売／造園添景物製造販売</dd></div>
+      <div data-rv><dt>許可・資格</dt><dd>宮城県知事認可（般-33）第8043号（造園）／一級造園技能士</dd></div>
+      <div data-rv><dt>営業時間</dt><dd>9:00〜17:00（土日祝休）</dd></div>
+      <div data-rv><dt>対応エリア</dt><dd>蔵王町・白石市を中心とした仙南地域</dd></div>
     </dl>
   </div>
 </section>
 
 <section class="cta" id="cta">
-  <h2>まずは、庭を見せてください。</h2>
-  <p>お見積りは無料です。<br>金額をご覧になってからお断りいただいて構いません。</p>
-  <a class="tel2" href="#cta">0224-32-2172</a>
-  <p class="h">受付 9:00〜17:00／土日祝休</p>
-  <div class="row">
+  <h2 data-rv>まずは、庭を見せてください。</h2>
+  <p data-rv>お見積りは無料です。<br>金額をご覧になってからお断りいただいて構いません。</p>
+  <a class="tel2" href="#cta" data-rv="scale">0224-32-2172</a>
+  <p class="h" data-rv>受付 9:00〜17:00／土日祝休</p>
+  <div class="row" data-rv="scale">
     <a class="b1" href="#cta">フォームで見積りを頼む</a>
     <a class="b2" href="#cta">写真を送って相談する</a>
   </div>
 </section>
+
+<div class="annex">
+  <div class="cols2">
+    <div class="col" data-rv="left">
+      <h3>今の公式サイトはそのままです</h3>
+      <ul>
+        <li>kyouen.com の内容・ドメインは変更しません</li>
+        <li>会社概要・実績のページもそのまま</li>
+        <li>これは「剪定を頼みたい人」だけに向けた1枚を足す提案です</li>
+        <li>既存サイトから1本リンクを張るだけで連携できます</li>
+      </ul>
+    </div>
+    <div class="col" data-rv="right">
+      <h3>この1枚で増やせること</h3>
+      <ul>
+        <li>「蔵王町 剪定」で探している人の受け皿</li>
+        <li>施工前・施工後の写真が主役になる見せ方</li>
+        <li>料金の考え方を先に伝えて、問い合わせのハードルを下げる</li>
+        <li>スマートフォンから、そのまま電話・フォームへ</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <footer class="foot">
   <div class="in">
@@ -455,11 +694,145 @@ a{color:inherit}
   </div>
 </footer>
 
-<nav class="mbar">
+<a class="totop" id="totop" href="#" aria-label="ページ上部へ">↑</a>
+
+<nav class="mbar" id="mbar">
   <a href="#flow">流れ<span>FLOW</span></a>
   <a href="#cta">電話<span>0224-32-2172</span></a>
   <a class="pri" href="#cta">無料見積り<span>FREE</span></a>
 </nav>
+
+<script>
+(function(){
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- イントロ --- */
+  function open(){
+    document.body.classList.add('loaded');
+    setTimeout(function(){document.body.classList.add('done')},2000);
+  }
+  if(RM){document.body.classList.add('loaded','done');}
+  else if(document.readyState==='complete'){setTimeout(open,650);}
+  else{window.addEventListener('load',function(){setTimeout(open,650)});}
+
+  /* --- SVGアイコンの線を実測して描画アニメーションに使う --- */
+  document.querySelectorAll('.ic').forEach(function(sv){
+    Array.prototype.forEach.call(sv.children,function(n,i){
+      if(typeof n.getTotalLength==='function'){
+        try{ n.style.setProperty('--L',Math.ceil(n.getTotalLength())); }catch(e){}
+      }else{
+        n.style.setProperty('--L',200);
+      }
+      n.style.setProperty('--sd',(i*120)+'ms');
+    });
+  });
+
+  /* --- 出現アニメーション --- */
+  document.querySelectorAll('[data-stagger]').forEach(function(p){
+    Array.prototype.forEach.call(p.children,function(c,i){
+      c.style.setProperty('--d',(i*85)+'ms');
+    });
+  });
+  var els=document.querySelectorAll('[data-rv],.shead,.s,.f');
+  if(RM){Array.prototype.forEach.call(els,function(e){e.classList.add('in')});}
+  else{
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    Array.prototype.forEach.call(els,function(e){io.observe(e)});
+  }
+
+  /* --- BEFORE / AFTER 比較スライダー --- */
+  var cmp=document.getElementById('cmp');
+  if(cmp){
+    var drag=false, hinted=false;
+    function setX(pct){
+      pct=Math.max(2,Math.min(98,pct));
+      cmp.style.setProperty('--x',pct+'%');
+    }
+    setX(50);
+    function fromEvent(e){
+      var r=cmp.getBoundingClientRect(),
+          cx=(e.touches&&e.touches[0]?e.touches[0].clientX:e.clientX);
+      setX(((cx-r.left)/r.width)*100);
+    }
+    cmp.addEventListener('mousedown',function(e){drag=true;fromEvent(e);e.preventDefault();});
+    window.addEventListener('mouseup',function(){drag=false;});
+    window.addEventListener('mousemove',function(e){if(drag)fromEvent(e);});
+    cmp.addEventListener('touchstart',function(e){drag=true;fromEvent(e);},{passive:true});
+    window.addEventListener('touchend',function(){drag=false;});
+    cmp.addEventListener('touchmove',function(e){if(drag)fromEvent(e);},{passive:true});
+
+    /* 画面に入ったら一度だけ自動で往復して、動かせることを示す */
+    if(!RM && 'IntersectionObserver' in window){
+      var io2=new IntersectionObserver(function(en){
+        en.forEach(function(e){
+          if(e.isIntersecting && !hinted){
+            hinted=true; io2.disconnect();
+            var t0=null, dur=2600;
+            function step(ts){
+              if(drag) return;
+              if(t0===null) t0=ts;
+              var t=(ts-t0)/dur;
+              if(t>=1){ setX(50); return; }
+              setX(50+Math.sin(t*Math.PI*2)*30);
+              requestAnimationFrame(step);
+            }
+            setTimeout(function(){requestAnimationFrame(step)},420);
+          }
+        });
+      },{threshold:.35});
+      io2.observe(cmp);
+    }
+  }
+
+  /* --- スクロール連動 --- */
+  var head=document.getElementById('head'),
+      prog=document.getElementById('prog'),
+      mbar=document.getElementById('mbar'),
+      totop=document.getElementById('totop'),
+      fw=document.getElementById('flow-w'),
+      ffill=document.getElementById('ffill'),
+      px=[].slice.call(document.querySelectorAll('[data-px]')),
+      tick=false;
+
+  function frame(){
+    var y=window.pageYOffset,
+        de=document.documentElement,
+        max=de.scrollHeight-window.innerHeight;
+    head.classList.toggle('sm',y>40);
+    prog.style.transform='scaleX('+(max>0?y/max:0)+')';
+    if(mbar) mbar.classList.toggle('on',y>420);
+    if(totop) totop.classList.toggle('on',y>900);
+    if(fw && ffill){
+      var r=fw.getBoundingClientRect(),
+          h=r.height-32,
+          p=(window.innerHeight*.72-r.top)/r.height;
+      ffill.style.height=Math.max(0,Math.min(1,p))*h+'px';
+    }
+    if(!RM){
+      px.forEach(function(el){
+        var r2=el.getBoundingClientRect(),
+            c=(r2.top+r2.height/2-window.innerHeight/2)/window.innerHeight;
+        el.style.transform='translate3d(0,'+(c*parseFloat(el.dataset.px)).toFixed(1)+'px,0)';
+      });
+    }
+    tick=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!tick){tick=true;requestAnimationFrame(frame);}
+  },{passive:true});
+  window.addEventListener('resize',frame,{passive:true});
+  frame();
+
+  if(totop){totop.addEventListener('click',function(e){
+    e.preventDefault();
+    window.scrollTo({top:0,behavior:RM?'auto':'smooth'});
+  });}
+})();
+</script>
 
 </body>
 </html>

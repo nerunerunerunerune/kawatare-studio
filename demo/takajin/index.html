@@ -2,151 +2,349 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow, noarchive">
-<title>【デザイン提案サンプル】菓子匠たかじん／高甚製菓株式会社</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>菓子匠たかじん｜宮城県白石市の和洋菓子（デザイン提案サンプル）</title>
+<meta name="description" content="かわたれ studio によるデザイン提案用サンプルページです。">
 <style>
 :root{
-  --ink:#2b2320; --sub:#6f645c; --paper:#fbf8f3; --card:#ffffff;
-  --accent:#9c2b35; --accent-d:#7d1f28; --gold:#b8985a; --line:#e6ded2;
-  --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif;
-  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  --ink:#2b211c; --sub:#6f6157; --paper:#fbf8f3; --paper2:#f6f0e7; --card:#fff;
+  --accent:#9c2b35; --accent-d:#78202a; --gold:#b8985a; --sakura:#e8b4bd; --line:#e8ddcd;
+  --mincho:"Hiragino Mincho ProN","Yu Mincho","YuMincho","MS PMincho","Noto Serif JP",serif;
+  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--gothic);color:var(--ink);background:var(--paper);line-height:1.85;-webkit-text-size-adjust:100%}
-img,svg{max-width:100%;display:block}
-a{color:inherit}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--gothic);background:var(--paper);color:var(--ink);
+  line-height:1.9;font-size:15px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
 
-/* デモ告知バー */
-.demobar{background:#1d1a17;color:#f4e9d6;font-size:12px;line-height:1.6;padding:9px 16px;text-align:center;font-family:var(--gothic)}
-.demobar strong{color:#f0c96b;display:inline-block;margin-right:6px}
-.demobar a{color:#f0c96b}
+/* ===== 出現アニメーション ===== */
+[data-rv]{opacity:0;transform:translateY(30px);
+  transition:opacity 1s var(--ease) var(--d,0ms),transform 1s var(--ease) var(--d,0ms)}
+[data-rv].in{opacity:1;transform:none}
+[data-rv="left"]{transform:translateX(-34px)}
+[data-rv="right"]{transform:translateX(34px)}
+[data-rv="scale"]{transform:scale(.94)}
+[data-rv="mask"]{opacity:1;clip-path:inset(0 0 100% 0);transform:none;
+  transition:clip-path 1.15s var(--ease) var(--d,0ms)}
+[data-rv="mask"].in{clip-path:inset(0 0 0 0)}
 
-header{position:sticky;top:0;z-index:50;background:rgba(251,248,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.hwrap{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{font-family:var(--mincho);font-size:19px;letter-spacing:.14em;text-decoration:none}
-.brand span{display:block;font-family:var(--gothic);font-size:10px;letter-spacing:.22em;color:var(--sub);margin-top:2px}
-nav ul{display:flex;gap:22px;list-style:none;font-size:13.5px}
-nav a{text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
-nav a:hover{border-color:var(--accent)}
-.telbtn{display:none}
-@media(max-width:820px){
-  nav{display:none}
-  .telbtn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:13px;padding:9px 16px;border-radius:999px;white-space:nowrap;font-weight:700}
-}
+/* ===== イントロ（幕引き） ===== */
+#intro{position:fixed;inset:0;z-index:999;pointer-events:none}
+#intro .pn{position:absolute;left:0;right:0;height:50.5%;background:#efe6d8;
+  transition:transform 1.05s var(--ease) .6s}
+#intro .pn.t{top:0}
+#intro .pn.b{bottom:0}
+#intro .mk{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  z-index:2;text-align:center;transition:opacity .45s ease .35s}
+#intro .mk .nm{font-family:var(--mincho);font-size:26px;letter-spacing:.42em;
+  color:var(--accent);padding-left:.42em;opacity:0;animation:mkIn 1s var(--ease) .12s forwards}
+#intro .mk .ln{width:0;height:1px;background:var(--gold);margin:14px auto 0;
+  animation:mkLn .85s var(--ease) .5s forwards}
+@keyframes mkIn{to{opacity:1}}
+@keyframes mkLn{to{width:112px}}
+body.loaded #intro .pn.t{transform:translateY(-101%)}
+body.loaded #intro .pn.b{transform:translateY(101%)}
+body.loaded #intro .mk{opacity:0}
+body.done #intro{display:none}
 
-/* ヒーロー */
-.hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#fdfbf7 0%,#f3e9dc 100%);padding:76px 20px 84px;text-align:center}
-.hero .sakura{position:absolute;inset:0;opacity:.5;pointer-events:none}
-.hero-in{position:relative;max-width:760px;margin:0 auto}
-.eyebrow{font-size:12px;letter-spacing:.4em;color:var(--gold);margin-bottom:22px}
-.hero h1{font-family:var(--mincho);font-size:clamp(30px,7.4vw,54px);line-height:1.5;letter-spacing:.08em;font-weight:500}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero p{margin-top:24px;font-size:15px;color:var(--sub);line-height:2.1}
-.hbtns{margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;text-decoration:none;font-size:14.5px;font-weight:700;padding:15px 32px;border-radius:4px;transition:.2s}
+/* ===== 進捗バー ===== */
+.prog{position:fixed;top:0;left:0;height:2px;width:100%;z-index:120;
+  background:linear-gradient(90deg,var(--accent),var(--gold));
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .1s linear}
+
+/* ===== デモ表示帯 ===== */
+.demobar{background:#2b211c;color:#f0e6d8;font-size:11px;text-align:center;
+  padding:7px 12px;letter-spacing:.04em;position:relative;z-index:100}
+.demobar b{color:var(--gold)}
+
+/* ===== 流れる帯 ===== */
+.ticker{background:var(--accent);color:#fff;overflow:hidden;position:relative;z-index:99}
+.ticker .tk{display:flex;width:max-content;animation:tkMove 26s linear infinite}
+.ticker span{font-family:var(--mincho);font-size:12px;letter-spacing:.3em;
+  padding:8px 26px;white-space:nowrap;opacity:.92}
+@keyframes tkMove{to{transform:translateX(-50%)}}
+
+/* ===== ヘッダー ===== */
+.head{position:sticky;top:0;z-index:90;background:rgba(251,248,243,.92);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+  transition:box-shadow .35s ease,background .35s ease}
+.head.sm{box-shadow:0 6px 24px rgba(43,33,28,.08)}
+.head-in{max-width:1080px;margin:0 auto;padding:0 18px;height:74px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:height .35s var(--ease)}
+.head.sm .head-in{height:60px}
+.logo{font-family:var(--mincho);font-size:19px;letter-spacing:.2em;color:var(--accent);
+  transition:font-size .35s var(--ease)}
+.head.sm .logo{font-size:17px}
+.logo small{display:block;font-family:var(--gothic);font-size:9px;letter-spacing:.16em;
+  color:var(--sub);margin-top:2px;transition:opacity .3s ease}
+.head.sm .logo small{opacity:0}
+.nav{display:none;gap:26px;font-size:13px}
+.nav a{position:relative;padding:4px 0;color:var(--sub);transition:color .3s ease}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
+  background:var(--accent);transform:scaleX(0);transform-origin:100% 50%;
+  transition:transform .45s var(--ease)}
+.nav a:hover{color:var(--accent)}
+.nav a:hover::after{transform:scaleX(1);transform-origin:0 50%}
+@media(min-width:840px){.nav{display:flex}}
+
+/* ===== ヒーロー ===== */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 50% 0%,#fff7f2 0%,#fbf3ea 45%,#f4e9dc 100%);
+  padding:76px 20px 92px;text-align:center}
+.hero .glow{position:absolute;left:50%;top:34%;width:760px;height:760px;
+  transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(circle,rgba(232,180,189,.5) 0%,rgba(232,180,189,0) 62%);
+  animation:breathe 9s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.85}
+  50%{transform:translate(-50%,-50%) scale(1.14);opacity:1}}
+.hero .sv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+  opacity:.5;will-change:transform}
+.hero-in{position:relative;z-index:3;max-width:840px;margin:0 auto}
+.eyebrow{font-size:11.5px;letter-spacing:.28em;color:var(--accent);margin-bottom:22px;
+  opacity:0;animation:fadeUp .9s var(--ease) 1.35s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero h1{font-family:var(--mincho);font-weight:400;font-size:clamp(27px,7.2vw,46px);
+  line-height:1.62;letter-spacing:.05em;margin-bottom:24px}
+.hero h1 em{font-style:normal;color:var(--accent);position:relative}
+.ln{display:block;overflow:hidden}
+.ln i{display:block;font-style:normal;transform:translateY(105%);
+  animation:lnUp 1.15s var(--ease) forwards}
+.ln:nth-child(1) i{animation-delay:1.55s}
+.ln:nth-child(2) i{animation-delay:1.68s}
+@keyframes lnUp{to{transform:none}}
+.hero p{font-size:14.5px;color:var(--sub);line-height:2.1;
+  opacity:0;animation:fadeUp .95s var(--ease) 2.1s forwards}
+.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px;
+  opacity:0;animation:fadeUp .95s var(--ease) 2.3s forwards}
+.btn{display:inline-block;padding:14px 30px;font-size:13.5px;letter-spacing:.1em;
+  border-radius:2px;position:relative;overflow:hidden;z-index:1;transition:color .4s ease}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;transform:scaleY(0);
+  transform-origin:50% 100%;transition:transform .45s var(--ease)}
+.btn:hover::before{transform:scaleY(1)}
 .btn-p{background:var(--accent);color:#fff}
-.btn-p:hover{background:var(--accent-d)}
-.btn-s{border:1px solid var(--ink);color:var(--ink)}
-.btn-s:hover{background:var(--ink);color:#fff}
+.btn-p::before{background:var(--accent-d)}
+.btn-s{border:1px solid var(--accent);color:var(--accent);background:transparent}
+.btn-s::before{background:var(--accent)}
+.btn-s:hover{color:#fff}
+.scroll-cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:4;
+  font-size:9.5px;letter-spacing:.28em;color:var(--sub);
+  opacity:0;animation:fadeUp .9s var(--ease) 2.55s forwards}
+.scroll-cue .bar{display:block;width:1px;height:38px;margin:8px auto 0;
+  background:linear-gradient(180deg,var(--accent),transparent);
+  transform-origin:0 0;animation:cue 2.1s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);opacity:0}
+  35%{transform:scaleY(1);opacity:1}
+  100%{transform:scaleY(1) translateY(38px);opacity:0}}
 
-section{padding:72px 20px}
+/* 花びら */
+.petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
+.petal{position:absolute;top:-8%;width:13px;height:13px;opacity:0;
+  background:radial-gradient(circle at 30% 30%,#f6d3d9,var(--sakura));
+  border-radius:14px 0 14px 0;animation:fall linear infinite}
+@keyframes fall{
+  0%{opacity:0;transform:translate3d(0,-40px,0) rotate(0deg)}
+  8%{opacity:.85}
+  90%{opacity:.7}
+  100%{opacity:0;transform:translate3d(60px,560px,0) rotate(420deg)}}
+
+/* ===== セクション共通 ===== */
+section{padding:78px 20px}
 .wrap{max-width:1080px;margin:0 auto}
-.sechead{text-align:center;margin-bottom:48px}
-.sechead .en{font-size:11px;letter-spacing:.36em;color:var(--gold);display:block;margin-bottom:12px}
-.sechead h2{font-family:var(--mincho);font-size:clamp(22px,4.6vw,31px);letter-spacing:.12em;font-weight:500}
-.sechead p{margin-top:14px;font-size:14px;color:var(--sub)}
+.sechead{text-align:center;margin-bottom:46px;
+  opacity:0;transform:translateY(26px);
+  transition:opacity .95s var(--ease),transform .95s var(--ease)}
+.sechead.in{opacity:1;transform:none}
+.sechead .en{display:block;font-size:10.5px;letter-spacing:.34em;color:var(--gold);
+  margin-bottom:14px}
+.sechead h2{font-family:var(--mincho);font-weight:400;font-size:clamp(23px,5.4vw,32px);
+  letter-spacing:.09em;margin-bottom:14px;position:relative;display:inline-block}
+.sechead h2::after{content:"";position:absolute;left:50%;bottom:-11px;width:0;height:1px;
+  background:var(--gold);transition:width .9s var(--ease) .3s;transform:translateX(-50%)}
+.sechead.in h2::after{width:46px}
+.sechead p{font-size:13.5px;color:var(--sub);margin-top:20px}
 
-/* 商品 */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:26px}
-.item{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
-.item:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(60,40,20,.09)}
-.ph{position:relative;aspect-ratio:4/3;background:linear-gradient(135deg,#f7f0e5,#eadfcd);display:grid;place-items:center;overflow:hidden}
-.ph .kanji{font-family:var(--mincho);font-size:62px;color:rgba(156,43,53,.13);letter-spacing:.1em;user-select:none}
-.ph .note{position:absolute;bottom:8px;right:10px;font-size:9.5px;color:#a8998a;letter-spacing:.06em}
-.item-b{padding:18px 18px 22px;flex:1;display:flex;flex-direction:column}
-.item h3{font-family:var(--mincho);font-size:17.5px;letter-spacing:.06em;font-weight:500}
-.item .desc{font-size:12.8px;color:var(--sub);margin-top:9px;line-height:1.85;flex:1}
-.price{margin-top:14px;padding-top:13px;border-top:1px dashed var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:8px}
-.price .p{font-family:var(--mincho);font-size:20px;color:var(--accent)}
-.price .p small{font-size:11px;color:var(--sub);margin-left:3px;font-family:var(--gothic)}
-.price .cart{background:var(--ink);color:#fff;font-size:11.5px;padding:8px 14px;border-radius:3px;text-decoration:none;white-space:nowrap}
+/* ===== 商品グリッド ===== */
+.grid{display:grid;gap:22px;grid-template-columns:1fr}
+@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:920px){.grid{grid-template-columns:repeat(4,1fr)}}
+#season .grid{grid-template-columns:1fr}
+@media(min-width:600px){#season .grid{grid-template-columns:1fr 1fr}}
+@media(min-width:920px){#season .grid{grid-template-columns:1fr 1fr;max-width:720px;margin:0 auto}}
 
-/* 帯 */
-.band{background:#211c18;color:#f3ece0;text-align:center}
-.band .sechead h2{color:#fff}
-.band .sechead .en{color:var(--gold)}
-.band .sechead p{color:#bcae9c}
-.setgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;text-align:left}
-.set{background:rgba(255,255,255,.05);border:1px solid rgba(240,201,107,.22);border-radius:3px;padding:24px 22px}
-.set h3{font-family:var(--mincho);font-size:17px;color:#fff;letter-spacing:.05em;font-weight:500}
-.set .inc{font-size:12.3px;color:#bcae9c;margin-top:10px;line-height:1.9}
-.set .p{font-family:var(--mincho);font-size:21px;color:var(--gold);margin-top:14px}
-.set .p small{font-size:11px;font-family:var(--gothic);color:#98897a}
+.item{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .55s ease}
+.item:hover{transform:translateY(-7px);box-shadow:0 18px 44px rgba(43,33,28,.11);
+  border-color:#dfd0b8}
+.ph{position:relative;aspect-ratio:4/3;background:
+  linear-gradient(135deg,#f7efe4 0%,#f1e4d3 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden}
+.ph::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);
+  transform:skewX(-18deg);transition:left .85s var(--ease)}
+.item:hover .ph::after{left:120%}
+.ph .kanji{font-family:var(--mincho);font-size:34px;letter-spacing:.14em;
+  color:#c9b493;padding-left:.14em;transition:transform .65s var(--ease),color .5s ease}
+.item:hover .ph .kanji{transform:scale(1.11);color:var(--gold)}
+.ph .note{font-size:10px;color:#a2937f;margin-top:10px;text-align:center;padding:0 10px;
+  line-height:1.6}
+.item-b{padding:20px 18px 22px;display:flex;flex-direction:column;flex:1}
+.item-b h3{font-family:var(--mincho);font-weight:400;font-size:17px;letter-spacing:.05em;
+  margin-bottom:11px}
+.desc{font-size:12.5px;color:var(--sub);line-height:1.95;flex:1}
+.price{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin-top:18px;padding-top:15px;border-top:1px dashed var(--line);flex-wrap:wrap}
+.p{font-family:var(--mincho);font-size:22px;color:var(--accent);letter-spacing:.02em}
+.p small{font-size:10.5px;color:var(--sub);margin-left:4px;font-family:var(--gothic)}
+.cart{display:inline-block;background:var(--accent);color:#fff;font-size:11.5px;
+  padding:8px 15px;border-radius:2px;letter-spacing:.06em;position:relative;
+  overflow:hidden;z-index:1}
+.cart::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent-d);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .4s var(--ease)}
+.cart:hover::before{transform:scaleX(1)}
 
-/* 店舗 */
-.shops{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.shop{background:var(--card);border:1px solid var(--line);padding:30px 26px;border-radius:3px}
-.shop h3{font-family:var(--mincho);font-size:20px;letter-spacing:.08em;font-weight:500;padding-bottom:14px;border-bottom:2px solid var(--accent);display:inline-block;margin-bottom:18px}
-.dl{display:grid;grid-template-columns:5.2em 1fr;gap:10px 14px;font-size:13.4px}
-.dl dt{color:var(--gold);font-weight:700}
-.dl dd{color:var(--sub);line-height:1.8}
-.dl dd a{color:var(--accent);font-weight:700;text-decoration:none}
+/* ===== 詰め合わせ ===== */
+.band{background:var(--paper2)}
+.setgrid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:640px){.setgrid{grid-template-columns:1fr 1fr}}
+.set{background:#fff;border:1px solid var(--line);border-radius:3px;padding:24px 22px;
+  position:relative;overflow:hidden;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.set::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;
+  background:var(--gold);transform:scaleY(0);transform-origin:50% 0;
+  transition:transform .6s var(--ease)}
+.set:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(43,33,28,.09)}
+.set:hover::before{transform:scaleY(1)}
+.set h3{font-family:var(--mincho);font-weight:400;font-size:17px;margin-bottom:12px;
+  letter-spacing:.05em}
+.inc{font-size:12.5px;color:var(--sub);line-height:1.95;padding-bottom:14px;
+  border-bottom:1px dashed var(--line);margin-bottom:14px}
+.set .p{display:block}
 
-/* CTA */
-.cta{background:linear-gradient(135deg,#9c2b35,#6d1a22);color:#fff;text-align:center}
-.cta h2{font-family:var(--mincho);font-size:clamp(21px,4.4vw,29px);letter-spacing:.1em;font-weight:500}
-.cta p{margin-top:18px;font-size:14px;color:rgba(255,255,255,.86);line-height:2}
-.cta .btn-w{display:inline-block;margin-top:30px;background:#fff;color:var(--accent);font-weight:700;padding:16px 40px;border-radius:4px;text-decoration:none;font-size:15px}
+/* ===== 店舗 ===== */
+.shops{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:760px){.shops{grid-template-columns:1fr 1fr}}
+.shop{background:#fff;border:1px solid var(--line);border-radius:3px;padding:28px 24px;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.shop:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(43,33,28,.09)}
+.shop h3{font-family:var(--mincho);font-weight:400;font-size:18px;letter-spacing:.06em;
+  padding-bottom:15px;margin-bottom:17px;border-bottom:1px solid var(--line);
+  color:var(--accent)}
+.dl{display:grid;grid-template-columns:76px 1fr;gap:9px 12px;font-size:13px}
+.dl dt{color:var(--sub);font-size:12px}
+.dl dd{line-height:1.8}
+.dl a{color:var(--accent);border-bottom:1px solid rgba(156,43,53,.3)}
 
-footer{background:#1d1a17;color:#9d9186;padding:52px 20px 40px;font-size:12.6px;text-align:center;line-height:2}
-footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing:.16em;margin-bottom:16px}
-.disc{max-width:680px;margin:30px auto 0;padding-top:22px;border-top:1px solid #322b25;font-size:11.4px;color:#7d7369;line-height:1.95;text-align:left}
+/* ===== CTA ===== */
+.cta{background:var(--accent);color:#fff;text-align:center;position:relative;
+  overflow:hidden}
+.cta::before{content:"";position:absolute;left:50%;top:50%;width:900px;height:900px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(255,255,255,.13) 0%,transparent 62%);
+  animation:breathe 11s ease-in-out infinite}
+.cta .wrap{position:relative;z-index:2}
+.cta h2{font-family:var(--mincho);font-weight:400;font-size:clamp(21px,5vw,29px);
+  letter-spacing:.08em;margin-bottom:18px}
+.cta p{font-size:13.5px;opacity:.92;line-height:2.05;margin-bottom:30px}
+.btn-w{display:inline-block;background:#fff;color:var(--accent);padding:16px 40px;
+  font-size:16px;border-radius:2px;letter-spacing:.06em;font-family:var(--mincho);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.btn-w:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.2)}
 
-/* スマホ固定バー */
-.mbar{position:fixed;bottom:0;left:0;right:0;z-index:60;display:none;background:rgba(29,26,23,.96);padding:9px 12px;gap:9px}
-.mbar a{flex:1;text-align:center;text-decoration:none;font-size:13px;font-weight:700;padding:13px 4px;border-radius:4px}
-.mbar .m1{background:var(--accent);color:#fff}
-.mbar .m2{background:#fff;color:var(--ink)}
-@media(max-width:820px){.mbar{display:flex}body{padding-bottom:66px}section{padding:56px 18px}.hero{padding:56px 18px 62px}}
+/* ===== フッター ===== */
+footer{background:#2b211c;color:#c9bcac;text-align:center;padding:52px 20px 96px;
+  font-size:12.5px;line-height:2}
+.fb{font-family:var(--mincho);font-size:19px;letter-spacing:.24em;color:#f0e6d8;
+  margin-bottom:16px;padding-left:.24em}
+.disc{max-width:760px;margin:34px auto 0;padding-top:24px;
+  border-top:1px solid #3f342c;font-size:11px;line-height:1.95;color:#8e8377;
+  text-align:left}
+
+/* ===== 追補（できること／今のまま） ===== */
+.annex{background:#f2ece1;padding:60px 20px}
+.annex .cols{display:grid;gap:16px;grid-template-columns:1fr;max-width:900px;margin:0 auto}
+@media(min-width:720px){.annex .cols{grid-template-columns:1fr 1fr}}
+.col{background:#fff;border:1px solid var(--line);border-radius:3px;padding:24px 22px}
+.col h3{font-family:var(--mincho);font-weight:400;font-size:16px;margin-bottom:14px;
+  padding-bottom:11px;border-bottom:1px solid var(--line)}
+.col ul{list-style:none;font-size:12.5px;line-height:1.95;color:var(--sub)}
+.col li{padding-left:17px;position:relative;margin-bottom:8px}
+.col li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+
+/* ===== 固定バー・トップへ ===== */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:95;display:flex;
+  box-shadow:0 -4px 18px rgba(43,33,28,.14);
+  transform:translateY(105%);transition:transform .55s var(--ease)}
+.mbar.on{transform:none}
+.mbar a{flex:1;text-align:center;padding:15px 6px;font-size:13px;letter-spacing:.05em}
+.m1{background:var(--accent);color:#fff}
+.m2{background:#2b211c;color:#f0e6d8}
+@media(min-width:840px){.mbar{display:none}}
+.totop{position:fixed;right:16px;bottom:74px;z-index:94;width:42px;height:42px;
+  border-radius:50%;background:rgba(43,33,28,.82);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-size:15px;
+  opacity:0;transform:translateY(12px);pointer-events:none;
+  transition:opacity .45s ease,transform .45s var(--ease),background .3s ease}
+.totop.on{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{background:var(--accent)}
+@media(min-width:840px){.totop{bottom:24px}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+  [data-rv]{opacity:1!important;transform:none!important;clip-path:none!important}
+  .petals{display:none}
+}
 </style>
 </head>
 <body>
 
-<div class="demobar">
-  <strong>デザイン提案サンプル</strong>
-  これは かわたれ studio が制作したデザイン案です。高甚製菓株式会社様の公式サイトではありません。
-  公式サイトは <a href="https://www.e-takajin.co.jp/">e-takajin.co.jp</a> です。
+<div id="intro">
+  <div class="pn t"></div>
+  <div class="pn b"></div>
+  <div class="mk"><span class="nm">たかじん</span><span class="ln"></span></div>
 </div>
 
-<header>
-  <div class="hwrap">
-    <a class="brand" href="#">菓子匠たかじん<span>TAKAJIN SEIKA / SHIROISHI</span></a>
-    <nav>
-      <ul>
-        <li><a href="#items">お菓子</a></li>
-        <li><a href="#sets">詰め合わせ</a></li>
-        <li><a href="#season">季節限定</a></li>
-        <li><a href="#shops">店舗案内</a></li>
-        <li><a href="#contact">お取り寄せ</a></li>
-      </ul>
+<div class="prog" id="prog"></div>
+
+<div class="demobar">
+  これは <b>かわたれ studio</b> が制作したデザイン提案用のサンプルです（公式サイトではありません）
+</div>
+
+<div class="ticker">
+  <div class="tk" id="tk">
+    <span>銘菓 白石城</span><span>白石道中</span><span>白石川千本桜</span><span>こけしサブレ</span><span>季節限定 フルーツの詩</span><span>ご贈答・のし承ります</span>
+  </div>
+</div>
+
+<header class="head" id="head">
+  <div class="head-in">
+    <a class="logo" href="#">菓子匠たかじん<small>宮城県白石市</small></a>
+    <nav class="nav">
+      <a href="#items">お菓子</a>
+      <a href="#sets">詰め合わせ</a>
+      <a href="#season">季節限定</a>
+      <a href="#shops">店舗</a>
+      <a href="#contact">ご注文</a>
     </nav>
-    <a class="telbtn" href="tel:0224250141">☎ お電話</a>
   </div>
 </header>
 
 <div class="hero">
-  <svg class="sakura" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <div class="glow"></div>
+  <svg class="sv" data-px="-46" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <defs>
-      <g id="pet"><path d="M0,-14 C5,-9 6,-3 0,4 C-6,-3 -5,-9 0,-14Z" fill="#e8c3c7"/></g>
       <g id="fl">
-        <use href="#pet"/><use href="#pet" transform="rotate(72)"/><use href="#pet" transform="rotate(144)"/>
-        <use href="#pet" transform="rotate(216)"/><use href="#pet" transform="rotate(288)"/>
-        <circle r="2.6" fill="#d9a7ad"/>
+        <path d="M0,-16 C6,-10 6,-3 0,3 C-6,-3 -6,-10 0,-16Z" fill="#e8b4bd" opacity=".5"/>
       </g>
     </defs>
-    <g opacity=".55">
+    <g>
       <use href="#fl" transform="translate(90,88) scale(1.5) rotate(15)"/>
       <use href="#fl" transform="translate(1090,140) scale(1.9) rotate(-25)"/>
       <use href="#fl" transform="translate(240,470) scale(1.2) rotate(40)"/>
@@ -159,15 +357,24 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
       <use href="#fl" transform="translate(700,540) scale(1.05) rotate(-18)"/>
     </g>
   </svg>
+  <svg class="sv" data-px="24" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="opacity:.28">
+    <path d="M-40,470 C220,410 340,520 620,455 C880,395 1010,500 1240,440" fill="none" stroke="#c9a06a" stroke-width="1.2"/>
+    <path d="M-40,520 C240,470 380,560 660,500 C920,445 1040,540 1240,490" fill="none" stroke="#c9a06a" stroke-width="1"/>
+  </svg>
+  <div class="petals" id="petals"></div>
   <div class="hero-in">
     <div class="eyebrow">宮城県白石市・菓子匠たかじん</div>
-    <h1>白石の城下町から、<br><em>この土地</em>の菓子を。</h1>
+    <h1>
+      <span class="ln"><i>白石の城下町から、</i></span>
+      <span class="ln"><i><em>この土地</em>の菓子を。</i></span>
+    </h1>
     <p>銘菓 白石城、白石道中、白石川千本桜。<br>この土地の名を冠したお菓子を、白石でつくっています。</p>
     <div class="hbtns">
       <a class="btn btn-p" href="#items">お菓子を見る</a>
       <a class="btn btn-s" href="#shops">店舗のご案内</a>
     </div>
   </div>
+  <div class="scroll-cue">SCROLL<span class="bar"></span></div>
 </div>
 
 <section id="items">
@@ -177,9 +384,9 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
       <h2>たかじんのお菓子</h2>
       <p>白石にちなんだ四つの銘菓を、季節を問わずお届けしています。</p>
     </div>
-    <div class="grid">
+    <div class="grid" data-stagger>
 
-      <article class="item">
+      <article class="item" data-rv="scale">
         <div class="ph"><span class="kanji">白石城</span><span class="note">お手持ちの商品写真が入ります</span></div>
         <div class="item-b">
           <h3>銘菓 白石城</h3>
@@ -188,7 +395,7 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
         </div>
       </article>
 
-      <article class="item">
+      <article class="item" data-rv="scale">
         <div class="ph"><span class="kanji">道中</span><span class="note">お手持ちの商品写真が入ります</span></div>
         <div class="item-b">
           <h3>白石道中</h3>
@@ -197,7 +404,7 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
         </div>
       </article>
 
-      <article class="item">
+      <article class="item" data-rv="scale">
         <div class="ph"><span class="kanji">千本桜</span><span class="note">お手持ちの商品写真が入ります</span></div>
         <div class="item-b">
           <h3>白石川千本桜</h3>
@@ -206,7 +413,7 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
         </div>
       </article>
 
-      <article class="item">
+      <article class="item" data-rv="scale">
         <div class="ph"><span class="kanji">こけし</span><span class="note">お手持ちの商品写真が入ります</span></div>
         <div class="item-b">
           <h3>こけしサブレ</h3>
@@ -226,23 +433,23 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
       <h2>詰め合わせ</h2>
       <p>ご贈答、ごあいさつの品として承っております。</p>
     </div>
-    <div class="setgrid">
-      <div class="set">
+    <div class="setgrid" data-stagger>
+      <div class="set" data-rv="left">
         <h3>白石銘菓詰め合わせ</h3>
         <p class="inc">白石道中 6枚／白石川千本桜 3個／白石城 3個</p>
         <p class="p">2,600<small>円（税込）</small></p>
       </div>
-      <div class="set">
+      <div class="set" data-rv="right">
         <h3>白石銘菓詰め合わせ</h3>
         <p class="inc">白石道中 6枚／白石川千本桜 5個／白石城 6個</p>
         <p class="p">3,550<small>円（税込）</small></p>
       </div>
-      <div class="set">
+      <div class="set" data-rv="left">
         <h3>たかじん銘菓詰め合わせ</h3>
         <p class="inc">白石道中 5枚／千本桜 3個／白石城 3個／葉っぱのフレンド 3枚／ぶな紀行 3枚</p>
         <p class="p">3,400<small>円（税込）</small></p>
       </div>
-      <div class="set">
+      <div class="set" data-rv="right">
         <h3>たかじん銘菓詰め合わせ</h3>
         <p class="inc">白石道中 5枚／千本桜 4個／白石城 4個／葉っぱのフレンド 4枚／ぶな紀行 4枚</p>
         <p class="p">4,200<small>円（税込）</small></p>
@@ -258,8 +465,8 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
       <h2>季節限定</h2>
       <p>いまの季節だけのお菓子をご用意しています。</p>
     </div>
-    <div class="grid">
-      <article class="item">
+    <div class="grid" data-stagger>
+      <article class="item" data-rv="scale">
         <div class="ph"><span class="kanji">夏</span><span class="note">お手持ちの商品写真が入ります</span></div>
         <div class="item-b">
           <h3>フルーツの詩　8入</h3>
@@ -267,7 +474,7 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
           <div class="price"><span class="p">2,520<small>円（税込）</small></span><a class="cart" href="#contact">かごに入れる</a></div>
         </div>
       </article>
-      <article class="item">
+      <article class="item" data-rv="scale">
         <div class="ph"><span class="kanji">涼</span><span class="note">お手持ちの商品写真が入ります</span></div>
         <div class="item-b">
           <h3>フルーツの詩と水ようかん詰め合わせ</h3>
@@ -286,8 +493,8 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
       <h2>店舗のご案内</h2>
       <p>白石市内に二店舗ございます。定休日は元日のみです。</p>
     </div>
-    <div class="shops">
-      <div class="shop">
+    <div class="shops" data-stagger>
+      <div class="shop" data-rv="left">
         <h3>菓子匠たかじん　本店</h3>
         <dl class="dl">
           <dt>所在地</dt><dd>〒989-0243<br>宮城県白石市字沢目15番地</dd>
@@ -297,7 +504,7 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
           <dt>アクセス</dt><dd>JR東北本線 白石駅下車<br>西口駅前通り 徒歩3分</dd>
         </dl>
       </div>
-      <div class="shop">
+      <div class="shop" data-rv="right">
         <h3>菓子匠たかじん　東庵店</h3>
         <dl class="dl">
           <dt>所在地</dt><dd>〒989-0225<br>宮城県白石市東町2丁目8番29号</dd>
@@ -313,9 +520,9 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
 
 <section id="contact" class="cta">
   <div class="wrap">
-    <h2>お取り寄せ・ご贈答のご相談</h2>
-    <p>のし・包装のご指定、贈り先へのお届けも承っております。<br>お電話でもインターネットでもご注文いただけます。</p>
-    <a class="btn-w" href="tel:0224250141">☎ 0224-25-0141</a>
+    <h2 data-rv>お取り寄せ・ご贈答のご相談</h2>
+    <p data-rv>のし・包装のご指定、贈り先へのお届けも承っております。<br>お電話でもインターネットでもご注文いただけます。</p>
+    <a class="btn-w" href="tel:0224250141" data-rv="scale">☎ 0224-25-0141</a>
   </div>
 </section>
 
@@ -333,10 +540,121 @@ footer .fb{font-family:var(--mincho);font-size:18px;color:#e8ded0;letter-spacing
   </div>
 </footer>
 
-<div class="mbar">
+<div class="annex">
+  <div class="cols">
+    <div class="col" data-rv="left">
+      <h3>今のまま変わらないもの</h3>
+      <ul>
+        <li>商品名・価格・原材料などの情報</li>
+        <li>ご注文の受付方法（お電話・インターネット）</li>
+        <li>お客様の管理画面での商品登録のしかた</li>
+        <li>店舗の運営、包装・のしの対応</li>
+      </ul>
+    </div>
+    <div class="col" data-rv="right">
+      <h3>この提案で変わるところ</h3>
+      <ul>
+        <li>スマートフォンで見たときの読みやすさ</li>
+        <li>商品写真の見せ方と、季節ごとの入れ替え</li>
+        <li>店舗情報・アクセスへのたどり着きやすさ</li>
+        <li>スクロールに合わせた動きで、最後まで読んでもらえる構成</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<a class="totop" id="totop" href="#" aria-label="ページ上部へ">↑</a>
+
+<div class="mbar" id="mbar">
   <a class="m1" href="tel:0224250141">☎ 電話で注文</a>
   <a class="m2" href="#items">お菓子を見る</a>
 </div>
+
+<script>
+(function(){
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- イントロ --- */
+  function open(){
+    document.body.classList.add('loaded');
+    setTimeout(function(){document.body.classList.add('done')},2000);
+  }
+  if(RM){document.body.classList.add('loaded','done');}
+  else if(document.readyState==='complete'){setTimeout(open,650);}
+  else{window.addEventListener('load',function(){setTimeout(open,650)});}
+
+  /* --- ティッカー複製 --- */
+  var tk=document.getElementById('tk');
+  if(tk){tk.innerHTML=tk.innerHTML+tk.innerHTML;}
+
+  /* --- 花びら --- */
+  var pw=document.getElementById('petals');
+  if(pw && !RM){
+    var L=[[4,13,9.5,0],[17,9,12,1.4],[29,15,8.5,2.8],[41,11,13,.7],[53,16,10,3.6],
+           [64,10,11.5,1.9],[75,14,9,4.4],[86,12,12.5,2.3],[94,8,10.5,5.1],[10,11,14,3.1]];
+    var h='';
+    for(var i=0;i<L.length;i++){
+      h+='<span class="petal" style="left:'+L[i][0]+'%;width:'+L[i][1]+'px;height:'+L[i][1]
+        +'px;animation-duration:'+L[i][2]+'s;animation-delay:'+(L[i][3]+1.6)+'s"></span>';
+    }
+    pw.innerHTML=h;
+  }
+
+  /* --- 出現アニメーション --- */
+  document.querySelectorAll('[data-stagger]').forEach(function(p){
+    Array.prototype.forEach.call(p.children,function(c,i){
+      c.style.setProperty('--d',(i*85)+'ms');
+    });
+  });
+  var els=document.querySelectorAll('[data-rv],.sechead');
+  if(RM){Array.prototype.forEach.call(els,function(e){e.classList.add('in')});}
+  else{
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    Array.prototype.forEach.call(els,function(e){io.observe(e)});
+  }
+
+  /* --- スクロール連動 --- */
+  var head=document.getElementById('head'),
+      prog=document.getElementById('prog'),
+      mbar=document.getElementById('mbar'),
+      totop=document.getElementById('totop'),
+      px=[].slice.call(document.querySelectorAll('[data-px]')),
+      tick=false;
+
+  function frame(){
+    var y=window.pageYOffset,
+        de=document.documentElement,
+        max=de.scrollHeight-window.innerHeight;
+    head.classList.toggle('sm',y>40);
+    prog.style.transform='scaleX('+(max>0?y/max:0)+')';
+    if(mbar) mbar.classList.toggle('on',y>420);
+    if(totop) totop.classList.toggle('on',y>900);
+    if(!RM){
+      px.forEach(function(el){
+        var r=el.getBoundingClientRect(),
+            c=(r.top+r.height/2-window.innerHeight/2)/window.innerHeight;
+        el.style.transform='translate3d(0,'+(c*parseFloat(el.dataset.px)).toFixed(1)+'px,0)';
+      });
+    }
+    tick=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!tick){tick=true;requestAnimationFrame(frame);}
+  },{passive:true});
+  window.addEventListener('resize',frame,{passive:true});
+  frame();
+
+  /* --- トップへ --- */
+  if(totop){totop.addEventListener('click',function(e){
+    e.preventDefault();
+    window.scrollTo({top:0,behavior:RM?'auto':'smooth'});
+  });}
+})();
+</script>
 
 </body>
 </html>
