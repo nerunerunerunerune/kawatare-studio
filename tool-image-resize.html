@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://kawatare.studio/tool-image-resize.html">
 <meta name="theme-color" content="#0891b2">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="site.webmanifest">
+<link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="サクッとツール">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="サクッとツール">
 <meta property="og:title" content="画像リサイズ｜指定サイズに一括リサイズ">
@@ -168,5 +168,62 @@
     feed:async function(n,w,h){for(var k=0;k<(n||2);k++){var c=document.createElement('canvas');c.width=w||600;c.height=h||400;var x=c.getContext('2d');var g=x.createLinearGradient(0,0,c.width,c.height);g.addColorStop(0,'#e11');g.addColorStop(1,'#33e');x.fillStyle=g;x.fillRect(0,0,c.width,c.height);x.fillStyle='#fff';x.font='30px sans-serif';x.fillText('IMG'+(k+1),20,60);var blob=await new Promise(function(r){c.toBlob(r,'image/png');});var f=new File([blob],'img'+(k+1)+'.png',{type:'image/png'});await handle([f]);}return this.results();}};
 })();
 </script>
+<!-- pwa:start -->
+<script>
+(function(){
+var TH="#2a78d6", KEY='kw_pwa_hint_v1';
+function off(){try{return localStorage.getItem(KEY)==='1';}catch(e){return true;}}
+function setoff(){try{localStorage.setItem(KEY,'1');}catch(e){}}
+function standalone(){try{return window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
+if(standalone()&&typeof gtag==='function'){gtag('event','pwa_launch');}
+var deferred=null,bar=null,timer=null;
+function drop(){if(bar){bar.remove();bar=null;}if(timer){clearTimeout(timer);timer=null;}}
+function build(msg,btnText,onClick){
+  if(bar||off()||standalone()||!document.body)return;
+  bar=document.createElement('div');
+  bar.setAttribute('role','region');bar.setAttribute('aria-label','ホーム画面に追加');
+  bar.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:14px;background:#1f2430;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,.28);font:500 13.5px/1.55 system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;max-width:560px;margin:0 auto;';
+  var ic=document.createElement('img');ic.src='/icon-192.png';ic.alt='';ic.width=34;ic.height=34;
+  ic.style.cssText='width:34px;height:34px;border-radius:9px;flex:0 0 auto;';
+  var tx=document.createElement('div');tx.textContent=msg;tx.style.cssText='flex:1 1 auto;';
+  bar.appendChild(ic);bar.appendChild(tx);
+  if(btnText){
+    var b=document.createElement('button');b.type='button';b.textContent=btnText;
+    b.style.cssText='flex:0 0 auto;border:0;border-radius:9px;padding:8px 14px;font:700 13px system-ui,sans-serif;background:'+TH+';color:#fff;cursor:pointer;';
+    b.addEventListener('click',onClick);bar.appendChild(b);
+  }
+  var c=document.createElement('button');c.type='button';c.setAttribute('aria-label','閉じる');c.textContent='×';
+  c.style.cssText='flex:0 0 auto;border:0;background:transparent;color:#b9bfcc;font-size:19px;line-height:1;cursor:pointer;padding:4px 2px;';
+  c.addEventListener('click',function(){setoff();drop();});
+  bar.appendChild(c);
+  document.body.appendChild(bar);
+  timer=setTimeout(function(){drop();},20000);
+}
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferred=e;
+  setTimeout(function(){
+    build('ホーム画面に追加すると、アプリのように使えます。','追加',function(){
+      if(!deferred)return;
+      deferred.prompt();
+      deferred.userChoice.then(function(r){
+        if(typeof gtag==='function')gtag('event','pwa_prompt',{outcome:r.outcome});
+        setoff();drop();
+      });
+    });
+  },8000);
+});
+window.addEventListener('appinstalled',function(){
+  setoff();
+  if(typeof gtag==='function')gtag('event','pwa_install');
+  drop();
+});
+var ua=navigator.userAgent||'';
+var isIOS=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+var isSafari=/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|OPiOS|Android/.test(ua);
+if(isIOS&&isSafari){setTimeout(function(){build('共有ボタン → 「ホーム画面に追加」で、アプリのように使えます。',null,null);},14000);}
+})();
+</script>
+<!-- pwa:end -->
 </body>
 </html>
