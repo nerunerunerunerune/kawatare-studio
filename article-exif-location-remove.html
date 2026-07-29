@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>写真の位置情報（Exif）を消してからSNSに上げる｜サクッとツール</title>
+<meta name="description" content="写真に記録された位置情報の消し方と、SNSごとの自動削除の有無。カメラ側で記録を止める設定手順、Exifを消しても場所が判明する経路まで解説します。">
+<link rel="canonical" href="https://kawatare.studio/article-exif-location-remove.html">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="サクッとツール">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="サクッとツール">
+<meta property="og:title" content="写真の位置情報（Exif）を消してからSNSに上げる｜サクッとツール">
+<meta property="og:description" content="写真に記録された位置情報の消し方と、SNSごとの自動削除の有無。カメラ側で記録を止める設定手順、Exifを消しても場所が判明する経路まで解説します。">
+<meta property="og:url" content="https://kawatare.studio/article-exif-location-remove.html">
+<meta property="og:image" content="https://kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="写真の位置情報（Exif）を消してからSNSに上げる｜サクッとツール">
+<meta name="twitter:description" content="写真に記録された位置情報の消し方と、SNSごとの自動削除の有無。カメラ側で記録を止める設定手順、Exifを消しても場所が判明する経路まで解説します。">
+<meta name="twitter:image" content="https://kawatare.studio/ogp.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"写真の位置情報を消す","item":"https://kawatare.studio/article-exif-location-remove.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"写真の位置情報（Exif）を消してからSNSに上げる","author":{"@type":"Organization","name":"かわたれ studio"},"publisher":{"@type":"Organization","name":"かわたれ studio"},"datePublished":"2026-07-29","dateModified":"2026-07-29","description":"写真に記録された位置情報の仕組みと消し方、カメラ側で記録を止める設定、消しても場所が分かる経路を解説。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Exifを消すと画質は落ちますか？","acceptedAnswer":{"@type":"Answer","text":"落ちません。Exifは写真本体とは別の場所に記録されている付帯情報で、画像そのものとは切り離されています。この情報だけを取り除いても、写真の見え方は変わりません。撮影日時やカメラの設定値も一緒に消えるため、それらを残したい場合は元ファイルを別に保管してください。"}},{"@type":"Question","name":"スクリーンショットなら位置情報は入りませんか？","acceptedAnswer":{"@type":"Answer","text":"スクリーンショットには撮影時の位置情報は入りません。ただし安全とは限りません。画面に映っていたもの、たとえば地図アプリの表示、通知に出ていた名前、ブラウザのタブに残った検索履歴などがそのまま写り込みます。位置情報とは別の経路で情報が漏れることになるため、投稿前に画面の隅々まで見る習慣のほうが重要です。"}},{"@type":"Question","name":"メッセージアプリで送った写真に位置情報は残りますか？","acceptedAnswer":{"@type":"Answer","text":"アプリや送信方法によって扱いが異なり、仕様も更新されます。圧縮して送る設定では付帯情報が失われることが多い一方、原本のまま送る設定やファイルとして添付する方法では残ることがあります。相手や経路ごとに確かめるのは現実的ではないので、外に出す写真は自分の手元で消してから送るのが確実です。"}},{"@type":"Question","name":"過去に投稿した写真はどうすればよいですか？","acceptedAnswer":{"@type":"Answer","text":"すでに公開した写真については、投稿を削除するのが最も確実です。ただし削除しても、他者が保存していたり転載されていたりする可能性は残ります。過去分をすべて遡るのは現実的でないことも多いので、自宅や職場が写っているもの、子どもが写っているものなど、影響の大きいものから優先して確認するのが現実的です。今後の投稿については、カメラ側で記録を止めておけば同じ心配をせずに済みます。"}}]}</script>
+<style>
+  :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
+    --brand:#2a78d6;--brand-d:#1c5cab;--accent:#7a3ff2;--good:#0ca30c;--good-bg:#e7f6e7;
+    --shadow:0 1px 2px rgba(16,20,30,.04),0 8px 24px rgba(16,20,30,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#191c22;--ink:#f2f4f8;--ink-2:#aeb6c4;--muted:#7b8494;
+    --line:#282c34;--brand:#4c93ea;--brand-d:#8fbdf2;--accent:#9b78f5;--good:#3fbf3f;--good-bg:#14311a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.45);}}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.85;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:var(--brand);}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;
+    background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;}
+  .sb-brand{display:flex;align-items:center;gap:8px;font-weight:800;text-decoration:none;color:var(--ink);}
+  .sb-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:15px;}
+  .sb-links{display:flex;gap:14px;font-size:14px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);}
+  .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:820px;margin:0 auto;padding:26px 18px 70px;}
+  .crumb{font-size:12.5px;color:var(--muted);margin:2px 0 14px;}
+  .crumb a{color:var(--ink-2);text-decoration:none;}
+  .page-h1{font-size:26px;margin:4px 0 6px;line-height:1.35;}
+  .lead{font-size:15px;color:var(--ink-2);margin:0 0 20px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);}
+  .prose h2{font-size:19px;margin:30px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line);}
+  .prose h2:first-child{margin-top:6px;}
+  .prose h3{font-size:16px;margin:20px 0 6px;}
+  .prose p{margin:8px 0;font-size:14.5px;}
+  .prose ul{margin:8px 0;padding-left:22px;}
+  .prose li{margin:6px 0;font-size:14.5px;}
+  .prose table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14px;}
+  .prose th,.prose td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+  .prose th{background:var(--bg);white-space:nowrap;}
+  .note{background:var(--good-bg);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:13.5px;color:var(--ink-2);margin:14px 0;}
+  .dl{margin:10px 0;} .dl dt{font-weight:800;font-size:14px;margin-top:12px;} .dl dd{margin:2px 0 0;font-size:14.5px;color:var(--ink-2);}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 4px;}
+  .cta{display:inline-block;text-decoration:none;font-weight:800;font-size:14.5px;padding:11px 20px;border-radius:12px;background:var(--brand);color:#fff;}
+  .cta.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand);}
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center;line-height:2;}
+  footer a{color:var(--ink-2);text-decoration:none;margin:0 8px;}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FBQF3VPRCJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FBQF3VPRCJ');</script>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="index.html"><span class="sb-logo">⚡</span>サクッとツール</a>
+  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="about.html">運営者情報</a></div>
+</nav>
+<div class="wrap">
+  <div class="crumb"><a href="index.html">ホーム</a> ／ 写真の位置情報を消す</div>
+  <h1 class="page-h1">写真の位置情報（Exif）を消してからSNSに上げる</h1>
+  <p class="lead">スマホで撮った写真には、撮影した場所の座標が記録されていることがあります。何ができて何ができないのかを整理したうえで、消し方と、そもそも記録させない設定をまとめました。写真は端末の中だけで処理されます。</p>
+  <div class="card prose">
+  <h2>結論</h2>
+  <div class="note">外に出す写真は<b>自分の手元で位置情報を消してから</b>出すのが確実です。投稿先が自動で消してくれることを期待するのは、仕様が変わりうる以上おすすめできません。さらに根本的な対策として、<b>カメラ側で最初から記録させない</b>設定に変えておく方法があります。</div>
+  <h2>位置情報は写真のどこに入っているのか</h2>
+  <p>写真ファイルには、画像そのもののほかに<b>付帯情報</b>が一緒に保存されています。これをExif（イグジフ）と呼びます。撮影機材が自動で書き込むもので、ふだん目にすることはありません。</p>
+  <p>入っている代表的な項目は次のとおりです。</p>
+  <ul>
+    <li><b>撮影場所の緯度・経度</b>。スマホの位置情報が有効な状態で撮ると記録されます</li>
+    <li><b>撮影日時</b>。秒単位まで残ります</li>
+    <li><b>機材の情報</b>。メーカー名、機種名、レンズの種類</li>
+    <li><b>撮影設定</b>。絞り、シャッター速度、感度、フラッシュの有無</li>
+  </ul>
+  <p>問題になりやすいのは緯度・経度です。座標は地図に入れればそのまま場所が出ます。自宅で撮った1枚を何気なく投稿すると、住所に相当する情報を添えて公開したことになりかねません。</p>
+  <p>写真そのものは無害に見えるのに情報が漏れうる、という点が厄介です。見ただけでは付いているかどうか分かりません。</p>
+  <p>手元の写真に位置情報が入っているかは、次の方法で確かめられます。iPhoneなら写真アプリで対象の写真を開き、上へスワイプするか情報ボタンを押します。撮影地の地図が表示されれば位置情報が入っています。Androidも同様に、写真の詳細情報を開くと撮影場所の欄が現れます。パソコンの場合は、ファイルを右クリックしてプロパティや情報を開くと、詳細タブなどに座標が並んでいることがあります。</p>
+  <h2>SNSごとの扱いの違い</h2>
+  <p>主要なSNSの多くは、アップロードされた画像を処理する過程で付帯情報を取り除く仕組みを持っています。そのため「投稿すれば自動的に消えるから大丈夫」と説明されることがあります。</p>
+  <p>ただし、この前提に寄りかかるのはおすすめできません。理由が3つあります。</p>
+  <ul>
+    <li><b>仕様は変わる。</b>各サービスの処理は更新されます。ある時点で消えていたからといって、今後もそうとは限りません</li>
+    <li><b>経路によって扱いが違う。</b>同じサービスでも、通常の投稿と、ファイルとしての送信や共有リンク経由では処理が異なることがあります</li>
+    <li><b>SNS以外にも出口がある。</b>フリマアプリの出品写真、掲示板への投稿、メールへの添付、クラウドの共有フォルダ。SNSの仕様は、これらには関係ありません</li>
+  </ul>
+  <div class="note">結論はシンプルです。<b>投稿先の仕様を調べて回るより、自分の手元で消してしまうほうが早く、確実です。</b>一度習慣にしてしまえば、どこに出すときも同じ手順で済みます。</div>
+  <h2>消し方</h2>
+  <h3>すでに撮った写真から消す</h3>
+  <p><a href="tool-image-exif-remove.html">画像のExif・位置情報を削除</a>に写真を読み込むと、付帯情報を取り除いた画像が得られます。処理はブラウザの中だけで行われ、写真がどこかへ送信されることはありません。</p>
+  <p>消えるのは付帯情報だけで、画像そのものには手を加えません。<b>画質は変わりません。</b>ただし撮影日時やカメラの設定値も一緒に消えるため、記録として残しておきたい写真は、元ファイルを別に保管したうえで公開用のコピーを作ってください。</p>
+  <h3>これから撮る写真に記録させない</h3>
+  <p>そもそも書き込まれなければ、消す手間もなくなります。カメラアプリが位置情報を使わない設定にしておけば、以後の写真に座標は入りません。</p>
+  <p>設定の場所はおおむね次のとおりです。表記は機種やバージョンで変わるので、近い名前の項目を探してください。</p>
+  <table><thead><tr><th>端末</th><th>設定の場所</th></tr></thead><tbody><tr><th>iPhone</th><td>「設定」→「プライバシーとセキュリティ」→「位置情報サービス」→ 一覧から「カメラ」を選び、「許可しない」にする</td></tr><tr><th>Android</th><td>カメラアプリを開いて設定（歯車）→「位置情報」「位置情報タグ」などの項目をオフにする。機種によっては本体の「設定」→「位置情報」→「アプリの権限」からも変更できる</td></tr></tbody></table>
+  <p>この設定にすると、写真アプリの地図表示や「撮影地ごとの整理」といった機能は使えなくなります。旅行の記録として位置情報を残したい人もいるはずなので、<b>常時オフにするか、投稿前に消す運用にするか</b>は好みで選んでください。</p>
+  <h2>消しても場所が分かる場合がある</h2>
+  <p>ここが見落とされがちな点です。Exifを消しても、<b>写真に写っているもの</b>から場所が判明することがあります。</p>
+  <ul>
+    <li><b>背景の看板や建物。</b>店名、電柱の住所表示、マンションの名称、学校名。本人が気づかないうちに端に写り込んでいます</li>
+    <li><b>窓やガラスの反射。</b>向かいの建物や車のナンバーが映り込むことがあります</li>
+    <li><b>影の向きと長さ。</b>撮影時刻と組み合わせると、おおよその方角が推測できます</li>
+    <li><b>ほかの投稿との組み合わせ。</b>1枚ずつでは分からなくても、複数の投稿を並べると生活圏が絞り込まれていきます</li>
+    <li><b>制服や車体の表記。</b>学校名や社名が読み取れる場合があります</li>
+  </ul>
+  <p>つまり、位置情報の削除は<b>特定される可能性を下げる手段のひとつ</b>であって、それだけで安全が保証されるものではありません。投稿前に画面を拡大して、端まで一度見る。この習慣のほうが効く場面も多くあります。</p>
+  <p>とくに子どもが写った写真や、自宅・職場の周辺で撮った写真は、慎重に扱う価値があります。</p>
+  <h2>今すぐ使えるツール</h2>
+  <div class="btnrow"><a class="cta ghost" href="tool-image-exif-remove.html" style="margin:4px 6px 4px 0">位置情報・Exifを削除する</a><a class="cta ghost" href="tool-image-crop.html" style="margin:4px 6px 4px 0">写り込みを切り落とす</a></div>
+  <h2>よくある質問</h2>
+  <h3>Exifを消すと画質は落ちますか？</h3>
+  <p>落ちません。Exifは写真本体とは別の場所に記録されている付帯情報で、画像そのものとは切り離されています。この情報だけを取り除いても、写真の見え方は変わりません。撮影日時やカメラの設定値も一緒に消えるため、それらを残したい場合は元ファイルを別に保管してください。</p>
+  <h3>スクリーンショットなら位置情報は入りませんか？</h3>
+  <p>スクリーンショットには撮影時の位置情報は入りません。ただし安全とは限りません。画面に映っていたもの、たとえば地図アプリの表示、通知に出ていた名前、ブラウザのタブに残った検索履歴などがそのまま写り込みます。位置情報とは別の経路で情報が漏れることになるため、投稿前に画面の隅々まで見る習慣のほうが重要です。</p>
+  <h3>メッセージアプリで送った写真に位置情報は残りますか？</h3>
+  <p>アプリや送信方法によって扱いが異なり、仕様も更新されます。圧縮して送る設定では付帯情報が失われることが多い一方、原本のまま送る設定やファイルとして添付する方法では残ることがあります。相手や経路ごとに確かめるのは現実的ではないので、外に出す写真は自分の手元で消してから送るのが確実です。</p>
+  <h3>過去に投稿した写真はどうすればよいですか？</h3>
+  <p>すでに公開した写真については、投稿を削除するのが最も確実です。ただし削除しても、他者が保存していたり転載されていたりする可能性は残ります。過去分をすべて遡るのは現実的でないことも多いので、自宅や職場が写っているもの、子どもが写っているものなど、影響の大きいものから優先して確認するのが現実的です。今後の投稿については、カメラ側で記録を止めておけば同じ心配をせずに済みます。</p>
+  <p>フリマアプリに出品する写真も、同じ理由で公開前に確認しておきたい対象です。手順は<a href="article-mercari-square-photo.html">メルカリの出品写真を正方形に整える</a>にまとめています。</p>
+  <div class="btnrow" style="margin-top:20px"><a class="cta" href="tool-image-exif-remove.html">位置情報の削除を使ってみる</a></div>
+  </div>
+  <footer>
+  <div><a href="index.html">ツール一覧</a>・<a href="service.html">制作サービス</a>・<a href="about.html">運営者情報</a>・<a href="privacy.html">プライバシーポリシー</a>・<a href="terms.html">利用規約</a></div>
+  <div>© サクッとツール ・ すべての処理は端末内で完結します</div>
+</footer>
+</div>
+<!-- pwa:start -->
+<script>
+(function(){
+var TH="#2a78d6", KEY='kw_pwa_hint_v1';
+function off(){try{return localStorage.getItem(KEY)==='1';}catch(e){return true;}}
+function setoff(){try{localStorage.setItem(KEY,'1');}catch(e){}}
+function standalone(){try{return window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
+if(standalone()&&typeof gtag==='function'){gtag('event','pwa_launch');}
+var deferred=null,bar=null,timer=null;
+function drop(){if(bar){bar.remove();bar=null;}if(timer){clearTimeout(timer);timer=null;}}
+function build(msg,btnText,onClick){
+  if(bar||off()||standalone()||!document.body)return;
+  bar=document.createElement('div');
+  bar.setAttribute('role','region');bar.setAttribute('aria-label','ホーム画面に追加');
+  bar.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:14px;background:#1f2430;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,.28);font:500 13.5px/1.55 system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;max-width:560px;margin:0 auto;';
+  var ic=document.createElement('img');ic.src='/icon-192.png';ic.alt='';ic.width=34;ic.height=34;
+  ic.style.cssText='width:34px;height:34px;border-radius:9px;flex:0 0 auto;';
+  var tx=document.createElement('div');tx.textContent=msg;tx.style.cssText='flex:1 1 auto;';
+  bar.appendChild(ic);bar.appendChild(tx);
+  if(btnText){
+    var b=document.createElement('button');b.type='button';b.textContent=btnText;
+    b.style.cssText='flex:0 0 auto;border:0;border-radius:9px;padding:8px 14px;font:700 13px system-ui,sans-serif;background:'+TH+';color:#fff;cursor:pointer;';
+    b.addEventListener('click',onClick);bar.appendChild(b);
+  }
+  var c=document.createElement('button');c.type='button';c.setAttribute('aria-label','閉じる');c.textContent='×';
+  c.style.cssText='flex:0 0 auto;border:0;background:transparent;color:#b9bfcc;font-size:19px;line-height:1;cursor:pointer;padding:4px 2px;';
+  c.addEventListener('click',function(){setoff();drop();});
+  bar.appendChild(c);
+  document.body.appendChild(bar);
+  timer=setTimeout(function(){drop();},20000);
+}
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferred=e;
+  setTimeout(function(){
+    build('ホーム画面に追加すると、アプリのように使えます。','追加',function(){
+      if(!deferred)return;
+      deferred.prompt();
+      deferred.userChoice.then(function(r){
+        if(typeof gtag==='function')gtag('event','pwa_prompt',{outcome:r.outcome});
+        setoff();drop();
+      });
+    });
+  },8000);
+});
+window.addEventListener('appinstalled',function(){
+  setoff();
+  if(typeof gtag==='function')gtag('event','pwa_install');
+  drop();
+});
+var ua=navigator.userAgent||'';
+var isIOS=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+var isSafari=/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|OPiOS|Android/.test(ua);
+if(isIOS&&isSafari){setTimeout(function(){build('共有ボタン → 「ホーム画面に追加」で、アプリのように使えます。',null,null);},14000);}
+})();
+</script>
+<!-- pwa:end -->
+</body>
+</html>
