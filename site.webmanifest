@@ -56,7 +56,7 @@
     {
       "name": "きゅっと画像圧縮",
       "short_name": "きゅっと画像圧縮",
-      "url": "/tool-image-compressor.html",
+      "url": "/tool-image-compressor",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -68,7 +68,7 @@
     {
       "name": "サクッとPDF整理",
       "short_name": "サクッとPDF整理",
-      "url": "/tool-pdf-organizer.html",
+      "url": "/tool-pdf-organizer",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -80,7 +80,7 @@
     {
       "name": "画像の切り抜き",
       "short_name": "画像の切り抜き",
-      "url": "/tool-image-crop.html",
+      "url": "/tool-image-crop",
       "icons": [
         {
           "src": "/icon-192.png",
@@ -92,7 +92,7 @@
     {
       "name": "画像リサイズ",
       "short_name": "画像リサイズ",
-      "url": "/tool-image-resize.html",
+      "url": "/tool-image-resize",
       "icons": [
         {
           "src": "/icon-192.png",

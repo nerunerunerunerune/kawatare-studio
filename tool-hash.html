@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ハッシュ生成(SHA) ― SHA-256/1/512 のハッシュ値を計算｜サクッとツール</title>
 <meta name="description" content="テキストからSHA-256・SHA-1・SHA-512のハッシュ値(16進)を計算。ブラウザ内処理で送信なし・登録不要・完全無料。">
-<link rel="canonical" href="https://kawatare.studio/tool-hash.html">
+<link rel="canonical" href="https://kawatare.studio/tool-hash">
 <meta name="theme-color" content="#7c3aed">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="サクッとツール">
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="サクッとツール">
 <meta property="og:title" content="ハッシュ生成(SHA)｜SHA-256/1/512 のハッシュ値を計算">
 <meta property="og:description" content="テキストからSHA-256・SHA-1・SHA-512のハッシュ値(16進)を計算。ブラウザ内処理で送信なし・登録不要・完全無料。">
-<meta property="og:url" content="https://kawatare.studio/tool-hash.html">
+<meta property="og:url" content="https://kawatare.studio/tool-hash">
 <meta property="og:image" content="https://kawatare.studio/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ハッシュ生成(SHA)｜SHA-256/1/512 のハッシュ値を計算">
@@ -22,7 +22,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ハッシュ生成(SHA)","applicationCategory":"DeveloperApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"テキストからSHA-256・SHA-1・SHA-512のハッシュ値(16進)を計算。ブラウザ内処理で送信なし・登録不要・完全無料。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"ハッシュ生成(SHA)の使い方","step":[{"@type":"HowToStep","name":"入力","text":"ハッシュ化したいテキストを入力します。"},{"@type":"HowToStep","name":"種類を選ぶ","text":"SHA-256・SHA-1・SHA-512から選びます。"},{"@type":"HowToStep","name":"コピー","text":"生成されたハッシュ値をコピーします。"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"入力は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。計算はブラウザの暗号APIで行われ、入力内容は送信されません。"}},{"@type":"Question","name":"MD5には対応していますか？","acceptedAnswer":{"@type":"Answer","text":"標準の暗号APIがMD5に非対応のため、現在はSHA系のみ対応しています。"}},{"@type":"Question","name":"用途は何ですか？","acceptedAnswer":{"@type":"Answer","text":"データの同一性チェック、チェックサム、開発時の検証などに使えます。"}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"ハッシュ生成(SHA)","item":"https://kawatare.studio/tool-hash.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"ハッシュ生成(SHA)","item":"https://kawatare.studio/tool-hash"}]}</script>
 <style>
   :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
     --brand:#7c3aed;--brand-d:#6d28d9;--accent:#db2777;--good:#0ca30c;--good-bg:#e7f6e7;
@@ -85,8 +85,8 @@
 </head>
 <body>
 <nav class="sitebar">
-  <a class="sb-brand" href="index.html"><span class="sb-logo">⚡</span>サクッとツール</a>
-  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="tool-image-compressor.html">画像圧縮</a><a href="tool-pdf-organizer.html">PDF整理</a></div>
+  <a class="sb-brand" href="/"><span class="sb-logo">⚡</span>サクッとツール</a>
+  <div class="sb-links"><a href="/">ツール一覧</a><a href="tool-image-compressor">画像圧縮</a><a href="tool-pdf-organizer">PDF整理</a></div>
 </nav>
 <div class="wrap">
   <header class="hd">
@@ -106,10 +106,10 @@
     <h2>よくある質問</h2>
     <div class="faq"><details open><summary>入力は送信されますか？</summary><p>いいえ。計算はブラウザの暗号APIで行われ、入力内容は送信されません。</p></details><details><summary>MD5には対応していますか？</summary><p>標準の暗号APIがMD5に非対応のため、現在はSHA系のみ対応しています。</p></details><details><summary>用途は何ですか？</summary><p>データの同一性チェック、チェックサム、開発時の検証などに使えます。</p></details></div>
     <h2>ほかの無料ツール</h2>
-    <div class="rel-grid"><a class="rel" href="tool-uuid.html">ID UUID生成 <span>一意なIDを生成</span></a><a class="rel" href="tool-password.html">🔑 パスワード生成 <span>強力なパスワードを作成</span></a></div>
+    <div class="rel-grid"><a class="rel" href="tool-uuid">ID UUID生成 <span>一意なIDを生成</span></a><a class="rel" href="tool-password">🔑 パスワード生成 <span>強力なパスワードを作成</span></a></div>
   </section>
 
-  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">運営者情報</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>運営：かわたれ studio ・ 最終更新：2026-07-19 ・ すべての処理は端末内で完結します</div>
+  <div class="foot"><a href="/">ツール一覧</a> ・ <a href="about">運営者情報</a> ・ <a href="privacy">プライバシー</a> ・ <a href="terms">利用規約</a><br>運営：かわたれ studio ・ 最終更新：2026-07-19 ・ すべての処理は端末内で完結します</div>
 </div>
 <script>(function(){var algo='SHA-256';async function update(){var s=document.getElementById('in').value;var st=document.getElementById('status');if(!s){document.getElementById('out').value='';return;}try{var buf=await crypto.subtle.digest(algo,new TextEncoder().encode(s));var hex=Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');document.getElementById('out').value=hex;st.textContent='';}catch(e){st.style.color='var(--crit,#d03b3b)';st.textContent='この環境では計算できません';}}document.querySelectorAll('#mode button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#mode button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');algo=b.dataset.v;update();});});document.getElementById('in').addEventListener('input',update);document.getElementById('copy').addEventListener('click',function(){var o=document.getElementById('out');if(!o.value)return;navigator.clipboard&&navigator.clipboard.writeText(o.value);});window.__tool={set:function(v){document.getElementById('in').value=v;return update();},algo:function(a){algo=a;return update();},get:function(){return document.getElementById('out').value;}};})();</script>
 <!-- pwa:start -->

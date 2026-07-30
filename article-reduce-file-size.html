@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>「添付できない」を解決する ファイルサイズ制限の外し方｜サクッとツール</title>
 <meta name="description" content="メールやWeb申請でファイルが大きすぎて送れないときの対処法。画質を落とさずに容量を下げる優先順位と、圧縮しても小さくならないPDFの原因を解説します。">
-<link rel="canonical" href="https://kawatare.studio/article-reduce-file-size.html">
+<link rel="canonical" href="https://kawatare.studio/article-reduce-file-size">
 <meta name="theme-color" content="#2a78d6">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="サクッとツール">
@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="サクッとツール">
 <meta property="og:title" content="「添付できない」を解決する ファイルサイズ制限の外し方｜サクッとツール">
 <meta property="og:description" content="メールやWeb申請でファイルが大きすぎて送れないときの対処法。画質を落とさずに容量を下げる優先順位と、圧縮しても小さくならないPDFの原因を解説します。">
-<meta property="og:url" content="https://kawatare.studio/article-reduce-file-size.html">
+<meta property="og:url" content="https://kawatare.studio/article-reduce-file-size">
 <meta property="og:image" content="https://kawatare.studio/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="「添付できない」を解決する ファイルサイズ制限の外し方｜サクッとツール">
 <meta name="twitter:description" content="メールやWeb申請でファイルが大きすぎて送れないときの対処法。画質を落とさずに容量を下げる優先順位と、圧縮しても小さくならないPDFの原因を解説します。">
 <meta name="twitter:image" content="https://kawatare.studio/ogp.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"ファイルサイズ制限の外し方","item":"https://kawatare.studio/article-reduce-file-size.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"ファイルサイズ制限の外し方","item":"https://kawatare.studio/article-reduce-file-size"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"「添付できない」を解決する ― ファイルサイズ制限の外し方","author":{"@type":"Organization","name":"かわたれ studio"},"publisher":{"@type":"Organization","name":"かわたれ studio"},"datePublished":"2026-07-29","dateModified":"2026-07-29","description":"メールやWeb申請でファイルが大きすぎて送れないときの、容量の下げ方と優先順位を解説。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"ファイルの容量を下げて添付できるようにする","description":"画質を保ったままファイルサイズを下げ、メールや申請フォームの上限に収める手順。","totalTime":"PT10M","step":[{"@type":"HowToStep","position":1,"name":"まず上限を確認する","text":"送信側と受信側、どちらの上限が厳しいかを先に確かめます。"},{"@type":"HowToStep","position":2,"name":"解像度を下げる","text":"必要以上に大きい画素数を、用途に見合う大きさまで縮めます。"},{"@type":"HowToStep","position":3,"name":"圧縮する","text":"解像度を整えたうえで圧縮し、画質と容量の折り合いをつけます。"},{"@type":"HowToStep","position":4,"name":"それでも大きいなら分割する","text":"PDFを複数に分けて、1ファイルあたりを上限内に収めます。"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"主要なメールサービスの添付上限はどれくらいですか？","acceptedAnswer":{"@type":"Answer","text":"サービスによりますが、個人向けのメールサービスでは10MBから25MB程度に設定されていることが多いようです。ただし数値は変更されることがあるため、正確なところは利用中のサービスの案内を確認してください。より重要なのは、上限は送る側だけでなく受け取る側にもあるという点です。自分は20MBまで送れても、相手の会社のメールサーバーが5MBまでしか受け取れなければ届きません。相手先が企業や自治体の場合は、こちらの上限より厳しいと考えて用意するほうが確実です。"}},{"@type":"Question","name":"圧縮しても容量が減りません","acceptedAnswer":{"@type":"Answer","text":"すでに圧縮済みのデータが中に入っている場合、それ以上は縮みません。写真のJPEGは元から圧縮された形式なので、再圧縮の効きは限定的です。PDFの場合は、中身に高解像度のスキャン画像が入っているか、フォントがまるごと埋め込まれていることが原因として多いです。この場合は圧縮率をいじるより、元の画像の解像度を下げてからPDFを作り直すほうが効果があります。"}},{"@type":"Question","name":"画質を落とさずに小さくする方法はありますか？","acceptedAnswer":{"@type":"Answer","text":"厳密に画質を一切落とさずに大きく減らすことはできませんが、見た目の劣化をほとんど感じさせずに減らすことは可能です。鍵は解像度です。A4の書類を画面や一般的な印刷で読む用途なら、極端に高い画素数は必要ありません。用途に見合う大きさまで解像度を下げてから軽く圧縮すると、見た目を保ったまま容量が大きく下がります。"}},{"@type":"Question","name":"分割したPDFは相手側で1つに戻せますか？","acceptedAnswer":{"@type":"Answer","text":"戻せますが、相手に手間をかけることになります。分割して送る場合は、ファイル名に「1of3」のような通し番号を入れ、本文でも何分割かを伝えてください。なお提出フォームが1ファイル指定の場合、分割は解決策になりません。その場合は解像度を下げる方向で上限内に収める必要があります。"}}]}</script>
@@ -69,11 +69,11 @@
 </head>
 <body>
 <nav class="sitebar">
-  <a class="sb-brand" href="index.html"><span class="sb-logo">⚡</span>サクッとツール</a>
-  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="about.html">運営者情報</a></div>
+  <a class="sb-brand" href="/"><span class="sb-logo">⚡</span>サクッとツール</a>
+  <div class="sb-links"><a href="/">ツール一覧</a><a href="about">運営者情報</a></div>
 </nav>
 <div class="wrap">
-  <div class="crumb"><a href="index.html">ホーム</a> ／ ファイルサイズ制限の外し方</div>
+  <div class="crumb"><a href="/">ホーム</a> ／ ファイルサイズ制限の外し方</div>
   <h1 class="page-h1">「添付できない」を解決する ― ファイルサイズ制限の外し方</h1>
   <p class="lead">送信ボタンを押したら「ファイルサイズが大きすぎます」。締切直前にこれが出ると焦ります。原因の見分け方と、画質を保ったまま容量を落とす順序をまとめました。ファイルは端末の中だけで処理されます。</p>
   <div class="card prose">
@@ -95,14 +95,14 @@
   <div class="note">相手が企業や自治体の場合は、<b>自分の上限より厳しい</b>と考えて用意するのが安全です。目安として<b>5MB以内</b>に収めておけば、たいていの相手に通ります。</div>
   <p>Web申請フォームの場合は、たいてい画面のどこかに上限が書かれています。書かれていない場合、送信して初めてエラーが出ることになるので、先に小さめに作っておくほうが手戻りがありません。</p>
   <h3>ステップ2　解像度を下げる</h3>
-  <p>最初に手をつけるのはここです。<a href="tool-image-resize.html">画像のリサイズ</a>で、画素数そのものを減らします。</p>
+  <p>最初に手をつけるのはここです。<a href="tool-image-resize">画像のリサイズ</a>で、画素数そのものを減らします。</p>
   <p>なぜ解像度が先かというと、効き方が素直だからです。縦横をそれぞれ半分にすると面積は4分の1になり、データ量もおおむねそれに応じて減ります。しかも「小さくした」という結果が目で見て分かるので、下げすぎたかどうかを自分で判断できます。</p>
   <p>用途に見合う大きさの目安は、画面で読む書類なら長辺1500〜2000ピクセル程度。これでA4の文字は十分に読めます。手元のスマホ写真は長辺4000ピクセル以上あることが多いので、それだけで大幅に減ります。</p>
   <h3>ステップ3　圧縮する</h3>
-  <p>解像度を整えたうえで、<a href="tool-image-compressor.html">画像の圧縮</a>をかけます。順序が逆だと、一度荒くした画像をさらに縮めることになり、劣化だけが積み重なります。</p>
+  <p>解像度を整えたうえで、<a href="tool-image-compressor">画像の圧縮</a>をかけます。順序が逆だと、一度荒くした画像をさらに縮めることになり、劣化だけが積み重なります。</p>
   <p>圧縮率は、下げるほど容量が減りますが、文字の輪郭がにじみ始めます。判断の基準は<b>実際に使う見え方で確認すること</b>です。画面で読む書類なら等倍表示で、印刷するなら印刷して、文字がつぶれていなければ十分です。</p>
   <h3>ステップ4　それでも大きいなら分割する</h3>
-  <p>ここまでやっても上限を超える場合、<a href="tool-pdf-organizer.html">PDFの整理・並べ替え</a>でファイルを分けます。</p>
+  <p>ここまでやっても上限を超える場合、<a href="tool-pdf-organizer">PDFの整理・並べ替え</a>でファイルを分けます。</p>
   <p>ただし分割は最後の手段です。相手に「3つのファイルを開いて1つとして扱う」手間をかけるうえ、提出フォームが1ファイル指定なら分割しても解決しません。分ける場合はファイル名に <code>1of3</code> のような通し番号を入れ、本文でも何分割かを伝えます。</p>
   <h2>つまずきやすい点</h2>
   <ul>
@@ -112,7 +112,7 @@
     <li><b>元ファイルを上書きしてしまう。</b>縮小したものを元の名前で保存すると、高画質の原本が失われます。別名で保存してください。</li>
   </ul>
   <h2>今すぐ使えるツール</h2>
-  <div class="btnrow"><a class="cta ghost" href="tool-image-resize.html" style="margin:4px 6px 4px 0">解像度を下げる</a><a class="cta ghost" href="tool-image-compressor.html" style="margin:4px 6px 4px 0">圧縮する</a><a class="cta ghost" href="tool-pdf-organizer.html" style="margin:4px 6px 4px 0">PDFを分割する</a></div>
+  <div class="btnrow"><a class="cta ghost" href="tool-image-resize" style="margin:4px 6px 4px 0">解像度を下げる</a><a class="cta ghost" href="tool-image-compressor" style="margin:4px 6px 4px 0">圧縮する</a><a class="cta ghost" href="tool-pdf-organizer" style="margin:4px 6px 4px 0">PDFを分割する</a></div>
   <h2>よくある質問</h2>
   <h3>主要なメールサービスの添付上限はどれくらいですか？</h3>
   <p>サービスによりますが、個人向けのメールサービスでは10MBから25MB程度に設定されていることが多いようです。ただし数値は変更されることがあるため、正確なところは利用中のサービスの案内を確認してください。より重要なのは、上限は送る側だけでなく受け取る側にもあるという点です。自分は20MBまで送れても、相手の会社のメールサーバーが5MBまでしか受け取れなければ届きません。相手先が企業や自治体の場合は、こちらの上限より厳しいと考えて用意するほうが確実です。</p>
@@ -125,11 +125,11 @@
   <h2>もっと本格的にやりたい方へ</h2>
   <p>ここで説明した手順は、<b>中身の画像を整えることで容量を下げる</b>という考え方です。多くの場合はこれで足ります。</p>
   <p>一方、PDFの内部構造そのものに手を入れる最適化という手法もあります。埋め込まれたフォントのうち実際に使っている文字だけを残す、重複している画像データを1つにまとめる、不要になった編集履歴を削除する、といった処理です。見た目をまったく変えずに容量だけを落とせる場面がありますが、こうした内部処理は専用ソフトの領域になります。大量の資料を定常的に配布する立場になったら、検討する価値があります。</p>
-  <p>関連する手順として、<a href="article-receipt-to-pdf.html">領収書の写真を1つのPDFにまとめる手順</a>と、<a href="article-merge-documents-pdf.html">複数の書類を1つのPDFにまとめて提出する</a>もあわせてどうぞ。</p>
-  <div class="btnrow" style="margin-top:20px"><a class="cta" href="tool-image-compressor.html">画像の圧縮を使ってみる</a></div>
+  <p>関連する手順として、<a href="article-receipt-to-pdf">領収書の写真を1つのPDFにまとめる手順</a>と、<a href="article-merge-documents-pdf">複数の書類を1つのPDFにまとめて提出する</a>もあわせてどうぞ。</p>
+  <div class="btnrow" style="margin-top:20px"><a class="cta" href="tool-image-compressor">画像の圧縮を使ってみる</a></div>
   </div>
   <footer>
-  <div><a href="index.html">ツール一覧</a>・<a href="service.html">制作サービス</a>・<a href="about.html">運営者情報</a>・<a href="privacy.html">プライバシーポリシー</a>・<a href="terms.html">利用規約</a></div>
+  <div><a href="/">ツール一覧</a>・<a href="service">制作サービス</a>・<a href="about">運営者情報</a>・<a href="privacy">プライバシーポリシー</a>・<a href="terms">利用規約</a></div>
   <div>© サクッとツール ・ すべての処理は端末内で完結します</div>
 </footer>
 </div>

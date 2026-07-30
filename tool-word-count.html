@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>文字数カウント ― 文字数・行数・単語数をリアルタイム集計｜サクッとツール</title>
 <meta name="description" content="入力した文章の文字数・空白を除く文字数・行数・単語数・バイト数をリアルタイムで集計。ブラウザ内処理で送信なし・登録不要・完全無料。">
-<link rel="canonical" href="https://kawatare.studio/tool-word-count.html">
+<link rel="canonical" href="https://kawatare.studio/tool-word-count">
 <meta name="theme-color" content="#2563eb">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="サクッとツール">
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="サクッとツール">
 <meta property="og:title" content="文字数カウント｜文字数・行数・単語数をリアルタイム集計">
 <meta property="og:description" content="入力した文章の文字数・空白を除く文字数・行数・単語数・バイト数をリアルタイムで集計。ブラウザ内処理で送信なし・登録不要・完全無料。">
-<meta property="og:url" content="https://kawatare.studio/tool-word-count.html">
+<meta property="og:url" content="https://kawatare.studio/tool-word-count">
 <meta property="og:image" content="https://kawatare.studio/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="文字数カウント｜文字数・行数・単語数をリアルタイム集計">
@@ -22,7 +22,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"文字数カウント","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"入力した文章の文字数・空白を除く文字数・行数・単語数・バイト数をリアルタイムで集計。ブラウザ内処理で送信なし・登録不要・完全無料。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"文字数カウントの使い方","step":[{"@type":"HowToStep","name":"入力","text":"数えたい文章を貼り付け、または入力します。"},{"@type":"HowToStep","name":"自動集計","text":"入力と同時に文字数などが更新されます。"},{"@type":"HowToStep","name":"活用","text":"必要ならワンタップでコピーやクリアができます。"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"入力した文章は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。集計はすべてブラウザ内で行われ、入力内容はサーバーに送信されません。"}},{"@type":"Question","name":"空白や改行は文字数に含まれますか？","acceptedAnswer":{"@type":"Answer","text":"「文字数」は空白・改行も含めた総数です。別途「空白を除く文字数」も表示します。"}},{"@type":"Question","name":"原稿用紙の字数や提出用の字数に使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。レポートや投稿の文字数チェックに使えます。絵文字も1文字として数えます。"}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"文字数カウント","item":"https://kawatare.studio/tool-word-count.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"文字数カウント","item":"https://kawatare.studio/tool-word-count"}]}</script>
 <style>
   :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
     --brand:#2563eb;--brand-d:#1d4ed8;--accent:#7a3ff2;--good:#0ca30c;--good-bg:#e7f6e7;
@@ -85,8 +85,8 @@
 </head>
 <body>
 <nav class="sitebar">
-  <a class="sb-brand" href="index.html"><span class="sb-logo">⚡</span>サクッとツール</a>
-  <div class="sb-links"><a href="index.html">ツール一覧</a><a href="tool-image-compressor.html">画像圧縮</a><a href="tool-pdf-organizer.html">PDF整理</a></div>
+  <a class="sb-brand" href="/"><span class="sb-logo">⚡</span>サクッとツール</a>
+  <div class="sb-links"><a href="/">ツール一覧</a><a href="tool-image-compressor">画像圧縮</a><a href="tool-pdf-organizer">PDF整理</a></div>
 </nav>
 <div class="wrap">
   <header class="hd">
@@ -118,12 +118,12 @@
     <div class="howto"><div class="st"><div class="n">1</div><b>入力</b><p>数えたい文章を貼り付け、または入力します。</p></div><div class="st"><div class="n">2</div><b>自動集計</b><p>入力と同時に文字数などが更新されます。</p></div><div class="st"><div class="n">3</div><b>活用</b><p>必要ならワンタップでコピーやクリアができます。</p></div></div>
     <h2>よくある質問</h2>
     <div class="faq"><details open><summary>入力した文章は送信されますか？</summary><p>いいえ。集計はすべてブラウザ内で行われ、入力内容はサーバーに送信されません。</p></details><details><summary>空白や改行は文字数に含まれますか？</summary><p>「文字数」は空白・改行も含めた総数です。別途「空白を除く文字数」も表示します。</p></details><details><summary>原稿用紙の字数や提出用の字数に使えますか？</summary><p>はい。レポートや投稿の文字数チェックに使えます。絵文字も1文字として数えます。</p></details></div>
-    <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-sidejob-crowdsourcing.html">📖 副業、何から始める？<span>クラウドソーシング入門</span></a></div>
+    <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-sidejob-crowdsourcing">📖 副業、何から始める？<span>クラウドソーシング入門</span></a></div>
     <h2>ほかの無料ツール</h2>
-    <div class="rel-grid"><a class="rel" href="tool-image-compressor.html">🖼️ きゅっと画像圧縮 <span>JPEG/PNG/WebP/AVIF・目標サイズ指定</span></a><a class="rel" href="index.html">＋ ツール一覧を見る <span>送信しない無料ツール集</span></a></div>
+    <div class="rel-grid"><a class="rel" href="tool-image-compressor">🖼️ きゅっと画像圧縮 <span>JPEG/PNG/WebP/AVIF・目標サイズ指定</span></a><a class="rel" href="/">＋ ツール一覧を見る <span>送信しない無料ツール集</span></a></div>
   </section>
 
-  <div class="foot"><a href="index.html">ツール一覧</a> ・ <a href="about.html">運営者情報</a> ・ <a href="privacy.html">プライバシー</a> ・ <a href="terms.html">利用規約</a><br>運営：かわたれ studio ・ 最終更新：2026-07-19 ・ すべての処理は端末内で完結します</div>
+  <div class="foot"><a href="/">ツール一覧</a> ・ <a href="about">運営者情報</a> ・ <a href="privacy">プライバシー</a> ・ <a href="terms">利用規約</a><br>運営：かわたれ studio ・ 最終更新：2026-07-19 ・ すべての処理は端末内で完結します</div>
 </div>
 <script>(function(){
     var ta=document.getElementById('in');
