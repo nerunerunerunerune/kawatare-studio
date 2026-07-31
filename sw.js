@@ -1,7 +1,7 @@
 /* かわたれ studio ― PWA サービスワーカー
    目的: オフラインでも動くこと / 2回目以降を速くすること
    方針: 広告・計測など外部リクエストには一切触れない            */
-var VER   = 'v1-20260727';
+var VER   = 'v2-20260801';
 var SHELL = 'shell-' + VER;
 var RT    = 'rt-' + VER;
 
@@ -10,7 +10,7 @@ var CORE = ['/', '/favicon.svg', '/site.webmanifest',
             '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png'];
 
 /* 余裕があれば入れておきたいページ（失敗しても無視する） */
-var EXTRA = ["/about.html", "/article-sidejob-crowdsourcing.html", "/compare-ilovepdf.html", "/compare-tinypng.html", "/privacy.html", "/service.html", "/terms.html", "/tool-base64.html", "/tool-case-convert.html", "/tool-fullwidth-halfwidth.html", "/tool-hash.html", "/tool-image-compressor.html", "/tool-image-convert.html", "/tool-image-crop.html", "/tool-image-exif-remove.html", "/tool-image-resize.html", "/tool-image-rotate.html", "/tool-image-to-pdf.html", "/tool-json-format.html", "/tool-password.html", "/tool-pdf-organizer.html", "/tool-pdf-to-image.html", "/tool-qr.html", "/tool-remove-linebreaks.html", "/tool-square-photo.html", "/tool-url-encode.html", "/tool-uuid.html", "/tool-word-count.html"];
+var EXTRA = ["/about", "/article-character-count", "/article-exif-location-remove", "/article-mercari-square-photo", "/article-merge-documents-pdf", "/article-pdf-to-image", "/article-receipt-to-pdf", "/article-reduce-file-size", "/article-sidejob-crowdsourcing", "/compare-ilovepdf", "/compare-tinypng", "/privacy", "/service", "/terms", "/tool-base64", "/tool-case-convert", "/tool-fullwidth-halfwidth", "/tool-hash", "/tool-image-compressor", "/tool-image-convert", "/tool-image-crop", "/tool-image-exif-remove", "/tool-image-resize", "/tool-image-rotate", "/tool-image-to-pdf", "/tool-json-format", "/tool-password", "/tool-pdf-organizer", "/tool-pdf-to-image", "/tool-qr", "/tool-remove-linebreaks", "/tool-square-photo", "/tool-url-encode", "/tool-uuid", "/tool-word-count"];
 
 self.addEventListener('install', function(e){
   e.waitUntil(
