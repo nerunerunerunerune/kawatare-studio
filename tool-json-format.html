@@ -100,6 +100,17 @@
 
 
   <section class="seo">
+    <h2>JSONとは</h2>
+    <p style="margin:10px 0;font-size:14px">JSONは、プログラム同士がデータをやり取りするときに最もよく使われる書き方です。<code>{"名前":"田中","年齢":30}</code> のように、名前と値の組み合わせで情報を表します。</p>
+    <p style="margin:10px 0;font-size:14px">機械が読む前提の形式なので、実際に送られてくるJSONは改行が一切なく、1行に何千文字も詰まっていることが珍しくありません。人間が中身を確かめるには、いったん整形して段差をつける必要があります。</p>
+    <h2>整形と圧縮の使い分け</h2>
+    <p style="margin:10px 0;font-size:14px"><b>整形</b>は、改行と字下げを入れて構造を目で追えるようにします。APIの返答を確認する、設定ファイルを編集する、といった<b>人が読む場面</b>で使います。</p>
+    <p style="margin:10px 0;font-size:14px"><b>圧縮（最小化）</b>は逆に、余分な空白をすべて取り除いて容量を減らします。通信量を抑えたい、設定を1行に収めたい、といった<b>機械に渡す場面</b>で使います。中身の意味は変わりません。</p>
+    <h2>よくある構文エラー</h2>
+    <p style="margin:10px 0;font-size:14px"><b>末尾のカンマ。</b><code>{"a":1,"b":2,}</code> の最後のカンマは、多くのプログラミング言語では許されますがJSONでは誤りです。要素を削ったときに残りがちな、最も多い原因です。</p>
+    <p style="margin:10px 0;font-size:14px"><b>シングルクォート。</b>JSONの文字列は必ずダブルクォートで囲みます。<code>{'a':1}</code> は無効です。</p>
+    <p style="margin:10px 0;font-size:14px"><b>キーの引用符忘れ。</b><code>{a:1}</code> も無効で、名前の側にもダブルクォートが要ります。</p>
+    <p style="margin:10px 0;font-size:14px"><b>コメント。</b>JSONにコメントを書く仕様はありません。<code>//</code> や <code>/* */</code> を入れると読み込みに失敗します。</p>
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>貼り付け</b><p>JSONを入力欄に貼り付けます。</p></div><div class="st"><div class="n">2</div><b>整形/圧縮を選ぶ</b><p>見やすく整形するか、最小化するかを選びます。</p></div><div class="st"><div class="n">3</div><b>コピー</b><p>結果をワンタップでコピーします。</p></div></div>
     <h2>よくある質問</h2>
