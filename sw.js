@@ -1,7 +1,7 @@
 /* かわたれ studio ― PWA サービスワーカー
    目的: オフラインでも動くこと / 2回目以降を速くすること
    方針: 広告・計測など外部リクエストには一切触れない            */
-var VER   = 'v2-20260801';
+var VER   = 'v3-20260801';
 var SHELL = 'shell-' + VER;
 var RT    = 'rt-' + VER;
 
@@ -47,8 +47,10 @@ self.addEventListener('fetch', function(e){
   if (req.mode === 'navigate') {
     e.respondWith(
       fetch(req).then(function(res){
-        var copy = res.clone();
-        caches.open(RT).then(function(c){ c.put(req, copy); });
+        if (res && res.ok) {   /* 404・5xx はキャッシュしない（アセット側と挙動を揃える） */
+          var copy = res.clone();
+          caches.open(RT).then(function(c){ c.put(req, copy); });
+        }
         return res;
       }).catch(function(){
         return caches.match(req).then(function(hit){
