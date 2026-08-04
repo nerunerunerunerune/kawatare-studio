@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSONが読み込めないときに疑う6か所｜サクッとツール</title>
+<meta name="description" content="末尾のカンマ、シングルクォート、コメント、全角スペース。JSONで弾かれる原因はほぼ決まっています。エラーメッセージの読み方と、直す順序を整理しました。">
+<link rel="canonical" href="https://kawatare.studio/article-json-error-fix">
+<meta name="theme-color" content="#2a78d6">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="サクッとツール">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="サクッとツール">
+<meta property="og:title" content="JSONが読み込めないときに疑う6か所｜サクッとツール">
+<meta property="og:description" content="末尾のカンマ、シングルクォート、コメント、全角スペース。JSONで弾かれる原因はほぼ決まっています。">
+<meta property="og:url" content="https://kawatare.studio/article-json-error-fix">
+<meta property="og:image" content="https://kawatare.studio/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JSONが読み込めないときに疑う6か所｜サクッとツール">
+<meta name="twitter:description" content="JSONで弾かれる原因はほぼ決まっています。エラーメッセージの読み方と直す順序。">
+<meta name="twitter:image" content="https://kawatare.studio/ogp.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"JSONのエラー","item":"https://kawatare.studio/article-json-error-fix"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JSONが読み込めないときに疑う6か所","author":{"@type":"Organization","name":"かわたれ studio"},"publisher":{"@type":"Organization","name":"かわたれ studio"},"datePublished":"2026-08-04","dateModified":"2026-08-04","description":"JSONの構文エラーで多い原因と、エラーメッセージの読み方、直す順序。全角記号の混入にも触れます。"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"エラーが指す位置に、間違いが見当たりません","acceptedAnswer":{"@type":"Answer","text":"エラーの位置は、読み取りが行き詰まった場所であって、間違いのある場所とは限りません。たとえば閉じかっこを書き忘れた場合、その先をずっと読み進めてから最後に行き詰まるため、指摘される位置はファイルの末尾になります。原因は数百行前にあることも珍しくありません。位置の少し手前から見直す、閉じかっこの数を数える、あるいは前半だけを取り出して試す、といった絞り込みが有効です。指摘された行だけを見つめても解決しないことが多い箇所です。"}},{"@type":"Question","name":"末尾のカンマはなぜ許されないのですか？","acceptedAnswer":{"@type":"Answer","text":"JSONが意図的に狭く設計されているためです。項目を並べるときのカンマは、あくまで項目と項目の間に置く区切りであり、最後の項目の後ろには続くものがないため置けません。プログラムを書く言語の多くは、行の追加や並べ替えをしやすくするために末尾のカンマを許していますが、JSONはさまざまな環境の間でデータをやり取りする目的で作られており、解釈の揺れを避けることが優先されました。書き慣れた言語の感覚で書くと真っ先に踏む違いです。"}},{"@type":"Question","name":"JSONにコメントを書きたいのですが","acceptedAnswer":{"@type":"Answer","text":"JSONの仕様にコメントはありません。斜線2つで始める書き方も、囲む書き方も、いずれも構文エラーになります。設定ファイルとしてどうしても説明を残したい場合は、説明用の項目を作ってそこに文字列として書く方法があります。読み込む側は使わない項目として無視できます。ただし、コメントを許した独自形式を採用しているソフトもあるため、その環境のドキュメントを確認してください。標準のJSONとして他所に渡す予定があるなら、コメントは入れないほうが安全です。"}},{"@type":"Question","name":"日本語が別の形式で出力されます","acceptedAnswer":{"@type":"Answer","text":"文字を番号で書き表す方式で出力されているためで、壊れているわけではありません。読み込めば元の日本語に戻ります。この方式は、途中の経路が日本語を正しく扱えない場合でも壊れないようにするための保険として使われてきました。現在はほとんどの環境が日本語をそのまま扱えるため、出力側の設定でこの変換を止められることが多いです。人が読む設定ファイルなら日本語のまま、送信先の環境が古い可能性があるなら変換したまま、と使い分けてください。"}}]}</script>
+<style>
+  :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
+    --brand:#2a78d6;--brand-d:#1c5cab;--accent:#7a3ff2;--good:#0ca30c;--good-bg:#e7f6e7;
+    --shadow:0 1px 2px rgba(16,20,30,.04),0 8px 24px rgba(16,20,30,.07);}
+  @media (prefers-color-scheme:dark){:root{--bg:#0e1013;--card:#191c22;--ink:#f2f4f8;--ink-2:#aeb6c4;--muted:#7b8494;
+    --line:#282c34;--brand:#4c93ea;--brand-d:#8fbdf2;--accent:#9b78f5;--good:#3fbf3f;--good-bg:#14311a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 28px rgba(0,0,0,.45);}}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.85;
+    font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:var(--brand);}
+  .sitebar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;
+    background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;}
+  .sb-brand{display:flex;align-items:center;gap:8px;font-weight:800;text-decoration:none;color:var(--ink);}
+  .sb-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff;font-size:15px;}
+  .sb-links{display:flex;gap:14px;font-size:14px;font-weight:700;}
+  .sb-links a{text-decoration:none;color:var(--ink-2);}
+  .sb-links a:hover{color:var(--brand);}
+  .wrap{max-width:820px;margin:0 auto;padding:26px 18px 70px;}
+  .crumb{font-size:12.5px;color:var(--muted);margin:2px 0 14px;}
+  .crumb a{color:var(--ink-2);text-decoration:none;}
+  .page-h1{font-size:26px;margin:4px 0 6px;line-height:1.35;}
+  .lead{font-size:15px;color:var(--ink-2);margin:0 0 20px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);}
+  .prose h2{font-size:19px;margin:30px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--line);}
+  .prose h2:first-child{margin-top:6px;}
+  .prose h3{font-size:16px;margin:20px 0 6px;}
+  .prose p{margin:8px 0;font-size:14.5px;}
+  .prose ul{margin:8px 0;padding-left:22px;}
+  .prose li{margin:6px 0;font-size:14.5px;}
+  .prose table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14px;}
+  .prose th,.prose td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
+  .prose th{background:var(--bg);white-space:nowrap;}
+  .note{background:var(--good-bg);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:13.5px;color:var(--ink-2);margin:14px 0;}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 4px;}
+  .cta{display:inline-block;text-decoration:none;font-weight:800;font-size:14.5px;padding:11px 20px;border-radius:12px;background:var(--brand);color:#fff;}
+  .cta.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand);}
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center;line-height:2;}
+  footer a{color:var(--ink-2);text-decoration:none;margin:0 8px;}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FBQF3VPRCJ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FBQF3VPRCJ');</script>
+</head>
+<body>
+<nav class="sitebar">
+  <a class="sb-brand" href="/"><span class="sb-logo">⚡</span>サクッとツール</a>
+  <div class="sb-links"><a href="/">ツール一覧</a><a href="about">運営者情報</a></div>
+</nav>
+<div class="wrap">
+  <div class="crumb"><a href="/">ホーム</a> ／ JSONのエラー</div>
+  <h1 class="page-h1">JSONが読み込めないときに疑う6か所</h1>
+  <p class="lead">設定ファイルを1行足しただけなのに読み込まれなくなった。エラーは出るが、指された場所を見ても間違いが見つからない。JSONで弾かれる原因は、じつはほぼ決まっています。</p>
+  <div class="card prose">
+  <h2>結論</h2>
+  <div class="note">JSONの文法は<b>意図的に狭く作られています</b>。プログラムを書く言語では当たり前に許される書き方の多くが、JSONでは禁止されています。エラーの大半は、その差から生まれます。</div>
+  <h2>許されていない6つの書き方</h2>
+  <table><thead><tr><th>書き方</th><th>JSONでは</th></tr></thead><tbody>
+    <tr><th>最後の項目の後ろのカンマ</th><td>不可</td></tr>
+    <tr><th>シングルクォートで囲む</th><td>不可。ダブルクォートのみ</td></tr>
+    <tr><th>項目名のクォート省略</th><td>不可。項目名も必ず囲む</td></tr>
+    <tr><th>コメント</th><td>不可。仕様に存在しない</td></tr>
+    <tr><th>文字列の途中の生の改行</th><td>不可</td></tr>
+    <tr><th>全角のスペースや記号</th><td>不可</td></tr>
+  </tbody></table>
+  <p>上の4つは、他の言語の書き方をそのまま持ち込むと踏みます。とくに末尾のカンマは、項目を並べ替えたり増やしたりする作業のあとに残りやすく、原因としては最多です。</p>
+  <p>下の2つは日本語環境で特有です。次で詳しく触れます。</p>
+  <h2>全角が混ざる問題</h2>
+  <p>日本語入力のまま記号を打つと、見た目のよく似た別の文字が入ります。<b>全角のスペース、全角のダブルクォート、全角のコロンやカンマ</b>がその代表です。</p>
+  <p>厄介なのは、<b>画面上ではほとんど区別がつかない</b>点です。とくに全角スペースは何も表示されないため、目で探すのは現実的ではありません。「何度見ても正しいのに通らない」という状況の多くはこれです。</p>
+  <p>対処は単純で、<b>目で探すのをやめて機械に判定させること</b>です。全角と半角をそろえる処理を一度かけてから読み込ませれば、この原因は候補から外れます。</p>
+  <div class="note">日本語の本文そのものに全角が含まれるのは問題ありません。禁止されているのは<b>構文を組み立てる記号としての全角</b>です。値の中身の日本語はそのままで構いません。</div>
+  <h2>エラーメッセージの読み方</h2>
+  <table><thead><tr><th>出るメッセージ</th><th>意味</th></tr></thead><tbody>
+    <tr><th>Unexpected token</th><td>その位置に来てはいけないものがある</td></tr>
+    <tr><th>Unexpected end of input</th><td>閉じかっこが足りないまま終わった</td></tr>
+    <tr><th>position 数字</th><td>行き詰まった位置。間違いの位置とは限らない</td></tr>
+  </tbody></table>
+  <p>覚えておきたいのは3つ目です。<b>エラーの位置は、間違いの位置ではなく、読み取りが行き詰まった位置です。</b></p>
+  <p>たとえば途中で閉じかっこを書き忘れると、読み取りはその先をずっと進み続け、最後まで来てから初めて行き詰まります。指摘される位置はファイルの末尾ですが、原因は数百行前にあります。</p>
+  <p>だから「指摘された行を見ても間違いがない」のは正常です。<b>その位置の少し手前から遡って見る</b>、あるいは前半だけを切り出して試す、という絞り込みが有効です。</p>
+  <h2>直す順序</h2>
+  <ul>
+    <li><b>まず末尾のカンマを探す。</b>閉じかっこの直前にカンマがないか。頻度が最も高い原因です。</li>
+    <li><b>次にクォートの種類と数を見る。</b>シングルクォートが混ざっていないか。閉じ忘れがないか。</li>
+    <li><b>全角をそろえる処理を一度かける。</b>目視では見つからない原因を候補から消せます。</li>
+    <li><b>かっこの数を数える。</b>開きと閉じが一致しているか。合わなければ、それが末尾エラーの正体です。</li>
+    <li><b>それでも分からなければ半分に切る。</b>前半だけで試し、通るなら原因は後半にあります。これを繰り返せば数回で場所が絞れます。</li>
+  </ul>
+  <p>最後の手順は地味ですが確実です。1000行のファイルでも、10回ほど繰り返せば1行まで絞り込めます。エラーメッセージとにらみ合うより早いことが多い方法です。</p>
+  <h2>整形と最小化の使い分け</h2>
+  <p>JSONには、読みやすく字下げした形と、余分な空白をすべて削った形があります。<b>どちらも意味はまったく同じです。</b>変換しても中身は変わりません。</p>
+  <table><thead><tr><th>形</th><th>使う場面</th></tr></thead><tbody>
+    <tr><th>整形（字下げあり）</th><td>人が読む・編集する・差分を確認する</td></tr>
+    <tr><th>最小化（空白なし）</th><td>通信で送る・設定値として1行に収める</td></tr>
+  </tbody></table>
+  <p>受け取った1行のJSONが読めないときは、まず整形してください。構造が見えれば、どこがおかしいのかも判断できるようになります。逆に、設定欄に貼るために1行にしたい場面では最小化を使います。</p>
+  <h2>気をつける点</h2>
+  <ul>
+    <li><b>通ったからといって、内容が正しいとは限らない。</b>文法の確認と、項目名や値が想定どおりかの確認は別の話です。</li>
+    <li><b>数値をクォートで囲むと文字列になる。</b>見た目は似ていても、受け取る側では別物として扱われます。</li>
+    <li><b>コピーで見えない文字が混ざる。</b>ウェブページから貼り付けると、通常の空白ではない文字が入ることがあります。</li>
+    <li><b>ファイルの先頭に見えない印が付くことがある。</b>一部の編集ソフトで保存すると、文字コードを示す印が先頭に書き込まれます。画面には何も表示されませんが、読み込む側はこれを余分なものとみなして失敗することがあります。先頭でエラーが出て原因が分からないときは、これを疑ってください。</li>
+  </ul>
+  <p>なお、同じ項目名を2回書いた場合、多くの環境ではエラーにならず<b>後ろに書いたほうが採用されます</b>。設定を書き換えたつもりが反映されない、という症状はこれが原因のことがあります。エラーが出ないぶん気づきにくく、整形して構造を眺めたときに初めて重複に気づく、という見つかり方をします。</p>
+  <div class="note">業務システムの設定ファイルや、顧客データを含むJSONを、外部のサイトに貼って整形するのは避けたい行為です。<b>このサイトのツールは端末の中だけで処理し、入力内容を送信しません。</b>社外に出せないデータでもそのまま扱えます。</div>
+  <h2>今すぐ使えるツール</h2>
+  <div class="btnrow"><a class="cta ghost" href="tool-json-format" style="margin:4px 6px 4px 0">JSONを整形・検証する</a><a class="cta ghost" href="tool-fullwidth-halfwidth" style="margin:4px 6px 4px 0">全角・半角をそろえる</a><a class="cta ghost" href="tool-remove-linebreaks" style="margin:4px 6px 4px 0">改行を取り除く</a></div>
+  <h2>よくある質問</h2>
+  <h3>エラーが指す位置に、間違いが見当たりません</h3>
+  <p>エラーの位置は、読み取りが行き詰まった場所であって、間違いのある場所とは限りません。たとえば閉じかっこを書き忘れた場合、その先をずっと読み進めてから最後に行き詰まるため、指摘される位置はファイルの末尾になります。原因は数百行前にあることも珍しくありません。位置の少し手前から見直す、閉じかっこの数を数える、あるいは前半だけを取り出して試す、といった絞り込みが有効です。指摘された行だけを見つめても解決しないことが多い箇所です。</p>
+  <h3>末尾のカンマはなぜ許されないのですか？</h3>
+  <p>JSONが意図的に狭く設計されているためです。項目を並べるときのカンマは、あくまで項目と項目の間に置く区切りであり、最後の項目の後ろには続くものがないため置けません。プログラムを書く言語の多くは、行の追加や並べ替えをしやすくするために末尾のカンマを許していますが、JSONはさまざまな環境の間でデータをやり取りする目的で作られており、解釈の揺れを避けることが優先されました。書き慣れた言語の感覚で書くと真っ先に踏む違いです。</p>
+  <h3>JSONにコメントを書きたいのですが</h3>
+  <p>JSONの仕様にコメントはありません。斜線2つで始める書き方も、囲む書き方も、いずれも構文エラーになります。設定ファイルとしてどうしても説明を残したい場合は、説明用の項目を作ってそこに文字列として書く方法があります。読み込む側は使わない項目として無視できます。ただし、コメントを許した独自形式を採用しているソフトもあるため、その環境のドキュメントを確認してください。標準のJSONとして他所に渡す予定があるなら、コメントは入れないほうが安全です。</p>
+  <h3>日本語が別の形式で出力されます</h3>
+  <p>文字を番号で書き表す方式で出力されているためで、壊れているわけではありません。読み込めば元の日本語に戻ります。この方式は、途中の経路が日本語を正しく扱えない場合でも壊れないようにするための保険として使われてきました。現在はほとんどの環境が日本語をそのまま扱えるため、出力側の設定でこの変換を止められることが多いです。人が読む設定ファイルなら日本語のまま、送信先の環境が古い可能性があるなら変換したまま、と使い分けてください。</p>
+  <div class="btnrow" style="margin-top:20px"><a class="cta" href="tool-json-format">JSON整形を使ってみる</a></div>
+  </div>
+  <footer>
+  <div><a href="/">ツール一覧</a>・<a href="service">制作サービス</a>・<a href="about">運営者情報</a>・<a href="privacy">プライバシーポリシー</a>・<a href="terms">利用規約</a></div>
+  <div>© サクッとツール ・ すべての処理は端末内で完結します</div>
+</footer>
+</div>
+<!-- pwa:start -->
+<script>
+(function(){
+var TH="#2a78d6", KEY='kw_pwa_hint_v1';
+function off(){try{return localStorage.getItem(KEY)==='1';}catch(e){return true;}}
+function setoff(){try{localStorage.setItem(KEY,'1');}catch(e){}}
+function standalone(){try{return window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;}catch(e){return false;}}
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}
+if(standalone()&&typeof gtag==='function'){gtag('event','pwa_launch');}
+var deferred=null,bar=null,timer=null;
+function drop(){if(bar){bar.remove();bar=null;}if(timer){clearTimeout(timer);timer=null;}}
+function build(msg,btnText,onClick){
+  if(bar||off()||standalone()||!document.body)return;
+  bar=document.createElement('div');
+  bar.setAttribute('role','region');bar.setAttribute('aria-label','ホーム画面に追加');
+  bar.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:2147483000;display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:14px;background:#1f2430;color:#fff;box-shadow:0 8px 30px rgba(0,0,0,.28);font:500 13.5px/1.55 system-ui,-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;max-width:560px;margin:0 auto;';
+  var ic=document.createElement('img');ic.src='/icon-192.png';ic.alt='';ic.width=34;ic.height=34;
+  ic.style.cssText='width:34px;height:34px;border-radius:9px;flex:0 0 auto;';
+  var tx=document.createElement('div');tx.textContent=msg;tx.style.cssText='flex:1 1 auto;';
+  bar.appendChild(ic);bar.appendChild(tx);
+  if(btnText){
+    var b=document.createElement('button');b.type='button';b.textContent=btnText;
+    b.style.cssText='flex:0 0 auto;border:0;border-radius:9px;padding:8px 14px;font:700 13px system-ui,sans-serif;background:'+TH+';color:#fff;cursor:pointer;';
+    b.addEventListener('click',onClick);bar.appendChild(b);
+  }
+  var c=document.createElement('button');c.type='button';c.setAttribute('aria-label','閉じる');c.textContent='×';
+  c.style.cssText='flex:0 0 auto;border:0;background:transparent;color:#b9bfcc;font-size:19px;line-height:1;cursor:pointer;padding:4px 2px;';
+  c.addEventListener('click',function(){setoff();drop();});
+  bar.appendChild(c);
+  document.body.appendChild(bar);
+  timer=setTimeout(function(){drop();},20000);
+}
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferred=e;
+  setTimeout(function(){
+    build('ホーム画面に追加すると、アプリのように使えます。','追加',function(){
+      if(!deferred)return;
+      deferred.prompt();
+      deferred.userChoice.then(function(r){
+        if(typeof gtag==='function')gtag('event','pwa_prompt',{outcome:r.outcome});
+        setoff();drop();
+      });
+    });
+  },8000);
+});
+window.addEventListener('appinstalled',function(){
+  setoff();
+  if(typeof gtag==='function')gtag('event','pwa_install');
+  drop();
+});
+var ua=navigator.userAgent||'';
+var isIOS=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+var isSafari=/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|OPiOS|Android/.test(ua);
+if(isIOS&&isSafari){setTimeout(function(){build('共有ボタン → 「ホーム画面に追加」で、アプリのように使えます。',null,null);},14000);}
+})();
+</script>
+<!-- pwa:end -->
+</body>
+</html>
