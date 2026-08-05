@@ -111,6 +111,10 @@
   .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;} @media(max-width:600px){.rel-grid{grid-template-columns:1fr;}}
   .rel{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;font-weight:700;}
   .rel:hover{border-color:var(--brand);} .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:400;margin-top:2px;}
+  .aff{background:var(--good-bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:18px 0;}
+  .aff-tag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--ink-2);padding:2px 8px;border-radius:5px;}
+  .aff-text{margin:8px 0 6px;font-size:13.5px;color:var(--ink-2);line-height:1.8;}
+  .aff-links{margin:0;font-size:13.5px;line-height:1.9;} .aff-links a{font-weight:800;}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBQF3VPRCJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FBQF3VPRCJ');</script>
@@ -160,21 +164,7 @@
   <div class="grid" id="grid"></div>
 
 
-  <!-- AFFILIATE SLOT: もしもアフィリエイト「かんたんリンク」登録後、下のURLをアフィリエイトタグ付きURLに置き換えること。対象: PDF編集ソフト -->
-  <div class="ad" style="text-align:left;line-height:1.7"><span style="font-weight:800;color:var(--ink-2)">PR</span>　もっと高機能な編集（注釈・電子署名など）が必要な方へ。 　<a href="https://www.amazon.co.jp/s?k=PDF%20%E7%B7%A8%E9%9B%86%E3%82%BD%E3%83%95%E3%83%88" target="_blank" rel="noopener sponsored">PDF編集ソフト を見る（Amazon）</a></div>
-
-  <div class="pro">
-    <div>
-      <div class="pt">Pro にアップグレード <span class="badge">例</span></div>
-      <div class="pd">OCR（画像PDFの文字化）・PDF圧縮・パスワード解除・一括処理（月額）</div>
-    </div>
-    <button class="btn" id="proBtn">アップグレード</button>
-  </div>
-
-  <section class="seo">
-    <h2>使い方（3ステップ）</h2>
-    <div class="howto">
-      <div class="st"><div class="n">1</div><b>PDFを追加</b><p>ドラッグ＆ドロップ、またはタップして選択。複数入れると自動で結合されます。</p></div>
+  <div class="aff" data-aff="kawatare-studio/tool-pdf-organizer"><span class="aff-tag">PR</span><p class="aff-text">もっと高機能な編集（注釈・電子署名など）が必要な方へ。</p><p class="aff-links"><a href="https://www.amazon.co.jp/s?k=PDF%20%E7%B7%A8%E9%9B%86%E3%82%BD%E3%83%95%E3%83%88" target="_blank" rel="noopener sponsored nofollow" data-aff-click="amazon_search">PDF編集ソフト を見る（Amazon）</a></p></div>
       <div class="st"><div class="n">2</div><b>整理する</b><p>サムネイルをドラッグ、または◀▶で並べ替え。回転・削除・ページ選択もできます。</p></div>
       <div class="st"><div class="n">3</div><b>書き出す</b><p>「PDFを書き出す」で全体を、または選択ページだけを保存します。</p></div>
     </div>
@@ -485,5 +475,24 @@ if(isIOS&&isSafari){setTimeout(function(){build('共有ボタン → 「ホー�
 })();
 </script>
 <!-- pwa:end -->
+<script>
+/* アフィリエイトのクリック計測。失敗してもリンク遷移は妨げない。 */
+(function(){
+  document.addEventListener('click', function(e){
+    try{
+      var a = e.target && e.target.closest && e.target.closest('a[data-aff-click]');
+      if(!a) return;
+      var slot = a.closest('.aff');
+      if(typeof gtag === 'function'){
+        gtag('event','affiliate_click',{
+          program: a.getAttribute('data-aff-click') || '',
+          slot: (slot && slot.getAttribute('data-aff')) || '',
+          link_url: a.href || ''
+        });
+      }
+    }catch(err){/* 計測の失敗は無視する */}
+  }, true);
+})();
+</script>
 </body>
 </html>

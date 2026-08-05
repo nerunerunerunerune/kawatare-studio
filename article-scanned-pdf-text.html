@@ -62,6 +62,10 @@
   .cta.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--brand);}
   footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center;line-height:2;}
   footer a{color:var(--ink-2);text-decoration:none;margin:0 8px;}
+  .aff{background:var(--good-bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:18px 0;}
+  .aff-tag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--ink-2);padding:2px 8px;border-radius:5px;}
+  .aff-text{margin:8px 0 6px;font-size:13.5px;color:var(--ink-2);line-height:1.8;}
+  .aff-links{margin:0;font-size:13.5px;line-height:1.9;} .aff-links a{font-weight:800;}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBQF3VPRCJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FBQF3VPRCJ');</script>
@@ -130,10 +134,7 @@
   <p>読むだけなら問題ありません。ただし相手が中身を検索したり数字を転記したりする場合は、手作業が発生します。応募書類や見積書のように相手が内容を扱う前提のものは、可能なら文字が入った状態で渡すほうが親切です。またファイルサイズが大きくなりやすいため、メールの添付上限に引っかかることがあります。</p>
   <h2>もっと本格的にやりたい方へ</h2>
   <p>月に何十枚もの紙を取り込む、過去の書類をまとめて検索できるようにしたい、認識した文字をそのまま表計算ソフトへ渡したい。こうした使い方になると、専用のソフトが必要になります。代表的なものが<a href="https://www.adobe.com/jp/acrobat/" rel="noopener" target="_blank">Adobe Acrobat</a>で、日本語の縦書きや表組みの認識精度、原本の見た目を保ったまま文字を重ねる方式、まとめて処理する機能がそろっています。</p>
-  <!-- AFFILIATE SLOT: Adobe のアフィリエイト提携（申請中。詳細は docs/ の Adobe 申請シート）が承認されたら、
-       直前の素リンクをトラッキングリンクへ差し替え、PR表示と rel="noopener sponsored" を付けたうえで、
-       tools/verify-articles.mjs の gap 配列から affiliateOk 配列へ移すこと。
-       なお、ASP名を本文やコメントに書くと検証スクリプトのアフィリエイト検出に引っかかる。 -->
+  <div class="aff" data-aff="kawatare-studio/article-scanned-pdf-text"></div>
   <p>逆に、取り込むのが月に数枚で、目的も「1か所の数字を写す」程度であれば、有料ソフトを入れるより画面を見ながら打ったほうが早いこともあります。<b>枚数と頻度で判断してください。</b></p>
   <p>関連する手順として、紙の書類をまとめる側の話は<a href="article-receipt-to-pdf">領収書の写真を1つのPDFにまとめる手順</a>と<a href="article-merge-documents-pdf">複数の書類を1つのPDFにまとめて提出する</a>にあります。</p>
   <div class="btnrow" style="margin-top:20px"><a class="cta" href="tool-pdf-to-image">PDFの中身を確かめてみる</a></div>
@@ -200,5 +201,24 @@ if(isIOS&&isSafari){setTimeout(function(){build('共有ボタン → 「ホー�
 })();
 </script>
 <!-- pwa:end -->
+<script>
+/* アフィリエイトのクリック計測。失敗してもリンク遷移は妨げない。 */
+(function(){
+  document.addEventListener('click', function(e){
+    try{
+      var a = e.target && e.target.closest && e.target.closest('a[data-aff-click]');
+      if(!a) return;
+      var slot = a.closest('.aff');
+      if(typeof gtag === 'function'){
+        gtag('event','affiliate_click',{
+          program: a.getAttribute('data-aff-click') || '',
+          slot: (slot && slot.getAttribute('data-aff')) || '',
+          link_url: a.href || ''
+        });
+      }
+    }catch(err){/* 計測の失敗は無視する */}
+  }, true);
+})();
+</script>
 </body>
 </html>

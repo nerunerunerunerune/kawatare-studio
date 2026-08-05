@@ -94,6 +94,10 @@
   .olabel{display:block;font-size:12.5px;font-weight:700;color:var(--ink-2);margin:0 0 8px;}
   .pbtn{border:1px solid var(--line);background:var(--bg);color:var(--ink-2);border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer;} .pbtn:hover{border-color:var(--brand);color:var(--brand);}
 
+  .aff{background:var(--good-bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:18px 0;}
+  .aff-tag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--ink-2);padding:2px 8px;border-radius:5px;}
+  .aff-text{margin:8px 0 6px;font-size:13.5px;color:var(--ink-2);line-height:1.8;}
+  .aff-links{margin:0;font-size:13.5px;line-height:1.9;} .aff-links a{font-weight:800;}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FBQF3VPRCJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FBQF3VPRCJ');</script>
@@ -115,12 +119,7 @@
   <div class="panel"><label class="olabel">用途プリセット（SNS推奨サイズ）</label><div id="preset" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"><button type="button" class="pbtn" data-w="1080" data-h="1080">正方形 1080²</button><button type="button" class="pbtn" data-w="1080" data-h="1350">縦長 1080×1350</button><button type="button" class="pbtn" data-w="1080" data-h="1920">ストーリー 1080×1920</button><button type="button" class="pbtn" data-w="1280" data-h="720">YouTube 1280×720</button><button type="button" class="pbtn" data-w="1500" data-h="500">Xヘッダー 1500×500</button><button type="button" class="pbtn" data-w="400" data-h="400">アイコン 400²</button></div><label class="olabel">サイズ(px・空欄可)</label><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><span style="font-size:13px;color:var(--ink-2)">幅</span><input class="imgnum" id="w" type="number" min="1" placeholder="例:1000"><span style="font-size:13px;color:var(--ink-2)">高さ</span><input class="imgnum" id="h" type="number" min="1" placeholder="例:1000"><label style="display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);cursor:pointer"><input type="checkbox" id="keep" checked style="accent-color:var(--brand);width:16px;height:16px"> 縦横比を保持</label></div></div><div class="drop" id="drop"><div class="icon">🖼️</div><div class="big">ここに画像をドラッグ＆ドロップ</div><div class="sm">複数選択可・JPEG/PNG/WebP対応・登録不要</div><input type="file" id="file" accept="image/*" multiple hidden></div><div class="status" id="status"></div><div class="summary" id="summary"><span class="count" id="count">0 枚</span><button class="btn primary" id="zipbtn">ZIPで一括ダウンロード</button></div><div class="grid" id="grid"></div>
 
 
-  <!-- AFFILIATE SLOT: もしもアフィリエイト「かんたんリンク」登録後、下のURLをアフィリエイトタグ付きURLに置き換えること。対象: フリマ発送用品・宛名ラベル -->
-  <div class="ad" style="text-align:left;line-height:1.7"><span style="font-weight:800;color:var(--ink-2)">PR</span>　フリマ出品の発送準備をしている方へ。 　<a href="https://www.amazon.co.jp/s?k=%E3%83%95%E3%83%AA%E3%83%9E%20%E7%99%BA%E9%80%81%20%E6%A2%B1%E5%8C%85%20%E8%B3%87%E6%9D%90%20%E3%82%BB%E3%83%83%E3%83%88" target="_blank" rel="noopener sponsored">フリマ発送用品・宛名ラベル を見る（Amazon）</a></div>
-
-  <section class="seo">
-    <h2>使い方（3ステップ）</h2>
-    <div class="howto"><div class="st"><div class="n">1</div><b>画像を追加</b><p>ドラッグ＆ドロップ、または選択(複数可)。</p></div><div class="st"><div class="n">2</div><b>サイズ指定</b><p>幅・高さを入力(縦横比の保持も選べます)。</p></div><div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。</p></div></div>
+  <div class="aff" data-aff="kawatare-studio/tool-image-resize"><span class="aff-tag">PR</span><p class="aff-text">フリマ出品の発送準備をしている方へ。</p><p class="aff-links"><a href="https://www.amazon.co.jp/s?k=%E3%83%95%E3%83%AA%E3%83%9E%20%E7%99%BA%E9%80%81%20%E6%A2%B1%E5%8C%85%20%E8%B3%87%E6%9D%90%20%E3%82%BB%E3%83%83%E3%83%88" target="_blank" rel="noopener sponsored nofollow" data-aff-click="amazon_search">フリマ発送用品・宛名ラベル を見る（Amazon）</a></p></div>
     <h2>よくある質問</h2>
     <div class="faq"><details open><summary>複数枚をまとめてリサイズできますか？</summary><p>はい。まとめて追加し、ZIPで一括保存できます。枚数制限はありません。</p></details><details><summary>画像は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像は送信されません。</p></details><details><summary>縦横比は保てますか？</summary><p>はい。「縦横比を保持」を選ぶと、指定サイズに収まるよう比率を保ってリサイズします。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-reduce-file-size">📉 「添付できない」を解決<span>画質を保って容量を下げる順序</span></a><a class="rel" href="article-pdf-to-image">📊 PDFの図表を資料に使う<span>スクショで荒くなる理由</span></a><a class="rel" href="article-sidejob-crowdsourcing">📖 副業、何から始める？<span>クラウドソーシング入門</span></a></div>
@@ -225,5 +224,24 @@ if(isIOS&&isSafari){setTimeout(function(){build('共有ボタン → 「ホー�
 })();
 </script>
 <!-- pwa:end -->
+<script>
+/* アフィリエイトのクリック計測。失敗してもリンク遷移は妨げない。 */
+(function(){
+  document.addEventListener('click', function(e){
+    try{
+      var a = e.target && e.target.closest && e.target.closest('a[data-aff-click]');
+      if(!a) return;
+      var slot = a.closest('.aff');
+      if(typeof gtag === 'function'){
+        gtag('event','affiliate_click',{
+          program: a.getAttribute('data-aff-click') || '',
+          slot: (slot && slot.getAttribute('data-aff')) || '',
+          link_url: a.href || ''
+        });
+      }
+    }catch(err){/* 計測の失敗は無視する */}
+  }, true);
+})();
+</script>
 </body>
 </html>

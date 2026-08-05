@@ -46,6 +46,10 @@
   .rel span{display:block;font-size:12px;color:var(--ink-2);font-weight:500;margin-top:2px;}
   footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);text-align:center;line-height:2;}
   footer a{color:var(--ink-2);text-decoration:none;margin:0 7px;}
+  .aff{background:var(--good-bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:18px 0;}
+  .aff-tag{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:var(--ink-2);padding:2px 8px;border-radius:5px;}
+  .aff-text{margin:8px 0 6px;font-size:13.5px;color:var(--ink-2);line-height:1.8;}
+  .aff-links{margin:0;font-size:13.5px;line-height:1.9;} .aff-links a{font-weight:800;}
 </style><script async src="https://www.googletagmanager.com/gtag/js?id=G-FBQF3VPRCJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FBQF3VPRCJ');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8230017451585009" crossorigin="anonymous"></script>
@@ -120,12 +124,7 @@
   <p>勤務先の就業規則によります。副業を禁止している会社、届出を求める会社、条件付きで認めている会社があるため、まず自分の会社の規定を確認してください。また、副業の所得が一定額を超えると確定申告が必要になります。申告の方法によって住民税の通知の扱いが変わるため、気になる場合は申告時の選択欄を確認しておくと安心です。判断に迷う場合は税務署や自治体の窓口で相談できます。</p>
 
   <h2>登録先の例</h2>
-  <div class="pr">
-    <span class="tag">PR</span>
-    <p style="margin:0 0 6px">代表的なクラウドソーシングサービスです。登録は無料で、まずはプロフィール登録から始められます。</p>
-    <!-- AFFILIATE SLOT: A8.net/もしも registration後、下記リンクをアフィリエイトタグ付きURLに置き換えること -->
-    <p style="margin:6px 0 0"><a href="https://crowdworks.jp/" target="_blank" rel="noopener sponsored">クラウドワークス（公式サイト）</a> ・ <a href="https://www.lancers.jp/" target="_blank" rel="noopener sponsored">ランサーズ（公式サイト）</a> ・ <a href="https://coconala.com/" target="_blank" rel="noopener sponsored">ココナラ（公式サイト）</a></p>
-  </div>
+  <div class="aff" data-aff="kawatare-studio/article-sidejob-crowdsourcing"><span class="aff-tag">PR</span><p class="aff-text">在宅で仕事を探せるサービスの例です。登録・閲覧は無料です。</p><p class="aff-links"><a href="https://crowdworks.jp/" target="_blank" rel="noopener sponsored nofollow" data-aff-click="crowdworks">クラウドワークス（公式サイト）</a> ・ <a href="https://www.lancers.jp/" target="_blank" rel="noopener sponsored nofollow" data-aff-click="lancers">ランサーズ（公式サイト）</a> ・ <a href="https://coconala.com/" target="_blank" rel="noopener sponsored nofollow" data-aff-click="coconala">ココナラ（公式サイト）</a></p></div>
 
   <div class="btnrow"><a class="cta" href="/">ツール一覧を見る</a></div>
   </div>
@@ -188,4 +187,23 @@ if(isIOS&&isSafari){setTimeout(function(){build('共有ボタン → 「ホー�
 })();
 </script>
 <!-- pwa:end -->
+<script>
+/* アフィリエイトのクリック計測。失敗してもリンク遷移は妨げない。 */
+(function(){
+  document.addEventListener('click', function(e){
+    try{
+      var a = e.target && e.target.closest && e.target.closest('a[data-aff-click]');
+      if(!a) return;
+      var slot = a.closest('.aff');
+      if(typeof gtag === 'function'){
+        gtag('event','affiliate_click',{
+          program: a.getAttribute('data-aff-click') || '',
+          slot: (slot && slot.getAttribute('data-aff')) || '',
+          link_url: a.href || ''
+        });
+      }
+    }catch(err){/* 計測の失敗は無視する */}
+  }, true);
+})();
+</script>
 </body></html>
