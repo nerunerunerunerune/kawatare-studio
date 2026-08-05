@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>会津・磐梯町 蕎麦｜古民家 蕎麦処 ばんだい庵</title>
+  <meta name="description" content="磐梯山の湧水で打つ十割蕎麦と、その水で仕込む和菓子。会津・磐梯町の古民家 蕎麦・甘味処 ばんだい庵。五色沼から車で8分。">
+  <meta property="og:title" content="古民家 蕎麦処 ばんだい庵｜会津・磐梯町">
+  <meta property="og:description" content="磐梯山の湧水で打つ十割蕎麦と季節の和菓子。会津の静けさの中で。">
+  <meta property="og:type" content="restaurant.restaurant">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://portfolio-lac-beta-pagh0jeip7.vercel.app/bandai-an/assets/web/hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&family=Zen+Old+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='88'%3E🍜%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css?v=2">
+  <link rel="stylesheet" href="css/reserve.css?v=3">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Restaurant","name":"ばんだい庵","servesCuisine":"蕎麦","priceRange":"¥¥",
+   "address":{"@type":"PostalAddress","addressCountry":"JP","addressRegion":"福島県","addressLocality":"耶麻郡磐梯町","streetAddress":"大字更科字〇〇"},
+   "telephone":"+81-242-00-0000",
+   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Thursday","Friday","Saturday","Sunday"],"opens":"11:00","closes":"15:00"}],
+   "image":"assets/web/hero.jpg","url":"https://example.com/"}
+  </script>
+</head>
+<body id="top">
+
+  <nav class="sitenav" aria-label="サイト内ナビゲーション">
+    <a class="sitenav__brand" href="#top">ばんだい庵</a>
+    <div class="sitenav__links">
+      <a href="#menu">お品書き</a>
+      <a href="#story">物語</a>
+      <a href="#access">アクセス</a>
+      <a href="#reserve" class="sitenav__cta">予約</a>
+      <a href="tel:024200000" class="sitenav__tel" aria-label="電話でお問い合わせ">☎</a>
+    </div>
+  </nav>
+
+  <header class="hero" role="banner">
+    <div class="hero__media">
+      <img src="assets/web/hero.jpg" alt="紅葉に包まれた会津・磐梯町の古民家 蕎麦処 ばんだい庵の外観と縁側">
+    </div>
+    <div class="hero__inner container">
+      <p class="vlabel" aria-hidden="true">會津・磐梯町</p>
+      <div class="hero__copy">
+        <p class="brand">ばんだい庵</p>
+        <h1 class="hero__catch">蕎麦と、<br>磐梯の水の甘味。</h1>
+        <p class="hero__sub">五色沼から車で8分。会津・磐梯山の麓、古民家の一軒。</p>
+        <p id="open-status" class="status"><span class="dot" aria-hidden="true"></span><span class="label">本日 営業中</span><span class="status__hours">11:00–15:00（蕎麦切れ次第終了）・ 定休 水</span></p>
+        <nav class="hero__cta" aria-label="主要な導線">
+          <a href="#access" class="btn btn--solid">アクセス</a>
+          <a href="#reserve" class="btn btn--line">予約</a>
+        </nav>
+      </div>
+      <span class="seal" aria-hidden="true"><span>ばんだい庵</span></span>
+    </div>
+  </header>
+
+  <section class="news container reveal" aria-label="お知らせ">
+    <p class="vlabel vlabel--sm" aria-hidden="true">お知らせ</p>
+    <ul id="news-list" class="news__list"></ul>
+    <noscript>
+      <ul class="news__list">
+        <li><time datetime="2026-07-20">2026.07.20</time><span class="news__tag">甘味</span><span>湧水の水羊羹、今年もはじめました。</span></li>
+      </ul>
+    </noscript>
+  </section>
+
+  <section class="intro reveal">
+    <p class="intro__lead">磐梯山の湧水で打つ十割蕎麦と、その水で仕込む和菓子。<br>会津の静けさの中で、ゆっくりと。</p>
+  </section>
+
+  <section class="tabs container reveal" aria-label="お品書き・物語・アクセス">
+    <div class="tabs__nav" role="tablist" aria-label="内容の切り替え">
+      <button role="tab" id="t-menu" aria-controls="menu" aria-selected="true">お品書き・甘味</button>
+      <button role="tab" id="t-story" aria-controls="story" aria-selected="false">物語</button>
+      <button role="tab" id="t-access" aria-controls="access" aria-selected="false">アクセス</button>
+    </div>
+
+    <div class="tabs__panels">
+
+      <div role="tabpanel" id="menu" aria-labelledby="t-menu" tabindex="0">
+        <div class="panel-grid">
+          <div class="panel-grid__media"><img src="assets/web/soba.jpg?v=2" alt="せいろに盛られた、会津産そば粉を磐梯山の湧水で打った十割蕎麦。刻み海苔とつゆ・薬味を添えて"></div>
+          <div class="panel-grid__body">
+            <h2 class="sec-h">お品書き</h2>
+            <p class="lede">粉は会津産、水は磐梯山の湧水。その日の分だけ、手で打ちます。</p>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">十割そば</span><span class="menu-list__dots" aria-hidden="true"></span><span class="menu-list__price">¥1,100</span></li>
+              <li><span class="menu-list__name">二八そば</span><span class="menu-list__dots" aria-hidden="true"></span><span class="menu-list__price">¥900</span></li>
+              <li><span class="menu-list__name">鴨せいろ</span><span class="menu-list__dots" aria-hidden="true"></span><span class="menu-list__price">¥1,600</span></li>
+              <li><span class="menu-list__name">季節の天せいろ</span><span class="menu-list__dots" aria-hidden="true"></span><span class="menu-list__price">¥1,800</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel-grid panel-grid--rev sweets">
+          <div class="panel-grid__media"><img src="assets/web/wagashi.jpg?v=2" alt="笹の葉を敷いた黒漆の皿に並ぶ、磐梯山の湧水で仕込んだ水羊羹と抹茶"></div>
+          <div class="panel-grid__body">
+            <h2 class="sec-h">湧水の甘味</h2>
+            <p class="lede">蕎麦と同じ水で仕込む、会津の郷土に寄せた甘味。</p>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">湧水あんみつ</span><span class="menu-list__dots" aria-hidden="true"></span><span class="menu-list__price">¥750</span></li>
+              <li><span class="menu-list__name">磐梯水羊羹</span><span class="menu-list__dots" aria-hidden="true"></span><span class="menu-list__price">¥600</span></li>
+              <li><span class="menu-list__name">蕎麦がきぜんざい</span><span class="menu-list__dots" aria-hidden="true"></span><span class="menu-list__price">¥700</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="story" aria-labelledby="t-story" tabindex="0" hidden>
+        <div class="panel-grid">
+          <div class="panel-grid__media"><img src="assets/web/engawa.jpg" alt="障子越しに苔庭と紅葉を望む、古民家の座敷と縁側"></div>
+          <div class="panel-grid__body">
+            <h2 class="sec-h">築百年の梁の下で</h2>
+            <p class="story-p">もとは会津の庄屋の家。黒く艶びた梁と、縁側から見える苔の庭。私たちはこの静けさごと、蕎麦をお出ししています。</p>
+            <p class="story-p">水は、磐梯山が長い時間をかけて濾した湧水。蕎麦を締め、和菓子を仕込む——味の芯は、いつもこの水にあります。</p>
+          </div>
+        </div>
+        <div class="panel-grid panel-grid--rev">
+          <div class="panel-grid__media"><img src="assets/web/hands.jpg" alt="打ち粉をまぶした台の上で、包丁で手打ち蕎麦を切り出す職人の手元"></div>
+          <div class="panel-grid__body">
+            <h2 class="sec-h">その日の分だけ</h2>
+            <p class="story-p">石臼で挽いた会津産のそば粉を、朝、手で打ちます。出せるのはその日の分だけ。売り切れご容赦、それが手打ちの約束です。</p>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" id="access" aria-labelledby="t-access" tabindex="0" hidden>
+        <div class="access">
+          <div class="access__map">
+            <iframe title="ばんだい庵の地図（会津・磐梯町）" src="https://maps.google.com/maps?q=%E7%A6%8F%E5%B3%B6%E7%9C%8C%E7%A3%90%E6%A2%AF%E7%94%BA&t=&z=12&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="access__info">
+            <h2 class="sec-h">会津・磐梯町へ</h2>
+            <dl class="nap">
+              <dt>住所</dt><dd>福島県耶麻郡磐梯町大字更科字〇〇<span class="note">（デモ・架空の住所）</span></dd>
+              <dt>営業</dt><dd>11:00–15:00（蕎麦切れ次第終了）／定休 水曜</dd>
+              <dt>駐車場</dt><dd>10台（無料）</dd>
+              <dt>行き方</dt><dd>五色沼から車で約8分／磐梯山ICから約5分</dd>
+              <dt>電話</dt><dd><a href="tel:024200000">0242-00-0000</a></dd>
+            </dl>
+            <div class="reserve">
+              <p class="reserve__h">ご予約・お問い合わせ</p>
+              <a class="btn btn--solid" href="tel:024200000">0242-00-0000 に電話</a>
+              <p class="note">※お席と蕎麦打ち体験は<a href="#reserve">空き状況カレンダー</a>からもご予約いただけます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="reserve" class="rsv reveal" aria-label="ご予約・空き状況">
+    <div class="container">
+
+      <div class="rsv__head">
+        <p class="vlabel vlabel--sm" aria-hidden="true">ご予約</p>
+        <div>
+          <h2 class="sec-h">お席と蕎麦打ち、ひと目で。</h2>
+          <p class="lede">日付の枠に「お食事」と「蕎麦打ち体験」の空きをあわせて出しています。<br>気になる日をお選びください。</p>
+        </div>
+      </div>
+
+      <p class="rsv__legend">
+        <span><i class="rsv-badge rsv-badge--meal" aria-hidden="true">食</i>お食事（11:00–15:00／水曜定休）</span>
+        <span><i class="rsv-badge rsv-badge--soba" aria-hidden="true">打</i>蕎麦打ち体験（金・土・日）— 空いている開始時間を表示します</span>
+        <span class="rsv__marks">○ 空きあり　△ 残りわずか　× 空きなし　− 定休</span>
+      </p>
+
+      <div class="rsv__grid">
+        <div class="rsv__cal">
+          <div class="cal__bar">
+            <button type="button" id="cal-prev">← 前の月</button>
+            <p id="cal-title" aria-live="polite">読み込み中</p>
+            <button type="button" id="cal-next">次の月 →</button>
+          </div>
+          <div class="cal__dow" aria-hidden="true">
+            <span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span>
+          </div>
+          <div id="cal-days" class="cal__days" role="group" aria-label="空き状況カレンダー"></div>
+        </div>
+
+        <aside id="rsv-panel" class="rsv__panel" aria-live="polite">
+          <p class="rsv-panel__empty">カレンダーから日付をお選びください。</p>
+        </aside>
+      </div>
+
+      <div class="rsv__find">
+        <p class="vlabel vlabel--sm" aria-hidden="true">確認・取消</p>
+        <div>
+          <p class="rsv__find-h">ご予約の確認・取り消し</p>
+          <div class="rsv__find-row">
+            <label for="rsv-find" class="note">予約番号</label>
+            <input type="text" id="rsv-find" placeholder="BA-000000" autocomplete="off">
+            <button type="button" class="btn btn--line" id="rsv-find-btn">照会する</button>
+          </div>
+          <div id="rsv-found"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="recruit container reveal" aria-label="採用情報">
+    <div class="recruit__inner">
+      <p class="vlabel vlabel--sm" aria-hidden="true">はたらく</p>
+      <div>
+        <h2 class="sec-h">一緒に、蕎麦を打つ人へ。</h2>
+        <p class="lede">古民家の厨房とホールで働く仲間を探しています。未経験から、手仕事を覚えたい方へ。</p>
+      </div>
+      <a class="btn btn--line" href="recruit">求人を見る</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <p class="brand brand--sm">ばんだい庵</p>
+        <p class="foot-nap">福島県耶麻郡磐梯町大字更科字〇〇<br>0242-00-0000 ／ 11:00–15:00 ・ 定休 水</p>
+      </div>
+      <div class="foot-links">
+        <a href="#top">ページ上部へ</a>
+        <a href="https://maps.google.com/maps?q=%E7%A6%8F%E5%B3%B6%E7%9C%8C%E7%A3%90%E6%A2%AF%E7%94%BA" target="_blank" rel="noopener">Googleマップ</a>
+        <a href="#" aria-label="Instagram（デモ）">Instagram</a>
+      </div>
+      <p class="copy">© 2026 ばんだい庵（架空のデモサイト）</p>
+    </div>
+  </footer>
+
+  <script src="js/site.js?v=3" defer></script>
+  <script src="js/reserve.js?v=2" defer></script>
+</body>
+</html>

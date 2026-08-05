@@ -1,0 +1,47 @@
+/* ばんだい庵 求人ページ 固有スタイル（styles.css を基盤に追加） */
+
+.r-tag{font-family:var(--f-body);font-size:.66rem;color:var(--shu);border:1px solid var(--shu);border-radius:2px;padding:1px 6px;letter-spacing:.12em;vertical-align:middle;margin-left:4px}
+.r-back{color:var(--ink-soft)}
+.r-back:hover{color:var(--shu)}
+
+.r-eyebrow{font-family:var(--f-head);font-size:.82rem;letter-spacing:.22em;color:var(--shu)}
+.r-eyebrow--sec{display:inline-block;margin-bottom:.5rem}
+
+/* ヒーローの求人ラベル（brandとcatchの間） */
+.hero__copy .r-eyebrow{display:block;margin:.5rem 0 .2rem}
+
+/* 募集職種 */
+.r-jobs{padding-block:var(--sp-6)}
+.r-jobs__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-3);margin-top:var(--sp-2)}
+.r-job__media{overflow:hidden;border-radius:2px}
+.r-job__media img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .5s ease}
+.r-job:hover .r-job__media img{transform:scale(1.04)}
+.r-job__h{font-family:var(--f-head);font-size:1.15rem;margin:.8rem 0 .3rem}
+.r-job__h::before{content:"";display:inline-block;width:14px;height:2px;background:var(--shu);vertical-align:middle;margin-right:.5rem}
+.r-job__d{color:var(--ink-soft);font-size:.92rem;line-height:1.85}
+
+/* 店主より（画像＋パネル） */
+.r-message{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;border-top:1px solid var(--line)}
+.r-message__media{min-height:320px}
+.r-message__media img{width:100%;height:100%;object-fit:cover}
+.r-message__panel{padding:clamp(28px,5vw,64px);display:flex;flex-direction:column;justify-content:center}
+
+/* 募集要項（nap を流用・余白のみ） */
+.r-req{padding-block:var(--sp-6);border-top:1px solid var(--line)}
+
+/* 応募 */
+.r-entry{padding-block:var(--sp-6);border-top:1px solid var(--line)}
+.r-entry__inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px)}
+.tel-big{display:inline-block;font-family:var(--f-head);font-size:clamp(1.5rem,4vw,2rem);color:var(--ink);letter-spacing:.03em;margin-top:.3rem}
+.r-form{display:flex;flex-direction:column;gap:.9rem}
+.r-form label{display:flex;flex-direction:column;gap:.3rem;font-size:.86rem;color:var(--ink-soft)}
+.r-form input,.r-form textarea{font-family:inherit;font-size:1rem;color:var(--ink);padding:.7rem .8rem;border:1px solid var(--line);border-radius:2px;background:#fff}
+.r-form input:focus,.r-form textarea:focus{outline:none;border-color:var(--shu);box-shadow:0 0 0 3px rgba(166,50,31,.14)}
+.r-form .btn{align-self:flex-start;margin-top:.3rem}
+
+@media (max-width:820px){
+  .r-jobs__grid{grid-template-columns:1fr}
+  .r-message{grid-template-columns:1fr}
+  .r-message__media{min-height:240px}
+  .r-entry__inner{grid-template-columns:1fr}
+}

@@ -1,0 +1,106 @@
+/* 磐梯サーモン — ご注文シミュレーター
+   参考: UMIUMA（波形マスクで面を切る）／木の屋石巻水産（数字と選択肢を大きく明快に） */
+
+.order{position:relative;background:var(--mizu);padding-block:var(--sp-6) var(--sp-6);overflow:hidden}
+/* 上辺を波形で切る（帯のベタ塗りに見せない） */
+.order::before{content:"";position:absolute;left:0;right:0;top:-1px;height:52px;background:var(--paper);
+  border-radius:0 0 50% 50% / 0 0 100% 100%;pointer-events:none}
+.order > .container{position:relative;z-index:1}
+
+.order__head{text-align:center;margin-bottom:var(--sp-4)}
+.order__lead{color:var(--ink-soft);font-size:.98rem}
+
+.order__grid{display:grid;grid-template-columns:1.25fr 1fr;gap:var(--sp-4);align-items:start}
+
+/* --- 選択パネル --- */
+.od-panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;
+  padding:clamp(1.2rem,2.6vw,1.7rem)}
+.od-h{font-size:.86rem;font-weight:700;letter-spacing:.1em;color:var(--water-2);
+  padding-bottom:.6rem;border-bottom:1px solid var(--line);margin-bottom:1rem}
+.od-panel > .od-h:not(:first-child){margin-top:1.8rem}
+
+/* 商品行 */
+.od-item{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.8rem .9rem;border:1px solid var(--line);border-radius:8px;margin-bottom:.6rem;
+  transition:border-color .18s,background .18s}
+.od-item.is-on{border-color:var(--salmon);background:#fdf4f0}
+.od-item__n{font-weight:700;font-size:.98rem;line-height:1.4}
+.od-item__note{display:inline-block;font-size:.68rem;font-weight:400;color:var(--paper);
+  background:var(--water-2);border-radius:99px;padding:.1em .7em;margin-left:.5em;vertical-align:.12em}
+.od-item.is-on .od-item__note{background:var(--salmon)}
+.od-item__p{font-size:.92rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.od-item__p small{font-size:.72rem;margin-left:.2em}
+
+.od-step{display:flex;align-items:center;gap:.2rem;flex:none}
+.od-step__b{width:2rem;height:2rem;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  color:var(--water);font-size:1rem;line-height:1;cursor:pointer;font-family:var(--f-body);
+  transition:border-color .18s,background .18s,color .18s}
+.od-step__b:hover:not(:disabled){border-color:var(--water-2);background:var(--mizu)}
+.od-step__b:disabled{opacity:.35;cursor:default}
+.od-step__n{min-width:1.8rem;text-align:center;font-weight:700;font-size:1.05rem;
+  font-variant-numeric:tabular-nums}
+
+/* 選択チップ */
+.od-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.od-chip{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem;cursor:pointer;
+  font-family:var(--f-body);font-size:.92rem;font-weight:700;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.6rem .9rem;
+  transition:border-color .18s,background .18s,color .18s}
+.od-chip em{font-style:normal;font-size:.68rem;font-weight:400;color:var(--ink-soft);letter-spacing:.01em}
+.od-chip:hover{border-color:var(--water-2)}
+.od-chip.is-on{border-color:var(--water);background:var(--water);color:var(--paper)}
+.od-chip.is-on em{color:#bfe0ec}
+.od-chip--sm{font-size:.86rem;padding:.5rem .8rem}
+
+/* --- 合計パネル --- */
+.od-total{background:var(--paper);border:1px solid var(--line);border-radius:10px;
+  padding:clamp(1.2rem,2.6vw,1.7rem);position:sticky;top:84px;
+  box-shadow:0 6px 24px rgba(20,85,110,.07)}
+.od-empty{color:var(--ink-soft);font-size:.94rem}
+
+.od-sum{display:grid;grid-template-columns:1fr auto;gap:.1rem .8rem;font-size:.94rem;margin-bottom:1.1rem}
+.od-sum dt{color:var(--ink-soft);padding:.5rem 0;border-bottom:1px solid var(--line)}
+.od-sum dd{text-align:right;padding:.5rem 0;border-bottom:1px solid var(--line);
+  font-variant-numeric:tabular-nums}
+.od-sum dt.is-off,.od-sum dd.is-off{color:var(--salmon-deep)}
+.od-sum dd small{font-size:.72rem;color:var(--ink-soft);margin-left:.3em}
+.od-free{color:var(--water-2);font-weight:700}
+
+.od-big{text-align:center;padding:1rem 0 1.1rem}
+.od-big__l{font-size:.82rem;color:var(--ink-soft);letter-spacing:.06em}
+.od-big__n{font-size:clamp(2rem,5vw,2.7rem);font-weight:700;color:var(--water);line-height:1.2;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
+.od-year{background:var(--mizu);border-radius:8px;padding:.9rem 1rem;text-align:center;margin-bottom:1.1rem}
+.od-year__l{font-size:.8rem;color:var(--ink-soft)}
+.od-year__n{font-size:1.35rem;font-weight:700;color:var(--water);font-variant-numeric:tabular-nums}
+.od-year__save{font-size:.86rem;color:var(--salmon-deep);margin-top:.25rem}
+.od-year__save b{font-size:1.02rem}
+
+.od-go{width:100%;text-align:center;margin-bottom:.6rem}
+
+.od-done__h{font-size:1.05rem;font-weight:700;color:var(--water);margin-bottom:.7rem}
+.od-done__list{list-style:none;margin-bottom:1rem}
+.od-done__list li{padding:.4rem 0;border-bottom:1px dotted var(--line);font-size:.94rem}
+
+/* --- 追従バーに合計を出す --- */
+.buybar__l{font-size:.72rem;font-weight:400;opacity:.9;margin-right:.4em}
+.buybar__n{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.buybar__c{display:inline-block;background:rgba(255,255,255,.22);border-radius:99px;
+  padding:.2em 1em;margin-left:.8em;font-size:.86rem}
+
+/* --- レスポンシブ --- */
+@media (max-width:900px){
+  .order__grid{grid-template-columns:1fr}
+  .od-total{position:static}
+}
+@media (max-width:560px){
+  .od-item{flex-wrap:wrap;gap:.6rem}
+  .od-item__info{flex:1 1 100%}
+  .od-step{margin-left:auto}
+  .od-chips{gap:.4rem}
+  .od-chip{flex:1 1 calc(50% - .2rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.001ms!important}
+}

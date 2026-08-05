@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>配車管理｜杜運送株式会社</title>
+  <meta name="description" content="杜運送の配車管理画面デモ。集荷依頼の受付から、ドライバー割当・配車ボード・稼働状況までを1画面で。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='88'%3E📋%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/admin-dispatch.css?v=2">
+</head>
+<body class="adm">
+
+  <aside class="adm__side">
+    <p class="adm__brand">杜運送<span>.</span><em>配車管理</em></p>
+    <nav class="adm__nav" aria-label="管理メニュー">
+      <a href="#board" class="is-on">配車ボード</a>
+      <a href="#orders">集荷依頼</a>
+      <a href="./">← 会社サイトへ</a>
+    </nav>
+    <div class="adm__side-foot">
+      <p class="adm__demo">デモ画面</p>
+      <p>この端末に保存されたデータのみ表示します。実際の業務データではありません。</p>
+      <button type="button" id="adm-reset" class="adm__reset">デモデータを初期化</button>
+    </div>
+  </aside>
+
+  <main class="adm__main">
+
+    <header class="adm__bar">
+      <div>
+        <h1 class="adm__h1">配車ボード</h1>
+        <p class="adm__date" id="adm-date"></p>
+      </div>
+      <div class="adm__daynav">
+        <button type="button" id="adm-prev">← 前日</button>
+        <button type="button" id="adm-today">本日</button>
+        <button type="button" id="adm-next">翌日 →</button>
+      </div>
+    </header>
+
+    <section class="adm__kpis" aria-label="稼働状況">
+      <div class="kpi"><p class="kpi__l">当日の集荷依頼</p><p class="kpi__n" id="kpi-total">0<small>件</small></p></div>
+      <div class="kpi kpi--warn"><p class="kpi__l">未割当</p><p class="kpi__n" id="kpi-new">0<small>件</small></p></div>
+      <div class="kpi"><p class="kpi__l">稼働ドライバー</p><p class="kpi__n" id="kpi-drivers">0<small>/5名</small></p></div>
+      <div class="kpi"><p class="kpi__l">積載率</p><p class="kpi__n" id="kpi-load">0<small>%</small></p>
+        <div class="kpi__bar"><span id="kpi-load-bar"></span></div></div>
+    </section>
+
+    <section id="board" class="adm__panel" aria-label="配車ボード">
+      <div class="adm__panel-h">
+        <h2>配車ボード</h2>
+        <p class="adm__hint">未割当の依頼を選び、ドライバーの行をクリックすると割り当てられます。</p>
+      </div>
+      <p class="adm__notice" id="adm-notice" role="status" hidden></p>
+      <div class="adm__scroll"><div id="adm-board"></div></div>
+    </section>
+
+    <section id="orders" class="adm__panel" aria-label="集荷依頼一覧">
+      <div class="adm__panel-h">
+        <h2>集荷依頼</h2>
+        <div class="adm__filters" role="group" aria-label="状態で絞り込み">
+          <button type="button" data-f="all" class="is-on">すべて</button>
+          <button type="button" data-f="new">未割当</button>
+          <button type="button" data-f="assigned">配車済</button>
+          <button type="button" data-f="done">完了</button>
+        </div>
+      </div>
+      <div class="adm__scroll"><div id="adm-orders"></div></div>
+    </section>
+
+  </main>
+
+  <script src="js/admin-dispatch.js?v=3" defer></script>
+</body>
+</html>
