@@ -1,0 +1,40 @@
+# 公開しないもの。
+# wrangler.jsonc の assets.directory が "./" なので、このフォルダは丸ごと配信される。
+# ここに書かないファイルは全部インターネットから読めるようになる。
+# 書式は .gitignore と同じ。
+#
+# 2026-08-06: kimetto.kawatare.studio で /.git/config /.git/index /.git/objects/... が
+# 実際に 200 を返していた（GitHubのリポジトリURLとユーザー名が読めた）。
+# ビルド時の checkout が .git ごとアップロードされていたため。
+
+# Gitの内部（履歴・リポジトリURL・ユーザー名が読めてしまう）
+.git
+**/.git
+.gitignore
+**/.gitignore
+
+# デプロイ設定（配信する必要がない）
+wrangler.jsonc
+**/wrangler.jsonc
+
+# 開発用の残骸
+node_modules
+**/node_modules
+.DS_Store
+**/.DS_Store
+
+# 念のための網（現状これらのファイルは無いが、将来置かれたときの保険）
+*.md
+**/*.md
+*.py
+**/*.py
+*.sh
+**/*.sh
+*.log
+**/*.log
+.env
+**/.env*
+*.key
+**/*.key
+*.pem
+**/*.pem
