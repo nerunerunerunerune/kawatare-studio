@@ -1,3 +1,17 @@
+# 【重要・2026-08-06 実測】このファイルは、このサイトでは効いていない。
+# .assetsignore は Workers Static Assets の機能で、Pages 側では読まれない。
+# 実際にデプロイ後、kimetto（Worker）では /wrangler.jsonc が404になったが、
+# このサイトでは200のままだった。Cloudflareのアカウントに Worker として
+# 登録されているのは kimetto の1件だけ。
+#
+# ただしPagesは .git / node_modules / .DS_Store を自動で除外するため、
+# 最も危険な .git の露出は元から起きていない（実際に404を確認済み）。
+# 残っているのは /wrangler.jsonc と /.gitignore で、どちらも鍵を含まず、
+# GitHubのリポジトリが公開設定なのでどのみち読める。実害は無い。
+#
+# このファイルは、将来このサイトを Workers へ移したときに効き始める。
+# それまでは「移行したら守られる」という予約であって、現時点の保護ではない。
+
 # 公開しないもの。
 # wrangler.jsonc の assets.directory が "./" なので、このフォルダは丸ごと配信される。
 # ここに書かないファイルは全部インターネットから読めるようになる。
