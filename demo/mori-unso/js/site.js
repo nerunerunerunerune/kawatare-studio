@@ -1,4 +1,4 @@
-/* 杜運送 — サイト挙動（バニラJS・環境差に強いスクロール連動） */
+/* 杜王町運輸 — サイト挙動（バニラJS・環境差に強いスクロール連動） */
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

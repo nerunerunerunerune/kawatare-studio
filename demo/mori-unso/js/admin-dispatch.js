@@ -1,4 +1,4 @@
-/* 杜運送 — 配車管理画面（デモ／localStorage・バックエンド不要）
+/* 杜王町運輸 — 配車管理画面（デモ／localStorage・バックエンド不要）
    サイト側の集荷依頼（js/pickup.js）と同じ保存領域を読むので、依頼がそのまま流れてくる。 */
 (function () {
   'use strict';
