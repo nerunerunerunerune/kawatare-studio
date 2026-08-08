@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://kawatare.studio/ogp.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"画像形式変換","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"画像をPNG・JPG・WebPに相互変換。画質も調整でき、複数枚・ZIP一括DL対応。ブラウザ内処理で送信なし・登録不要・完全無料。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"画像形式変換の使い方","step":[{"@type":"HowToStep","name":"画像を追加","text":"ドラッグ＆ドロップ、または選択(複数可)。"},{"@type":"HowToStep","name":"形式を選ぶ","text":"PNG・JPG・WebPと画質を選びます。"},{"@type":"HowToStep","name":"保存","text":"1枚ずつ、またはZIPで一括ダウンロード。"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"WebPに変換すると軽くなりますか？","acceptedAnswer":{"@type":"Answer","text":"多くの場合、同じ見た目でJPG/PNGより軽くなります。Web表示の高速化に有効です。"}},{"@type":"Question","name":"画像は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像は送信されません。"}},{"@type":"Question","name":"透過は保てますか？","acceptedAnswer":{"@type":"Answer","text":"PNG・WebPは透過を保持します。JPGは透過非対応のため背景が付きます。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"WebPに変換すると軽くなりますか？","acceptedAnswer":{"@type":"Answer","text":"多くの場合、同じ見た目でJPG/PNGより軽くなります。Web表示の高速化に有効です。"}},{"@type":"Question","name":"画像は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像は送信されません。"}},{"@type":"Question","name":"透過は保てますか？","acceptedAnswer":{"@type":"Answer","text":"PNG・WebPは透過を保持します。JPGは透過非対応のため背景が付きます。"}},{"@type":"Question","name":"変換した画像はどこに保存されますか？","acceptedAnswer":{"@type":"Answer","text":"1枚ずつの「保存」リンクはブラウザ標準のダウンロード機能を使うため、端末のダウンロードフォルダに入ります。まとめて欲しいときは「ZIPで一括ダウンロード」を使うと、1つのZIPファイルとして同じ場所に保存されます。"}},{"@type":"Question","name":"ファイル名はどう変わりますか？","acceptedAnswer":{"@type":"Answer","text":"元のファイル名の拡張子部分だけが変換後の形式に置き換わります。「photo.png」をJPGに変換すると「photo.jpg」になり、名前の残りは変わりません。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"画像形式変換","item":"https://kawatare.studio/tool-image-convert"}]}</script>
 <style>
   :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
@@ -118,8 +118,20 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>画像を追加</b><p>ドラッグ＆ドロップ、または選択(複数可)。</p></div><div class="st"><div class="n">2</div><b>形式を選ぶ</b><p>PNG・JPG・WebPと画質を選びます。</p></div><div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。</p></div></div>
+
+    <h2>出力形式の既定をJPGにしている理由</h2>
+    <p style="margin:10px 0;font-size:14px">出力形式は、開いた時点でJPGが選ばれている。WebPではない。</p>
+    <p style="margin:10px 0;font-size:14px">迷ったすえ、圧縮率の高さより「とりあえずどこでも開ける」ことを優先した。WebPは年々対応が広がっているものの、古い画像編集ソフトや一部の業務システム、印刷受付サービスではまだ扱いに困る場面が残っている。変換した画像を誰がどの環境で開くか分からない状態で一括変換をかけるなら、まず開けることを既定にしておくほうが安全だと判断した。</p>
+    <p style="margin:10px 0;font-size:14px">軽さを優先したいときは、出力形式のボタンでWebPを選べば同じ手順で変換できる。既定値は無難な選び方を示しているだけで、固定しているわけではない。</p>
+    <h2>画質スライダーを85に置いている理由</h2>
+    <p style="margin:10px 0;font-size:14px">画質は40〜100の範囲で動かせ、開いた時点の値は85。この設定が効くのはJPGとWebPだけで、PNGは可逆形式のため画質を動かしても見た目もサイズもほぼ変わらない。</p>
+    <p style="margin:10px 0;font-size:14px">上限の100に寄せるほど元画像に近づく代わりにファイルは重くなり、下限の40に近づくほど軽くなる代わりに画質の粗さが目立ちやすくなる。85は「軽くしつつ見た目を保つ」という変換の目的に沿った折衷点として置いた値であり、用途に応じてどちらへ動かしても構わない。</p>
+    <h2>この変換が向かない場面</h2>
+    <p style="margin:10px 0;font-size:14px">複数枚まとめての変換には対応しているが、毎日何百枚もの単位で継続的に処理するなら、ブラウザのタブを開いてドラッグする今の形より、フォルダを指定して自動で流せるデスクトップ側のソフトのほうが手数は少ない。月に数十枚を必要なときだけ変換する程度なら、インストールの手間がないこの画面のほうが早い。</p>
+    <p style="margin:10px 0;font-size:14px">対応できる入力は、ブラウザが表示できる画像に限られる。カメラのRAW形式(.CR2や.NEFなど)のように、ブラウザが直接開けない形式はそのままでは読み込めない。先に別のソフトでJPEGかPNGへ書き出してから、この画面で目的の形式に変換し直す流れになる。</p>
+
     <h2>よくある質問</h2>
-    <div class="faq"><details open><summary>WebPに変換すると軽くなりますか？</summary><p>多くの場合、同じ見た目でJPG/PNGより軽くなります。Web表示の高速化に有効です。</p></details><details><summary>画像は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像は送信されません。</p></details><details><summary>透過は保てますか？</summary><p>PNG・WebPは透過を保持します。JPGは透過非対応のため背景が付きます。</p></details></div>
+    <div class="faq"><details open><summary>WebPに変換すると軽くなりますか？</summary><p>多くの場合、同じ見た目でJPG/PNGより軽くなります。Web表示の高速化に有効です。</p></details><details><summary>画像は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像は送信されません。</p></details><details><summary>透過は保てますか？</summary><p>PNG・WebPは透過を保持します。JPGは透過非対応のため背景が付きます。</p></details><details><summary>変換した画像はどこに保存されますか？</summary><p>1枚ずつの「保存」リンクはブラウザ標準のダウンロード機能を使うため、端末のダウンロードフォルダに入ります。まとめて欲しいときは「ZIPで一括ダウンロード」を使うと、1つのZIPファイルとして同じ場所に保存されます。</p></details><details><summary>ファイル名はどう変わりますか？</summary><p>元のファイル名の拡張子部分だけが変換後の形式に置き換わります。「photo.png」をJPGに変換すると「photo.jpg」になり、名前の残りは変わりません。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-reduce-file-size">📉 「添付できない」を解決<span>画質を保って容量を下げる順序</span></a></div>
     <h2>ほかの無料ツール</h2>
     <div class="rel-grid"><a class="rel" href="tool-image-compressor">🖼️ きゅっと画像圧縮 <span>目標サイズ指定・AVIF・比較</span></a><a class="rel" href="tool-square-photo">📷 フリマ写真を正方形に <span>1:1・白背景に一括変換</span></a></div>

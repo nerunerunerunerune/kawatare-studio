@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://kawatare.studio/ogp.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"画像リサイズ","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"画像を指定した幅・高さに一括リサイズ。縦横比の保持もでき、複数枚・ZIP一括DL対応。ブラウザ内処理で送信なし・登録不要・完全無料。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"画像リサイズの使い方","step":[{"@type":"HowToStep","name":"画像を追加","text":"ドラッグ＆ドロップ、または選択(複数可)。"},{"@type":"HowToStep","name":"サイズ指定","text":"幅・高さを入力(縦横比の保持も選べます)。"},{"@type":"HowToStep","name":"保存","text":"1枚ずつ、またはZIPで一括ダウンロード。"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"複数枚をまとめてリサイズできますか？","acceptedAnswer":{"@type":"Answer","text":"はい。まとめて追加し、ZIPで一括保存できます。枚数制限はありません。"}},{"@type":"Question","name":"画像は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像は送信されません。"}},{"@type":"Question","name":"縦横比は保てますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「縦横比を保持」を選ぶと、指定サイズに収まるよう比率を保ってリサイズします。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"複数枚をまとめてリサイズできますか？","acceptedAnswer":{"@type":"Answer","text":"はい。まとめて追加し、ZIPで一括保存できます。枚数制限はありません。"}},{"@type":"Question","name":"画像は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像は送信されません。"}},{"@type":"Question","name":"縦横比は保てますか？","acceptedAnswer":{"@type":"Answer","text":"はい。「縦横比を保持」を選ぶと、指定サイズに収まるよう比率を保ってリサイズします。"}},{"@type":"Question","name":"プリセットを選ぶと、指定した数値ぴったりのサイズになりますか？","acceptedAnswer":{"@type":"Answer","text":"そうとは限りません。「縦横比を保持」がオンの状態でプリセットを押すと、元画像の比率を保ったまま指定サイズの枠に収まる大きさまで縮小します。元画像の比率がプリセットと違えば、幅か高さのどちらか一方だけが数値どおりになり、もう一方は枠より小さくなります。"}},{"@type":"Question","name":"元の画像より大きいサイズにできますか？","acceptedAnswer":{"@type":"Answer","text":"できます。拡大できる倍率に上限は設けていません。ただし大きく拡大するほど輪郭がやわらかくなり、粗さが見えやすくなります。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"画像リサイズ","item":"https://kawatare.studio/tool-image-resize"}]}</script>
 <style>
   :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
@@ -121,8 +121,19 @@
 
   <div class="aff" data-aff="kawatare-studio/tool-image-resize"><span class="aff-tag">PR</span><p class="aff-text">フリマ出品の発送準備をしている方へ。</p><p class="aff-links"><a href="https://www.amazon.co.jp/s?k=%E3%83%95%E3%83%AA%E3%83%9E%20%E7%99%BA%E9%80%81%20%E6%A2%B1%E5%8C%85%20%E8%B3%87%E6%9D%90%20%E3%82%BB%E3%83%83%E3%83%88" target="_blank" rel="noopener sponsored nofollow" data-aff-click="amazon_search">フリマ発送用品・宛名ラベル を見る（Amazon）</a></p></div>
       <section class="seo">
+    <h2>「縦横比を保持」を既定でオンにしている理由</h2>
+    <p style="margin:10px 0;font-size:14px">幅と高さの欄は、どちらも空欄から始まる。あらかじめ入っている数値はない。「縦横比を保持」のチェックだけが、開いた時点でオンになっている。</p>
+    <p style="margin:10px 0;font-size:14px">オフのまま幅と高さを両方指定すると、その枠にぴったり収まるよう縦横が別々に伸び縮みする。元の比率と枠の比率が違うと、人物や物の輪郭が不自然に伸び縮みして見える。既定をオンにしておけば、この歪みは起こらない。かわりに、幅・高さを両方指定した場合は「その枠に収まる最大サイズ」まで縮小する仕組みにした。指定した数値のどちらか一方だけがぴったりになり、もう一方は枠より小さく仕上がる。</p>
+    <p style="margin:10px 0;font-size:14px">幅だけ、あるいは高さだけを入れたときは話が単純で、もう一方は比率どおりに自動計算される。SNS用のプリセットボタンを押したときも、内部的にはこの「枠に収める」計算が働く。</p>
+    <h2>拡大に上限を設けていない理由</h2>
+    <p style="margin:10px 0;font-size:14px">指定できる数値に、元画像より大きい値を禁じる仕組みは入れていない。小さなアイコン画像を大きく引き伸ばしたい用途もあるはずで、それを機能側で止める理由がなかったためだ。</p>
+    <p style="margin:10px 0;font-size:14px">ただし、拡大は元にない画素を計算で埋める処理であり、倍率が大きいほど輪郭がやわらかく、のっぺりした仕上がりになる。縮小と違って劣化が目に見えやすいので、大きく拡大する用途では結果を必ず確認してほしい。</p>
+    <h2>この機能が向かない場面</h2>
+    <p style="margin:10px 0;font-size:14px">小さな画像を数倍に拡大して、印刷用途などクッキリした仕上がりが必要な場合、この画面の拡大では力不足になりやすい。輪郭を補って自然に見せる処理は行っていないため、そうした用途は拡大に特化した専用ソフトのほうが向いている。</p>
+    <p style="margin:10px 0;font-size:14px">サイズだけでなく形式も変えたいときは、この画面では対応していない。出力はPNGならPNG、WebPならWebP、それ以外はJPGと、元の形式をそのまま引き継ぐ。形式もあわせて変えたい場合は、<a href="tool-image-convert">画像形式変換</a>を使ったほうが早い。</p>
+    <p style="margin:10px 0;font-size:14px">指定した枠にぴったり敷き詰めたい、はみ出した部分は切り捨ててよい、という使い方にも向かない。この画面はつねに画像全体を枠の中に収める方向で動くため、余白なく敷き詰めたいなら<a href="tool-image-crop">画像の切り抜き</a>で先に縦横比を合わせてから、この画面でサイズを揃えるとよい。</p>
     <h2>よくある質問</h2>
-    <div class="faq"><details open><summary>複数枚をまとめてリサイズできますか？</summary><p>はい。まとめて追加し、ZIPで一括保存できます。枚数制限はありません。</p></details><details><summary>画像は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像は送信されません。</p></details><details><summary>縦横比は保てますか？</summary><p>はい。「縦横比を保持」を選ぶと、指定サイズに収まるよう比率を保ってリサイズします。</p></details></div>
+    <div class="faq"><details open><summary>複数枚をまとめてリサイズできますか？</summary><p>はい。まとめて追加し、ZIPで一括保存できます。枚数制限はありません。</p></details><details><summary>画像は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像は送信されません。</p></details><details><summary>縦横比は保てますか？</summary><p>はい。「縦横比を保持」を選ぶと、指定サイズに収まるよう比率を保ってリサイズします。</p></details><details><summary>プリセットを選ぶと、指定した数値ぴったりのサイズになりますか？</summary><p>そうとは限りません。「縦横比を保持」がオンの状態でプリセットを押すと、元画像の比率を保ったまま指定サイズの枠に収まる大きさまで縮小します。元画像の比率がプリセットと違えば、幅か高さのどちらか一方だけが数値どおりになり、もう一方は枠より小さくなります。</p></details><details><summary>元の画像より大きいサイズにできますか？</summary><p>できます。拡大できる倍率に上限は設けていません。ただし大きく拡大するほど輪郭がやわらかくなり、粗さが見えやすくなります。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-reduce-file-size">📉 「添付できない」を解決<span>画質を保って容量を下げる順序</span></a><a class="rel" href="article-pdf-to-image">📊 PDFの図表を資料に使う<span>スクショで荒くなる理由</span></a><a class="rel" href="article-sidejob-crowdsourcing">📖 副業、何から始める？<span>クラウドソーシング入門</span></a></div>
     <h2>ほかの無料ツール</h2>
     <div class="rel-grid"><a class="rel" href="tool-image-compressor">🖼️ きゅっと画像圧縮 <span>目標サイズ指定・AVIF・比較</span></a><a class="rel" href="tool-square-photo">📷 フリマ写真を正方形に <span>1:1・白背景に一括変換</span></a></div>
