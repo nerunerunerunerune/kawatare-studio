@@ -26,7 +26,7 @@
 {"@context":"https://schema.org","@type":"HowTo","name":"PDFを画像に変換する手順","step":[{"@type":"HowToStep","name":"PDFを追加","text":"PDFをドラッグ＆ドロップします。"},{"@type":"HowToStep","name":"形式と画質を選ぶ","text":"PNGかJPG、解像度を選びます。"},{"@type":"HowToStep","name":"保存","text":"1枚ずつ、またはZIPで一括ダウンロードします。"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"PDFはアップロードされますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、PDFはサーバーに送信されません。"}},{"@type":"Question","name":"ページ数の制限はありますか？","acceptedAnswer":{"@type":"Answer","text":"サービス側の制限はありません。端末の性能の範囲で処理します。"}},{"@type":"Question","name":"高画質で保存できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。解像度（1x/2x/3x）を選べます。"}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"PDFはアップロードされますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、PDFはサーバーに送信されません。"}},{"@type":"Question","name":"ページ数の制限はありますか？","acceptedAnswer":{"@type":"Answer","text":"サービス側の制限はありません。端末の性能の範囲で処理します。"}},{"@type":"Question","name":"高画質で保存できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。解像度（1.5x/2x/3x）を選べます。"}},{"@type":"Question","name":"保存される画像のファイル名はどうなりますか？","acceptedAnswer":{"@type":"Answer","text":"元のPDFのファイル名から拡張子を除いた文字列に、3桁のページ番号をつなげた名前になります。"}},{"@type":"Question","name":"変換したページの順番を入れ替えられますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ、PDFのページ順のまま変換されます。順番を変えたい場合は、サクッとPDF整理でページを並べ替えてから変換してください。"}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"PDFを画像に変換","item":"https://kawatare.studio/tool-pdf-to-image"}]}
@@ -132,11 +132,26 @@
       <div class="st"><div class="n">2</div><b>形式・画質</b><p>PNG/JPG と解像度（1.5x〜3x）を選びます。</p></div>
       <div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。</p></div>
     </div>
+
+    <h2>解像度が「標準・高・最高」の3段階になっている理由</h2>
+    <p>PDFの1ポイントは1/72インチと決まっています。この仕組みの上では、標準(1.5倍)は108dpi相当、既定にしている高(2倍)は144dpi相当、最高(3倍)は216dpi相当になる計算です。倍率は縦横それぞれにかかるため、標準から最高まで上げると画素数は面積で最大4倍になります。</p>
+    <p>既定を最高ではなく「高(2倍)」にしているのは、その4倍という画素数の差が、そのままファイルサイズの差になるからです。まずは既定のまま試して、紙に印刷する用途なら「最高(3倍)」に切り替えてください。</p>
+
+    <h2>PNGを既定にし、ZIPは圧縮せずに作っています</h2>
+    <p>出力形式の既定はPNGです。PDFのページは文字や線が多く、非可逆圧縮のJPGでは輪郭がにじみやすくなります。写真のようにグラデーションの多いページを保存するときは、ファイルを小さくできるJPGに切り替えてください。</p>
+    <p>「ZIPで一括ダウンロード」で作られるZIPは、圧縮を行わない「格納」という方式で組み立てています。外部のライブラリを使わず、この画面のためだけに実装したコードです。PNGやJPGはすでに圧縮された形式なので、ZIPでさらに圧縮してもほとんど縮みません。圧縮にかける時間を省いたほうが、保存までが速くなります。</p>
+
+    <h2>文字を選択したい資料や、何十件ものPDFの一括変換には向きません</h2>
+    <p>画像に変換すると、その時点でPDFが持っていた文字の情報は失われます。あとから文字を選択してコピーしたり、PDF内検索を使ったりする用途には向きません。文字を残したまま扱いたい場合は、変換せずにPDFのまま保管してください。</p>
+    <p>また、一度に処理できるPDFは1つです。中のページ数に制限はありませんが、何十件ものPDFを差し替えながら変換する作業には手間がかかります。大量のPDFをまとめて画像化したいときは、専用のバッチ処理ソフトのほうが向いています。</p>
+
     <h2>よくある質問</h2>
     <div class="faq">
       <details open><summary>PDFはアップロードされますか？</summary><p>いいえ。すべてブラウザ内で処理し、PDFはサーバーに送信されません。</p></details>
       <details><summary>ページ数の制限は？</summary><p>サービス側の制限はありません。端末の性能の範囲で処理します。</p></details>
       <details><summary>高画質で保存できますか？</summary><p>はい。解像度（1.5x/2x/3x）を選べます。印刷用途には3xがおすすめです。</p></details>
+      <details><summary>保存される画像のファイル名はどうなりますか？</summary><p>元のPDFのファイル名から拡張子を除いた文字列に、3桁のページ番号をつなげた名前になります。「seikyu.pdf」なら「seikyu_001.png」のように1ページ目から順に保存されます。</p></details>
+      <details><summary>変換したページの順番を入れ替えられますか？</summary><p>いいえ、PDFのページ順のまま変換されます。並べ替えの機能はこの画面にはありません。順番を変えたい場合は、サクッとPDF整理でページを並べ替えてから、このツールで画像に変換してください。</p></details>
     </div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-pdf-to-image">📊 PDFの図表を資料に使う<span>スクショで荒くなる理由</span></a><a class="rel" href="article-scanned-pdf-text">🔍 文字がコピーできないPDF<span>中身が画像かどうかの見分け方</span></a><a class="rel" href="article-reduce-file-size">📉 「添付できない」を解決<span>画質を保って容量を下げる順序</span></a></div>
     <h2>ほかの無料ツール</h2>

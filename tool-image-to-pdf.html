@@ -26,7 +26,7 @@
 {"@context":"https://schema.org","@type":"HowTo","name":"画像をPDFにまとめる手順","step":[{"@type":"HowToStep","name":"画像を追加","text":"画像をドラッグ＆ドロップします。複数選べます。"},{"@type":"HowToStep","name":"順番と設定","text":"並べ替え、用紙サイズや余白を選びます。"},{"@type":"HowToStep","name":"PDFを保存","text":"『PDFにまとめる』を押して1つのPDFを保存します。"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"画像はアップロードされますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像はサーバーに送信されません。"}},{"@type":"Question","name":"何枚まで対応していますか？","acceptedAnswer":{"@type":"Answer","text":"サービス側の枚数制限はありません。端末の性能の範囲で処理します。"}},{"@type":"Question","name":"WebPやHEICも使えますか？","acceptedAnswer":{"@type":"Answer","text":"WebPを含む一般的な画像に対応しています（ブラウザが表示できる形式）。"}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"画像はアップロードされますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像はサーバーに送信されません。"}},{"@type":"Question","name":"何枚まで対応していますか？","acceptedAnswer":{"@type":"Answer","text":"サービス側の枚数制限はありません。端末の性能の範囲で処理します。"}},{"@type":"Question","name":"WebPやHEICも使えますか？","acceptedAnswer":{"@type":"Answer","text":"WebPを含む一般的な画像に対応しています（ブラウザが表示できる形式）。"}},{"@type":"Question","name":"並べ替えはドラッグできますか？","acceptedAnswer":{"@type":"Answer","text":"現在は各画像の下にある◀▶ボタンでの並べ替えに対応しています。ボタンで前後に1つずつ動かせます。"}},{"@type":"Question","name":"できあがったPDFのファイル名は変更できますか？","acceptedAnswer":{"@type":"Answer","text":"ファイル名は images.pdf に固定されています。ブラウザの通常のダウンロード機能で保存されるので、必要であれば保存後に名前を変更してください。"}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"画像をPDFにまとめる","item":"https://kawatare.studio/tool-image-to-pdf"}]}
@@ -137,11 +137,25 @@
       <div class="st"><div class="n">2</div><b>順番と設定</b><p>◀▶で並べ替え、用紙サイズ・余白を選びます。</p></div>
       <div class="st"><div class="n">3</div><b>PDFを保存</b><p>「PDFにまとめる」で1つのPDFをダウンロード。</p></div>
     </div>
+
+    <h2>余白と用紙サイズの初期値を「なし」「画像サイズ」にした理由</h2>
+    <p>余白の初期値は「なし」、用紙サイズの初期値は「画像サイズ」です。どちらも、足すのではなく足さないほうを選びました。領収書やレシートをスキャンした画像には、すでに紙の余白が写り込んでいます。そこにPDF側でも余白を重ねると、二重になった分だけ肝心の文字が小さくなるからです。</p>
+    <p>用紙サイズをA4やLetterに切り替えても、ページの向きは画像ごとに自動で決まります。横長の写真を1枚だけ混ぜても、その1枚だけ横長のページになるので、向きをそろえるための並べ替えは要りません。余白を「小」「中」にした場合は、画像は縦横比を保ったまま中央に置かれます。引き伸ばしたり、はみ出た部分を切り取ったりはしません。</p>
+
+    <h2>画像はいったんJPEGに変換してから並べています</h2>
+    <p>読み込んだ画像がPNGでもWebPでも、PDFに埋め込む前に一度JPEG(画質92%)に変換しています。形式ごとに埋め込み処理を分ける作り方もありますが、経路を1本にまとめたほうが、どの形式の画像を渡しても同じ結果になります。動作の予測しやすさを優先しました。</p>
+
+    <h2>透明なロゴ画像や、1ページに複数枚を並べたいときには向きません</h2>
+    <p>背景が透明なPNG画像は、この変換の過程で透明だった部分が黒く塗りつぶされます。ロゴやハンコを透明のまま重ねたい資料には向きません。そういう用途には、画像編集ソフトでPDF化する方法をおすすめします。</p>
+    <p>もうひとつ。このツールは画像1枚につきPDF1ページを作る作りです。複数枚を1枚の用紙に割り付けるレイアウト機能は持っていません。名刺や写真シールのように1枚の紙へ何面も配置したいときは、レイアウトソフトのほうが向いています。</p>
+
     <h2>よくある質問</h2>
     <div class="faq">
       <details open><summary>画像はアップロードされますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像はサーバーに送信されません。</p></details>
       <details><summary>何枚までまとめられますか？</summary><p>サービス側の枚数制限はありません。端末の性能の範囲で処理します。</p></details>
       <details><summary>WebPの画像も使えますか？</summary><p>はい。ブラウザが表示できる一般的な画像形式に対応しています。</p></details>
+      <details><summary>並べ替えはドラッグできますか？</summary><p>現在は各画像の下にある◀▶ボタンでの並べ替えに対応しています。ボタンで前後に1つずつ動かせます。</p></details>
+      <details><summary>できあがったPDFのファイル名は変更できますか？</summary><p>ファイル名は images.pdf に固定されています。サーバーには送信されず、ブラウザの通常のダウンロード機能で保存されるので、必要であれば保存後に名前を変更してください。</p></details>
     </div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-receipt-to-pdf">🧾 領収書を1つのPDFに<span>確定申告・経費精算の提出用</span></a><a class="rel" href="article-merge-documents-pdf">📎 複数の書類を1つのPDFに<span>提出先に配慮した並べ方</span></a></div>
     <h2>ほかの無料ツール</h2>
