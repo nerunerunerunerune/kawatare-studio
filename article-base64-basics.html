@@ -76,7 +76,7 @@
   <h1 class="page-h1">Base64とは ― 画像やファイルが文字列になる仕組み</h1>
   <p class="lead">メールの中身を表示させたら、意味の読めない英数字が延々と続いていた。あるいはHTMLに「data:image/png;base64,」で始まる長い文字列があった。あれが何をしているのかを説明します。</p>
   <div class="card prose">
-  <h2>結論</h2>
+  <h2>隠すためではなく、通すための変換</h2>
   <div class="note">Base64は、<b>文字しか通せない道に、画像などのデータを通すための包装</b>です。中身を隠す仕組みではなく、誰でも元に戻せます。包装したぶん<b>容量は約1.33倍</b>に増えます。</div>
   <div class="btnrow" style="margin:16px 0 4px"><a class="cta" href="tool-base64">先にBase64変換を試す</a></div>
   <p style="font-size:13px;color:var(--muted);margin:2px 0 6px">長い英数字を貼り付ければ、その場で元のデータに戻せます。仕組みの説明は、必要になったら読んでください。</p>
@@ -123,7 +123,7 @@
     <li><b>末尾を削ってしまう。</b>= を余計なものと判断して消すと、復元に失敗することがあります。</li>
   </ul>
   <div class="note">社内の設定値や証明書をBase64に変換するために、外部のサイトへ貼り付けるのは避けたい行為です。<b>このサイトのツールは端末の中だけで変換し、入力内容を送信しません。</b>持ち出せないデータでも手元で処理できます。</div>
-  <h2>今すぐ使えるツール</h2>
+  <h2>ここから変換・復元できます</h2>
   <div class="btnrow"><a class="cta ghost" href="tool-base64" style="margin:4px 6px 4px 0">Base64を変換・復元する</a><a class="cta ghost" href="tool-url-encode" style="margin:4px 6px 4px 0">URL用に変換する</a><a class="cta ghost" href="tool-image-compressor" style="margin:4px 6px 4px 0">埋め込む前に画像を軽くする</a></div>
   <h2>よくある質問</h2>
   <h3>Base64は暗号化ですか？</h3>

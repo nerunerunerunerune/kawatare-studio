@@ -76,7 +76,7 @@
   <h1 class="page-h1">JSONが読み込めないときに疑う6か所</h1>
   <p class="lead">設定ファイルを1行足しただけなのに読み込まれなくなった。エラーは出るが、指された場所を見ても間違いが見つからない。JSONで弾かれる原因は、じつはほぼ決まっています。</p>
   <div class="card prose">
-  <h2>結論</h2>
+  <h2>他の言語の癖を持ち込むと、だいたい弾かれる</h2>
   <div class="note">JSONの文法は<b>意図的に狭く作られています</b>。プログラムを書く言語では当たり前に許される書き方の多くが、JSONでは禁止されています。エラーの大半は、その差から生まれます。</div>
   <div class="btnrow" style="margin:16px 0 4px"><a class="cta" href="tool-json-format">先にJSONを検証する</a></div>
   <p style="font-size:13px;color:var(--muted);margin:2px 0 6px">貼り付けるだけで、崩れている位置が表示されます。原因の見当がついてから読み進めても構いません。</p>
@@ -130,7 +130,7 @@
   </ul>
   <p>なお、同じ項目名を2回書いた場合、多くの環境ではエラーにならず<b>後ろに書いたほうが採用されます</b>。設定を書き換えたつもりが反映されない、という症状はこれが原因のことがあります。エラーが出ないぶん気づきにくく、整形して構造を眺めたときに初めて重複に気づく、という見つかり方をします。</p>
   <div class="note">業務システムの設定ファイルや、顧客データを含むJSONを、外部のサイトに貼って整形するのは避けたい行為です。<b>このサイトのツールは端末の中だけで処理し、入力内容を送信しません。</b>社外に出せないデータでもそのまま扱えます。</div>
-  <h2>今すぐ使えるツール</h2>
+  <h2>整形・変換のツール</h2>
   <div class="btnrow"><a class="cta ghost" href="tool-json-format" style="margin:4px 6px 4px 0">JSONを整形・検証する</a><a class="cta ghost" href="tool-fullwidth-halfwidth" style="margin:4px 6px 4px 0">全角・半角をそろえる</a><a class="cta ghost" href="tool-remove-linebreaks" style="margin:4px 6px 4px 0">改行を取り除く</a></div>
   <h2>よくある質問</h2>
   <h3>エラーが指す位置に、間違いが見当たりません</h3>

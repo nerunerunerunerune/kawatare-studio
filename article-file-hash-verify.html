@@ -76,7 +76,7 @@
   <h1 class="page-h1">ハッシュ値とは ― ファイルが壊れていないかを確かめる</h1>
   <p class="lead">ソフトの配布ページに「SHA-256: 9f86d0…」といった長い文字列が載っていることがあります。何のために書かれていて、どう使うのか。そして何を保証しないのかを整理しました。</p>
   <div class="card prose">
-  <h2>結論</h2>
+  <h2>配布元の値と、手元の値を見比べる</h2>
   <div class="note">ハッシュ値は、ファイルの中身から計算される<b>指紋のようなもの</b>です。中身が1文字でも違えば、まったく別の値になります。配布元の値と手元の値を見比べて、<b>同じなら中身は同一</b>、違うなら壊れているか差し替えられている、と判断できます。</div>
   <div class="btnrow" style="margin:16px 0 4px"><a class="cta" href="tool-hash">先にハッシュ値を計算する</a></div>
   <p style="font-size:13px;color:var(--muted);margin:2px 0 6px">ファイルを選ぶだけで値が出ます。配布元に書かれている値と見比べてください。読み進めるのは後からで構いません。</p>
@@ -128,7 +128,7 @@
     <li><b>写真や書類は埋め込み情報でも変わる。</b>撮影日時や作成者の情報が書き換わると値も変わります。</li>
   </ul>
   <div class="note">業務ファイルのハッシュ値を出すために、ファイルを外部のサイトにアップロードしては本末転倒です。<b>このサイトのツールは端末の中だけで計算し、ファイルを送信しません。</b>社外に出せない資料でも、そのまま確認できます。</div>
-  <h2>今すぐ使えるツール</h2>
+  <h2>ハッシュ値を計算するツール</h2>
   <div class="btnrow"><a class="cta ghost" href="tool-hash" style="margin:4px 6px 4px 0">ハッシュ値を計算する</a><a class="cta ghost" href="tool-password" style="margin:4px 6px 4px 0">強いパスワードを作る</a><a class="cta ghost" href="tool-uuid" style="margin:4px 6px 4px 0">一意なIDを作る</a></div>
   <h2>よくある質問</h2>
   <h3>ハッシュ値が一致しませんでした。どうすればよいですか？</h3>
