@@ -26,7 +26,7 @@
 {"@context":"https://schema.org","@type":"HowTo","name":"出品写真を正方形・白背景にする手順","step":[{"@type":"HowToStep","name":"写真を追加","text":"スマホ写真をドラッグ＆ドロップします。複数選べます。"},{"@type":"HowToStep","name":"設定","text":"背景色・仕上がりサイズ・はみ出し方を選びます。"},{"@type":"HowToStep","name":"保存","text":"1枚ずつ、またはZIPで一括ダウンロードします。"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"写真はアップロードされますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、写真はサーバーに送信されません。"}},{"@type":"Question","name":"メルカリ以外でも使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。ラクマやYahoo!フリマなど、正方形の写真が好まれる出品全般に使えます。"}},{"@type":"Question","name":"何枚まで変換できますか？","acceptedAnswer":{"@type":"Answer","text":"サービス側の枚数制限はありません。ZIPで一括保存もできます。"}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"写真はアップロードされますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、写真はサーバーに送信されません。"}},{"@type":"Question","name":"メルカリ以外でも使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい。ラクマ・Yahoo!フリマなど、正方形の写真が好まれる出品全般に使えます。"}},{"@type":"Question","name":"何枚まで変換できますか？","acceptedAnswer":{"@type":"Answer","text":"サービス側の枚数制限はありません。ZIPで一括保存もできます。"}},{"@type":"Question","name":"余白の色は白以外にできますか？","acceptedAnswer":{"@type":"Answer","text":"できます。「色指定」を選ぶと、隣のカラーピッカーで決めた色が余白に入ります。透過のあるPNGを入れた場合、透けていた部分も同じ色になります。"}},{"@type":"Question","name":"「いっぱい（切抜）」だと、どこが切れますか？","acceptedAnswer":{"@type":"Answer","text":"長いほうの辺の両端です。切る位置は中央で固定しているため、被写体が左右どちらかに寄っている写真では見切れます。位置を自分で決めたいときは、先に画像の切り抜きで整えてからこの画面に通してください。"}},{"@type":"Question","name":"PNGのまま保存できますか？","acceptedAnswer":{"@type":"Answer","text":"できません。この画面はすべてJPGで書き出します。出品写真では透過を使う場面がほとんどなく、PNGだとファイルが重くなるためです。形式を選びたいときは画像形式変換を使ってください。"}}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"フリマ写真を正方形＆白背景に一括変換","item":"https://kawatare.studio/tool-square-photo"}]}
@@ -137,11 +137,30 @@
       <div class="st"><div class="n">2</div><b>設定</b><p>背景色・仕上がりサイズ・収め方を選びます。</p></div>
       <div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。</p></div>
     </div>
+    <h2>背景を先に塗ってから、写真を載せています</h2>
+    <p style="margin:10px 0;font-size:14px">処理の順序は、正方形のカンバスを背景色で塗りつぶし、その上に写真を中央へ置く、という形にしてある。だから「全体（余白）」で出た余白は、かならず選んだ色で埋まる。透明のまま残ることはない。</p>
+    <p style="margin:10px 0;font-size:14px">透過のあるPNGを入れた場合も、透けていた部分は同じ色になる。白背景の商品写真を作るぶんには都合がよい仕様だが、透過を残したい画像には向かない。</p>
+    <p style="margin:10px 0;font-size:14px">白から変えたいときは「色指定」を選ぶ。隣のカラーピッカーで指定した色が、そのまま余白と透過部分に入る。</p>
+    <h2>「全体（余白）」と「いっぱい（切抜）」の選び分け</h2>
+    <p style="margin:10px 0;font-size:14px">「全体（余白）」は写真の長いほうの辺を正方形に合わせる。だから写真ぜんぶが入り、かわりに短いほうの辺の外側に余白が出る。商品の形をそのまま見せたいときはこちらを選ぶ。</p>
+    <p style="margin:10px 0;font-size:14px">「いっぱい（切抜）」は短いほうの辺を合わせるので、余白は出ない。かわりに長いほうの辺の両端がはみ出して切れる。切る位置は中央で固定してあり、被写体が端に寄っていると見切れてしまう。</p>
+    <p style="margin:10px 0;font-size:14px">迷ったら「全体（余白）」から試すとよい。切れて困ることがない。位置を自分で決めて切りたい場合は、先に<a href="tool-image-crop">画像の切り抜き</a>で整えてから、この画面に通す手もある。</p>
+    <h2>保存はJPGだけにしてあります</h2>
+    <p style="margin:10px 0;font-size:14px">出てくるファイルは、元がPNGでもWebPでも、すべてJPGになる。品質は0.9で書き出している。</p>
+    <p style="margin:10px 0;font-size:14px">出品写真はたいてい「写真」であって、透過を使う場面がほとんどない。PNGで書き出すと見た目が同じでもファイルは数倍重くなり、出品するときのアップロードに時間がかかる。そこを優先して形式を絞った。</p>
+    <p style="margin:10px 0;font-size:14px">形式を選びたい、あるいは透過を残したいなら、この画面ではなく<a href="tool-image-convert">画像形式変換</a>のほうが合う。</p>
+    <h2>小さな写真を大きなサイズに指定すると、ぼやけます</h2>
+    <p style="margin:10px 0;font-size:14px">仕上がりサイズには、元の写真より大きい値も選べる。制限はかけていない。ただし足りない画素は計算で埋めるので、引き伸ばすほど輪郭がやわらかくなる。</p>
+    <p style="margin:10px 0;font-size:14px">既定を1080にしてあるのは、フリマの一覧がスマホの小さな枠で表示されるためだ。それより大きくしても見た目は変わりにくく、ファイルだけが重くなる。1280と1500は、拡大して見せたい商品や、あとで別の用途にも回したい写真のために置いてある。</p>
+    <p style="margin:10px 0;font-size:14px">スクリーンショットや、すでに小さく保存された画像を通すときは、元の写真より小さめの仕上がりサイズを選んだほうがきれいに見える。</p>
     <h2>よくある質問</h2>
     <div class="faq">
       <details open><summary>写真はアップロードされますか？</summary><p>いいえ。すべてブラウザ内で処理し、写真はサーバーに送信されません。</p></details>
       <details><summary>メルカリ以外でも使えますか？</summary><p>はい。ラクマ・Yahoo!フリマなど、正方形の写真が好まれる出品全般に使えます。</p></details>
       <details><summary>何枚まで変換できますか？</summary><p>サービス側の枚数制限はありません。ZIPで一括保存もできます。</p></details>
+      <details><summary>余白の色は白以外にできますか？</summary><p>できます。「色指定」を選ぶと、隣のカラーピッカーで決めた色が余白に入ります。透過のあるPNGを入れた場合、透けていた部分も同じ色になります。</p></details>
+      <details><summary>「いっぱい（切抜）」だと、どこが切れますか？</summary><p>長いほうの辺の両端です。切る位置は中央で固定しているため、被写体が左右どちらかに寄っている写真では見切れます。位置を自分で決めたいときは、先に画像の切り抜きで整えてからこの画面に通してください。</p></details>
+      <details><summary>PNGのまま保存できますか？</summary><p>できません。この画面はすべてJPGで書き出します。出品写真では透過を使う場面がほとんどなく、PNGだとファイルが重くなるためです。形式を選びたいときは画像形式変換を使ってください。</p></details>
     </div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-mercari-square-photo">🛍️ 出品写真を正方形に<span>一覧で見切れない作り方</span></a><a class="rel" href="article-exif-location-remove">📍 写真の位置情報を消す<span>SNS投稿前にやること</span></a></div>
     <h2>ほかの無料ツール</h2>

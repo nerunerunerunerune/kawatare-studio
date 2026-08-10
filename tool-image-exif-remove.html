@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://kawatare.studio/ogp.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"画像のExif(位置情報)削除","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"写真の位置情報(GPS)などのExifを削除して安全に共有。見た目はそのまま、複数枚・ZIP一括DL対応。ブラウザ内処理で送信なし・登録不要・完全無料。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"画像のExif(位置情報)削除の使い方","step":[{"@type":"HowToStep","name":"写真を追加","text":"ドラッグ＆ドロップ、または選択(複数可)。"},{"@type":"HowToStep","name":"自動で除去","text":"再保存の際にExif情報が取り除かれます。"},{"@type":"HowToStep","name":"保存","text":"1枚ずつ、またはZIPで一括ダウンロード。"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"なぜExif削除が必要ですか？","acceptedAnswer":{"@type":"Answer","text":"写真には撮影場所(GPS)や日時が埋め込まれることがあり、SNSやフリマ出品でそのまま公開すると自宅等が特定される恐れがあります。"}},{"@type":"Question","name":"写真は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、写真は送信されません。安全対策と相性の良い設計です。"}},{"@type":"Question","name":"画質は落ちますか？","acceptedAnswer":{"@type":"Answer","text":"高画質で再保存するため、見た目の劣化はほとんどありません。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"なぜExif削除が必要ですか？","acceptedAnswer":{"@type":"Answer","text":"写真には撮影場所(GPS)や日時が埋め込まれることがあり、SNSやフリマ出品でそのまま公開すると自宅等が特定される恐れがあります。"}},{"@type":"Question","name":"写真は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、写真は送信されません。安全対策と相性の良い設計です。"}},{"@type":"Question","name":"画質は落ちますか？","acceptedAnswer":{"@type":"Answer","text":"高画質で再保存するため、見た目の劣化はほとんどありません。"}},{"@type":"Question","name":"写真の向きは変わりませんか？","acceptedAnswer":{"@type":"Answer","text":"変わりません。ブラウザは読み込んだ時点で向きの指定を反映するため、画面で見えていたとおりの向きで書き出されます。向きの指定自体は消えますが、かわりに正しい向きが画素に焼き込まれるので、以後はどのソフトで開いても同じ向きで見えます。"}},{"@type":"Question","name":"ファイルサイズは小さくなりますか？","acceptedAnswer":{"@type":"Answer","text":"あまり期待しないでください。Exifは数十キロバイト程度のことが多く、削減の効果は小さいためです。書き出しの品質を高めに設定しているので、写真によっては元より少し大きくなることもあります。容量を減らしたいときは、きゅっと画像圧縮を使ってください。"}},{"@type":"Question","name":"PNGの写真でも意味がありますか？","acceptedAnswer":{"@type":"Answer","text":"PNGにExifが入っていることは多くありませんが、入っていれば同じように取り除かれます。ただしPNGは写真より図やロゴに使われる形式で、位置情報が問題になる場面はJPEGより少ないはずです。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"画像のExif(位置情報)削除","item":"https://kawatare.studio/tool-image-exif-remove"}]}</script>
 <style>
   :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
@@ -118,8 +118,23 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>写真を追加</b><p>ドラッグ＆ドロップ、または選択(複数可)。</p></div><div class="st"><div class="n">2</div><b>自動で除去</b><p>再保存の際にExif情報が取り除かれます。</p></div><div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。</p></div></div>
+    <h2>画質の設定を、ほかの画面より高くしてあります</h2>
+    <p style="margin:10px 0;font-size:14px">JPEGで書き出すときの品質を0.95にしてある。同じサイトの<a href="tool-image-resize">画像リサイズ</a>や<a href="tool-image-rotate">回転</a>が0.92、フリマ用の正方形が0.9なので、ここがいちばん高い。</p>
+    <p style="margin:10px 0;font-size:14px">目的が違うからだ。ほかの画面は小さくしたり形を変えたりするのが仕事なので、多少の劣化と引き換えに容量を落とす意味がある。この画面の仕事は付帯情報を落とすことだけで、写真そのものには手を触れたくない。だから容量より画質を優先した。</p>
+    <p style="margin:10px 0;font-size:14px">縦横のサイズも変えていない。元の大きさのまま描き直して書き出す。</p>
+    <h2>何が消えて、何が残るか</h2>
+    <p style="margin:10px 0;font-size:14px">消えるのは、画素とは別にファイルへ埋め込まれていた情報である。撮影場所の緯度経度、撮影日時、カメラやレンズの機種、絞りやシャッター速度といった撮影設定、そして写真の向き。</p>
+    <p style="margin:10px 0;font-size:14px">残るのは画素、つまり写真として見えている内容そのものだ。だから、写り込んだ表札や制服、窓の外の景色までは消えない。<b>位置情報を消しても、写真の中身から場所が分かることはある。</b>消したあとに一度、隅々まで眺めてほしい。</p>
+    <p style="margin:10px 0;font-size:14px">形式は元のまま引き継ぐ。PNGならPNG、WebPならWebPで書き出し、勝手にJPEGへ変えることはしない。</p>
+    <h2>向きの情報も消えますが、写真は横倒しになりません</h2>
+    <p style="margin:10px 0;font-size:14px">Exifには「この写真は90度回して表示せよ」という向きの指定が入っていることがある。スマホを横に構えて撮った写真がこれにあたる。</p>
+    <p style="margin:10px 0;font-size:14px">この画面はいったんブラウザへ読み込んでから描き直すが、読み込んだ時点でブラウザが向きの指定を反映する。横100×縦50のJPEGに90度回転の指定を付けて試すと、50×100として扱われた。だから描き直した結果は、画面で見えていたとおりの向きになる。</p>
+    <p style="margin:10px 0;font-size:14px">向きの指定が消えるかわりに、正しい向きが画素そのものに焼き込まれる、と言ってもいい。以後はどのソフトで開いても同じ向きで見える。</p>
+    <h2>すでに送ってしまった写真には効きません</h2>
+    <p style="margin:10px 0;font-size:14px">ここで作られるのは、手元にある新しいファイルだ。すでにSNSへ投稿した写真や、メールで送ってしまった写真には何も起こらない。投稿済みのものは、そのサービス側で消すしかない。</p>
+    <p style="margin:10px 0;font-size:14px">投稿先によっては、アップロードの時点でサービス側がExifを落とす。ただし落とすかどうかも、どの項目を落とすかも、サービスごとに違う。落としてくれる前提で運用するのは危うい。送る前に自分で消しておくほうが確実だ。</p>
     <h2>よくある質問</h2>
-    <div class="faq"><details open><summary>なぜExif削除が必要ですか？</summary><p>写真には撮影場所(GPS)や日時が埋め込まれることがあり、SNSやフリマ出品でそのまま公開すると自宅等が特定される恐れがあります。</p></details><details><summary>写真は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、写真は送信されません。安全対策と相性の良い設計です。</p></details><details><summary>画質は落ちますか？</summary><p>高画質で再保存するため、見た目の劣化はほとんどありません。</p></details></div>
+    <div class="faq"><details open><summary>なぜExif削除が必要ですか？</summary><p>写真には撮影場所(GPS)や日時が埋め込まれることがあり、SNSやフリマ出品でそのまま公開すると自宅等が特定される恐れがあります。</p></details><details><summary>写真は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、写真は送信されません。安全対策と相性の良い設計です。</p></details><details><summary>画質は落ちますか？</summary><p>高画質で再保存するため、見た目の劣化はほとんどありません。</p></details><details><summary>写真の向きは変わりませんか？</summary><p>変わりません。ブラウザは読み込んだ時点で向きの指定を反映するため、画面で見えていたとおりの向きで書き出されます。向きの指定自体は消えますが、かわりに正しい向きが画素に焼き込まれるので、以後はどのソフトで開いても同じ向きで見えます。</p></details><details><summary>ファイルサイズは小さくなりますか？</summary><p>あまり期待しないでください。Exifは数十キロバイト程度のことが多く、削減の効果は小さいためです。書き出しの品質を高めに設定しているので、写真によっては元より少し大きくなることもあります。容量を減らしたいときは、きゅっと画像圧縮を使ってください。</p></details><details><summary>PNGの写真でも意味がありますか？</summary><p>PNGにExifが入っていることは多くありませんが、入っていれば同じように取り除かれます。ただしPNGは写真より図やロゴに使われる形式で、位置情報が問題になる場面はJPEGより少ないはずです。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-exif-location-remove">📍 写真の位置情報を消す<span>SNS投稿前にやること</span></a><a class="rel" href="article-mercari-square-photo">🛍️ 出品写真を正方形に<span>一覧で見切れない作り方</span></a></div>
     <h2>ほかの無料ツール</h2>
     <div class="rel-grid"><a class="rel" href="tool-image-compressor">🖼️ きゅっと画像圧縮 <span>目標サイズ指定・AVIF・比較</span></a><a class="rel" href="tool-square-photo">📷 フリマ写真を正方形に <span>1:1・白背景に一括変換</span></a></div>

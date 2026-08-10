@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://kawatare.studio/ogp.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"画像の回転・反転","applicationCategory":"MultimediaApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"description":"画像を90°単位で回転、または左右・上下に反転して一括保存。複数枚・ZIP一括DL対応。ブラウザ内処理で送信なし・登録不要・完全無料。"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"画像の回転・反転の使い方","step":[{"@type":"HowToStep","name":"画像を追加","text":"ドラッグ＆ドロップ、または選択(複数可)。"},{"@type":"HowToStep","name":"回転・反転を選ぶ","text":"90/180/270°の回転、左右・上下の反転を選びます。"},{"@type":"HowToStep","name":"保存","text":"1枚ずつ、またはZIPで一括ダウンロード。"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"スマホ写真の向きを直せますか？","acceptedAnswer":{"@type":"Answer","text":"はい。90°単位の回転で、横向き・逆さの写真を正しい向きにできます。"}},{"@type":"Question","name":"画像は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像は送信されません。"}},{"@type":"Question","name":"まとめて処理できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。複数枚を同じ設定で一括処理し、ZIPで保存できます。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"スマホ写真の向きを直せますか？","acceptedAnswer":{"@type":"Answer","text":"はい。90°単位の回転で、横向き・逆さの写真を正しい向きにできます。"}},{"@type":"Question","name":"画像は送信されますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。すべてブラウザ内で処理し、画像は送信されません。"}},{"@type":"Question","name":"まとめて処理できますか？","acceptedAnswer":{"@type":"Answer","text":"はい。複数枚を同じ設定で一括処理し、ZIPで保存できます。"}},{"@type":"Question","name":"回転と反転を同時に選ぶと、どちらが先に効きますか？","acceptedAnswer":{"@type":"Answer","text":"反転が先です。「90°」と「左右」を同時に選ぶと、左上にあった部分は右下へ移ります。回転が先だと左上に戻るので、結果は180度ぶん変わります。この差が出るのは90°と270°のときだけで、180°や「なし」なら順序は関係ありません。狙った向きにならないときは、2回に分けて処理してください。"}},{"@type":"Question","name":"元の画質のまま回転できますか？","acceptedAnswer":{"@type":"Answer","text":"JPEGの場合はできません。いったん描き直して書き出すため、再度エンコードされます。品質は0.92で、見比べて分かるほどの差にはなりませんが、元のデータそのままではありません。PNGとWebPなら劣化しません。"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"サクッとツール","item":"https://kawatare.studio/"},{"@type":"ListItem","position":2,"name":"画像の回転・反転","item":"https://kawatare.studio/tool-image-rotate"}]}</script>
 <style>
   :root{--bg:#f5f6f8;--card:#fff;--ink:#12151b;--ink-2:#5b6371;--muted:#9aa2b1;--line:#e6e8ee;
@@ -118,8 +118,20 @@
   <section class="seo">
     <h2>使い方（3ステップ）</h2>
     <div class="howto"><div class="st"><div class="n">1</div><b>画像を追加</b><p>ドラッグ＆ドロップ、または選択(複数可)。</p></div><div class="st"><div class="n">2</div><b>回転・反転を選ぶ</b><p>90/180/270°の回転、左右・上下の反転を選びます。</p></div><div class="st"><div class="n">3</div><b>保存</b><p>1枚ずつ、またはZIPで一括ダウンロード。</p></div></div>
+    <h2>回転と反転を両方選ぶと、反転が先に効きます</h2>
+    <p style="margin:10px 0;font-size:14px">回転と反転は別々の列で選ぶが、両方を指定したときは、まず反転してから回転する順で処理している。画面では回転の列が上にあるので、回転が先に効きそうに見える。実際は逆である。</p>
+    <p style="margin:10px 0;font-size:14px">左上に目印のある写真で「90°」と「左右」を同時に選ぶと、目印は<b>右下</b>に来る。回転を先に処理していれば目印は左上へ戻るので、仕上がりは180度ぶん違う。</p>
+    <p style="margin:10px 0;font-size:14px">この差が出るのは90°と270°を選んだときだけで、180°と「なし」ならどちらの順でも同じ結果になる。狙った向きにならなかったら、回転と反転を1回ずつ、2回に分けて処理すれば確実に思ったとおりになる。</p>
+    <h2>出力の形式は、元の画像から引き継いでいます</h2>
+    <p style="margin:10px 0;font-size:14px">PNGを入れればPNG、WebPならWebP、それ以外はJPGで出てくる。形式を選ぶ欄は置いていない。向きを直す作業と、形式を変える作業は別だと考えたためだ。</p>
+    <p style="margin:10px 0;font-size:14px">とくにPNGを勝手にJPGへ変えると、透過していた部分が白や黒で塗りつぶされる。ロゴやアイコンでは致命的になるので、ここは自動判断させず元に合わせている。形式もあわせて変えたいなら<a href="tool-image-convert">画像形式変換</a>のほうが早い。</p>
+    <p style="margin:10px 0;font-size:14px">ZIPは圧縮せずに束ねているだけである。中身のJPEGやPNGはすでに圧縮済みなので、ZIPにしてもほとんど縮まない。待ち時間が延びるだけなので、その処理は省いた。</p>
+    <h2>1ピクセルも劣化させたくない用途には向きません</h2>
+    <p style="margin:10px 0;font-size:14px">この画面は画像をいったん描き直してから書き出す。そのためJPEGを入れると、出てくるのは再度エンコードされたJPEGになる。書き出しの品質は0.92に設定してあり、見比べて分かるほどの差にはならないが、元のデータそのままではない。</p>
+    <p style="margin:10px 0;font-size:14px">JPEGの90°単位の回転は、本来なら画素を作り直さずに済ませられる。1回ごとの劣化も避けたいなら、その方式に対応した専用ソフトのほうが向いている。向きを何度も試しながら決める場合も、やり直すたびに再エンコードが重なる。</p>
+    <p style="margin:10px 0;font-size:14px">PNGとWebPで入れたときは、劣化しない形式のまま書き出すので、この心配はいらない。</p>
     <h2>よくある質問</h2>
-    <div class="faq"><details open><summary>スマホ写真の向きを直せますか？</summary><p>はい。90°単位の回転で、横向き・逆さの写真を正しい向きにできます。</p></details><details><summary>画像は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像は送信されません。</p></details><details><summary>まとめて処理できますか？</summary><p>はい。複数枚を同じ設定で一括処理し、ZIPで保存できます。</p></details></div>
+    <div class="faq"><details open><summary>スマホ写真の向きを直せますか？</summary><p>はい。90°単位の回転で、横向き・逆さの写真を正しい向きにできます。</p></details><details><summary>画像は送信されますか？</summary><p>いいえ。すべてブラウザ内で処理し、画像は送信されません。</p></details><details><summary>まとめて処理できますか？</summary><p>はい。複数枚を同じ設定で一括処理し、ZIPで保存できます。</p></details><details><summary>回転と反転を同時に選ぶと、どちらが先に効きますか？</summary><p>反転が先です。「90°」と「左右」を同時に選ぶと、左上にあった部分は右下へ移ります。回転が先だと左上に戻るので、結果は180度ぶん変わります。この差が出るのは90°と270°のときだけで、180°や「なし」なら順序は関係ありません。狙った向きにならないときは、2回に分けて処理してください。</p></details><details><summary>元の画質のまま回転できますか？</summary><p>JPEGの場合はできません。いったん描き直して書き出すため、再度エンコードされます。品質は0.92で、見比べて分かるほどの差にはなりませんが、元のデータそのままではありません。PNGとWebPなら劣化しません。</p></details></div>
     <h2>コラム</h2><div class="rel-grid"><a class="rel" href="article-receipt-to-pdf">🧾 領収書を1つのPDFに<span>確定申告・経費精算の提出用</span></a><a class="rel" href="article-mercari-square-photo">🛍️ 出品写真を正方形に<span>一覧で見切れない作り方</span></a></div>
     <h2>ほかの無料ツール</h2>
     <div class="rel-grid"><a class="rel" href="tool-image-compressor">🖼️ きゅっと画像圧縮 <span>目標サイズ指定・AVIF・比較</span></a><a class="rel" href="tool-square-photo">📷 フリマ写真を正方形に <span>1:1・白背景に一括変換</span></a></div>
